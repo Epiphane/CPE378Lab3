@@ -10,7 +10,6 @@ public class platform extends Actor
 {
     public void act() 
     {
-       setLocation(getX(), getWorld().getHeight() - getImage().getHeight()/2);
-       Level1.PlatPos = getImage().getHeight()+15;
+       
     }    
 }
