@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=AnimatedActor
+comment0.text=\n\ Write\ a\ description\ of\ class\ AnimatedActor\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=right
+comment1.target=void\ setFacingRight(boolean)
+comment1.text=\n\ Set\ whether\ this\ character\ is\ facing\ left\ or\ right\n
+comment2.params=name\ length
+comment2.target=AnimatedActor.Animation\ generateSequence(java.lang.String,\ int)
+comment2.text=\n\ Create\ a\ typical\ animation\ with\ name\ name\ and\ sequence\ [0,\ 1,\ 2,\ ...]\n
+comment3.params=anim
+comment3.target=void\ setAnimation(AnimatedActor.Animation)
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\n\ Act\ -\ do\ whatever\ the\ AnimatedActor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+numComments=5

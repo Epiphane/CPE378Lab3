@@ -2,12 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 import java.awt.Color;
 /**
- * enemy object for my custom made platform game
+ * enemy2 object for my custom made platform game
  * 
  * @author softwhizjx
  * @version 1.0
  */
-public class enemy extends Actor
+public class enemy2 extends Actor
 {
     /**
      * Enemy's Variables
@@ -20,11 +20,11 @@ public class enemy extends Actor
     float x, y;
     
     /** enemy's speed */
-    float speedX = 3;
+    float speedX = 0;
     float speedY = 0;
     
     /** enemy's acceleration (only in horizontal) */
-    float accelX = 1;
+    float accelX = 2;
     
     /** enemy's max horizontal speed */
     float maxSpeedX = 3;
@@ -48,28 +48,28 @@ public class enemy extends Actor
     
     float deathDelay = 0;
     
-    /** check if the enemy can be damaged by the player from the head*/
+    /** check if the enemy2 can be damaged by the player from the head*/
     boolean canBeAttackedFromAbove = true;
     
     boolean canHurtPlayer = true;
     
-    /** enemy images array*/
+    /** enemy2 images array*/
     private static GreenfootImage frames[] = new GreenfootImage[10];
     
     /** images variables*/
     int dir = 0;
     float current_frame = 0;
-    float anim_speed = 0.1f;
+    float anim_speed = 0.0f;
     float start_frame = 0;
-    float end_frame = 4;
+    float end_frame = 0;
     float anim_no = 0;
     float anim_delay = 0;
     
     
     /**
-     * initialize enemy
+     * initialize enemy2
      */
-    public enemy() {
+    public enemy2() {
         /**set image sprites ready!!*/
         setSprites();
     }  
@@ -77,7 +77,7 @@ public class enemy extends Actor
     /**
      * initialize with direction string
      */
-    public enemy(String direction) {
+    public enemy2(String direction) {
         /**set image sprites ready!!*/
         setSprites();
         if (direction.equals("left")){
@@ -88,10 +88,10 @@ public class enemy extends Actor
     }  
     
     /**
-     * set enemy images
+     * set enemy2 images
      */
     private void setSprites(){
-        if(frames[0] == null){ //put this on so we dont reload images every time we make an enemy
+        if(frames[0] == null){ //put this on so we dont reload images every time we make an enemy2
             /**load right facing frames*/
             frames[0] = new GreenfootImage("blob_a.gif");
             frames[1] = new GreenfootImage("blob_b.gif");
@@ -109,7 +109,7 @@ public class enemy extends Actor
     }
     
     /**
-     * enemy has just been added to world
+     * enemy2 has just been added to world
      */
     public void addedToWorld(World world){
         platformer = (PlatformWorld) world;
@@ -120,33 +120,80 @@ public class enemy extends Actor
     /**
      * animation
      */
-
     private void animate(){
-        
-        /**sprite frame loop*/
-        current_frame += anim_speed;
-        if (current_frame > end_frame){
-            current_frame = start_frame;
+        /**check animation delay*/
+        if (anim_delay > 0){
+            return; // cancel if delaying
         }
         
-        /**set a new image*/
+          current_frame += anim_speed;
+         if (current_frame > end_frame && anim_no != 1){
+             current_frame = start_frame; //frame loop
+         }
+         if (anim_no == 1 && current_frame >= end_frame){
+             anim_speed = 0;
+             current_frame = 2; //frame non-loop for no.1
+         }
+
         this.setImage(frames[(int)current_frame + dir]);
     }
     
-    private void setAnim_move(){
-        anim_no = 1; //this is animation no.1
-        anim_speed = 0.5f; //how fast the image change
+    private void setAnim_moveDelay(){
+        if (anim_no == 0||anim_delay > 0){
+            return; //cancel if using is animation, or animation delaying
+        }
+        anim_no = 0; //this is animation no.0
+        
+        anim_speed = 0; //how fast the image change
         current_frame = 0; //current image shot
         start_frame = 0; //first image of the animation
+        end_frame = 0; //last image of the animation
+    }
+    
+    private void setAnim_move(){
+        if (anim_no == 1||anim_delay > 0){
+            return; //cancel if using is animation, or animation delaying
+        }
+        anim_no = 1; //this is animation no.1
+        
+        anim_speed = 0.1f; //how fast the image change
+        current_frame = 1; //current image shot
+        start_frame = 1; //first image of the animation
+        end_frame = 2; //last image of the animation
+        
+    }
+    
+    private void setAnim_death(){
+        if (anim_no == 2||anim_delay > 0){
+            return; //cancel if using is animation, or animation delaying
+        }
+        anim_no = 2; //this is animation no.2
+        
+        anim_speed = 0; //how fast the image change
+        current_frame = 3; //current image shot
+        start_frame = 3; //first image of the animation
+        end_frame = 3; //last image of the animation
+        
+    }
+    
+    private void setAnim_deathFlow(){
+        if (anim_no == 3||anim_delay > 0){
+            return; //cancel if using is animation, or animation delaying
+        }
+        anim_no = 3; //this is animation no.3
+        
+        anim_speed = 0; //how fast the image change
+        current_frame = 4; //current image shot
+        start_frame = 4; //first image of the animation
         end_frame = 4; //last image of the animation
         
     }
-            
+    
     /**
-     * 
+     * Gears up the enemy!!
      */
     public void act(){
-        /**move */
+        /**move around in it's own way*/
         movement();
         
         /**auto detect masks*/
@@ -154,11 +201,32 @@ public class enemy extends Actor
         
         /**animations*/
         animate();
-
+        
+        /**death*/
+        if (HP <= 0 && !fall){         
+            deathDelay++;
+            canBeAttackedFromAbove = false;
+            canHurtPlayer = false;
+            if (deathDelay < 30){
+                setAnim_death();
+            }
+            if (deathDelay >= 30){
+                setAnim_deathFlow();
+            }
+            if (deathDelay >= 50){
+                platformer.removeObject(this);
+            }
+        }
+        /**disappear and die if fall of the screen*/
+        if (HP <= 0 && fall){
+            canBeAttackedFromAbove = false;
+            canHurtPlayer = false;
+            platformer.removeObject(this);
+        }
     }
     
     /**
-     * movements : when enemy moves
+     * movements : when enemy2 moves (moves as a blob)
      */
     private void movement(){
         /**set movement*/
@@ -174,16 +242,25 @@ public class enemy extends Actor
         }
         
         /**deceleration*/
-        speedX *= 0.8;
+        speedX *= 0.9;
         
         /**enemy's ai movement method*/
         ai_patrol();
-        current_frame = 0;
-        setAnim_move();
-        /**movement delay, the enemy is crawling*/
+        
+        /**movement delay, the enemy2 is crawling*/
         moveDelay++;
- 
-
+        
+        /**movement animation*/
+        if (Math.abs(speedX) < 0.1 && HP > 0){
+            current_frame = 1;
+            setAnim_moveDelay();
+        }
+        
+        /**fall then die*/
+        if (getY() > platformer.getHeight()-Y_offset){
+            HP = 0;
+            fall = true;
+        }
     }
     
     /**
@@ -194,18 +271,22 @@ public class enemy extends Actor
          * ENEMY MOVING, ALSO AUTO-DETECT BLACK & GREEN MASK.
          */
         /**left*/
-        if (dir == 5){// && speedX > -maxSpeedX && HP > 0){
-            //if (moveDelay >= 0){
+        if (dir == 5 && speedX > -maxSpeedX && HP > 0){
+            if (moveDelay >= 85){
               speedX -= accelX;
+              moveDelay = 0;
+              current_frame = 1;
               setAnim_move();
-           //}
+           }
         }
         /**right*/
-        if (dir == 0){// && speedX < maxSpeedX && HP > 0){
-            //if (moveDelay >= 0){
+        if (dir == 0 && speedX < maxSpeedX && HP > 0){
+            if (moveDelay >= 85){
               speedX += accelX;
+              moveDelay = 0;
+              current_frame = 1;
               setAnim_move();
-           //}
+           }
         }
         
         /**reverse direction once hit black mask, green mask, or the edge of the screen*/
@@ -224,7 +305,7 @@ public class enemy extends Actor
     }
     
     /**
-     * events when enemy detect masks
+     * events when enemy2 detect masks
      */
     private void maskTouch(){
         /**
@@ -318,7 +399,7 @@ public class enemy extends Actor
     }
     
     /**
-     * do damage to enemy, decrease health
+     * do damage to enemy2, decrease health
      */
     public void damage(int dmg){
         HP -= dmg;

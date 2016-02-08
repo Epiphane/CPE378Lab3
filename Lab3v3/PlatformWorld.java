@@ -334,10 +334,12 @@ public class PlatformWorld extends World
         bgmask = new GreenfootImage("BGtestmask2.gif");
         
         /**set player in a fixed spot*/
-        startx = 200;
-        starty = 379;
+        startx = 40;
+        starty = 190;
         addObject(new player(), startx, starty);
-        addObject(new exit_right(), 1150, 600);
+        addObject(new exit_right(), 1190, 575);
+        addObject(new enemy(), 737, 187);
+        addObject(new enemy(), 247, 329);
     }
     
     /**
@@ -351,8 +353,8 @@ public class PlatformWorld extends World
         bgmask = new GreenfootImage("BGtestmask3.gif");
         
         /**set player in a fixed spot*/
-        startx = 56;
-        starty = 322;
+        startx = 21;
+        starty = 218;
         addObject(new player(), startx, starty);
         addObject(new enemy(), 316, 370);
         addObject(new enemy(), 518, 370);
