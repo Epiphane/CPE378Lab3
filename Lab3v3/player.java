@@ -13,6 +13,18 @@ public class player extends AnimatedActor
      * Player's animation variables
      */
     private Animation playerWalk = AnimatedActor.generateSequence("player_walk", 6);
+    private Animation playerIdle = new Animation("player_idle", new int[] {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        2, 3, 4, 5, 6, 6, 6, 6,
+        6, 6, 6, 7, 8, 8, 8, 8, 
+        8, 8, 8, 9, 10, 11, 12, 13
+    }, 0.15f);
     
     /**
      * Player's Movements Variables
@@ -32,7 +44,7 @@ public class player extends AnimatedActor
     float speedY = 0;
     
     /** MAX speed horizonally */
-    float maxSpeed = 3;  
+    float maxSpeed = 6;  
     
     /** check can jump or not */
     boolean canJump = false;
@@ -42,7 +54,7 @@ public class player extends AnimatedActor
      * [offset = distance how far from the very center of the image]
      */
     int X_offset = 10;
-    int Y_offset = 27;
+    int Y_offset = 40;
     
     /** screen length*/
     static float minX = 14;
@@ -81,8 +93,9 @@ public class player extends AnimatedActor
      */
     public player(){
         playerWalk.load();
+        playerIdle.load();
         
-        setAnimation(playerWalk);
+        setAnimation(playerIdle);
         
         return;
     }
@@ -232,20 +245,24 @@ public class player extends AnimatedActor
      */
     private void moveControl(){
         /**left key trigger*/
-        if(Greenfoot.isKeyDown("left") && speedX > -maxSpeed && anim_delay <= 0 && !Greenfoot.isKeyDown("down")){
-             speedX -= 0.75;
-             setFacingRight(false);
-             setAnimation(playerWalk);
-          }
+        if(Greenfoot.isKeyDown("left")) {
+            if (speedX > -maxSpeed && anim_delay <= 0 && !Greenfoot.isKeyDown("down")){
+                speedX -= 2;
+                setFacingRight(false);
+                setAnimation(playerWalk);
+            }
+        }
         /**right key trigger*/
-        if(Greenfoot.isKeyDown("right") && speedX < maxSpeed && anim_delay <= 0 &&!Greenfoot.isKeyDown("down")){
-            speedX += 0.75;
-             setFacingRight(true);
-             setAnimation(playerWalk);
-         }
+        else if(Greenfoot.isKeyDown("right")) {
+            if (speedX < maxSpeed && anim_delay <= 0 &&!Greenfoot.isKeyDown("down")){
+                speedX += 2;
+                setFacingRight(true);
+                setAnimation(playerWalk);
+            }
+        }
          /**set the stand still animation while stopping x axis movement*/
-        if (Math.abs(speedX) < 0.3) {
-            setAnimation(null);
+        else {
+            setAnimation(playerIdle);
         }
                 
         /** nullifies speed horizontally */
