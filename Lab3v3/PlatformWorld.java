@@ -334,8 +334,8 @@ public class PlatformWorld extends World
         bgmask = new GreenfootImage("BGtestmask2.gif");
         
         /**set player in a fixed spot*/
-        startx = 200;
-        starty = 379;
+        startx = 800;
+        starty = 179;
         addObject(new player(), startx, starty);
         addObject(new exit_right(), 1150, 600);
     }

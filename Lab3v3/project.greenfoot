@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Sun Feb 07 20:31:55 PST 2016
+#Mon Feb 08 03:48:15 PST 2016
 editor.fx.0.height=700
 target2.width=80
 target5.naviview.expanded=true
@@ -111,6 +111,7 @@ dependency2.from=PlatformWorld
 class.enemy.superclass=greenfoot.Actor
 dependency6.from=player
 class.sss.image=playertest.png
+class.AnimatedActor.superclass=greenfoot.Actor
 project.charset=UTF-8
 target3.showInterface=false
 target3.name=exit_right

@@ -7,8 +7,13 @@ import java.awt.Color;
  * @author softwhizjx
  * @version 1.0
  */
-public class player extends Actor
+public class player extends AnimatedActor
 {
+    /**
+     * Player's animation variables
+     */
+    private Animation playerWalk = AnimatedActor.generateSequence("player_walk", 6);
+    
     /**
      * Player's Movements Variables
      */
@@ -60,9 +65,7 @@ public class player extends Actor
     /**
      * Player's Sprites Variables
      */
-    
-    /** array of sprite images*/
-    static GreenfootImage[] frames = new GreenfootImage[24];
+  
     
     float current_frame = 0; //current image value (from the number of arrays "[i]")
     float anim_speed = 0.1f; //how fast the image change
@@ -77,69 +80,11 @@ public class player extends Actor
      *initialize sprites
      */
     public player(){
-        if(frames[0] == null){ //put this on so we dont reload images every time we make a player
-            /**load basic right facing frames*/
-            frames[0] = new GreenfootImage("player_stand.gif");
-            frames[1] = new GreenfootImage("player_walking_a.gif");
-            frames[2] = new GreenfootImage("player_walking_b.gif");
-            frames[3] = new GreenfootImage("player_walking_c.gif");
-            frames[4] = new GreenfootImage("player_walking_d.gif");
-            frames[5] = new GreenfootImage("player_walking_e.gif");
-            frames[6] = new GreenfootImage("player_walking_f.gif");
-            frames[7] = new GreenfootImage("player_jump_a.gif");
-            frames[8] = new GreenfootImage("player_jump_b.gif");
-            frames[9] = new GreenfootImage("player_jump_c.gif");
-            frames[10] = new GreenfootImage("player_jump_d.gif");
-            frames[11] = new GreenfootImage("player_land.gif");
+        playerWalk.load();
         
+        setAnimation(playerWalk);
         
-            /**load basic right facing frames then mirror them into left facing frames*/
-            frames[0+12] = new GreenfootImage("player_stand_dir.gif");
-            frames[1+12] = new GreenfootImage("player_walking_a_dir.gif");
-            frames[2+12] = new GreenfootImage("player_walking_b_dir.gif");
-            frames[3+12] = new GreenfootImage("player_walking_c_dir.gif");
-            frames[4+12] = new GreenfootImage("player_walking_d_dir.gif");
-            frames[5+12] = new GreenfootImage("player_walking_e_dir.gif");
-            frames[6+12] = new GreenfootImage("player_walking_f_dir.gif");
-            frames[7+12] = new GreenfootImage("player_jump_a_dir.gif");
-            frames[8+12] = new GreenfootImage("player_jump_b_dir.gif");
-            frames[9+12] = new GreenfootImage("player_jump_c_dir.gif");
-            frames[10+12] = new GreenfootImage("player_jump_d_dir.gif");
-            frames[11+12] = new GreenfootImage("player_land_dir.gif");
-        
-            /** mirror them up!!*/
-            /*
-             * for (int i = 1; i < 2; i++){
-             *     frames[i].mirrorHorizontally();
-             *  }
-                */
-               /**but the .mirrorHorizontally made the image more red, so I canceled this loop*/
-       
-               /**Initialize*/
-               setAnim_stand();
-            }
-    }
-    
-    /**
-     * set player's animation functional
-     */
-    private void animate(){
-        /**sprite frame delay*/
-        if (anim_delay > 0) {
-            anim_delay--;
-        }
-        if (hurt_delay > 0) {
-            hurt_delay--;
-        }
-        
-        /**sprite frame loop*/
-        current_frame += anim_speed;
-        if (current_frame > end_frame){
-            current_frame = start_frame;
-        }
-        
-        /**set a new image*/
-        this.setImage(frames[(int)current_frame + dir]);
+        return;
     }
     
     /**
@@ -247,17 +192,14 @@ public class player extends Actor
      */
     public void act() 
     {
+        // Run animations
+        super.act();
+        
         /**move coding*/
         moveControl();
        
         /**auto detect masks*/
         maskTouch();
- 
-        /**animate the player, make them more alive!*/
-        animate();
-        
-        /**animation delay trigger*/
-        anim_delay--;
         
         /**enable jumping attack, stomp on enemies to do damage*/
         jumpAttack();
@@ -289,30 +231,21 @@ public class player extends Actor
      * Control to walk around the world.
      */
     private void moveControl(){
-        /**core of the movement function*/
-        setLocation((int)x,(int)y-4);
-        
         /**left key trigger*/
         if(Greenfoot.isKeyDown("left") && speedX > -maxSpeed && anim_delay <= 0 && !Greenfoot.isKeyDown("down")){
              speedX -= 0.75;
-             //set animation into left facing view
-             setAnim_run();
-             if (anim_delay <= 0){
-                 dir = 12; //[i+dir] in the mirror images
-                }
+             setFacingRight(false);
+             setAnimation(playerWalk);
           }
         /**right key trigger*/
         if(Greenfoot.isKeyDown("right") && speedX < maxSpeed && anim_delay <= 0 &&!Greenfoot.isKeyDown("down")){
             speedX += 0.75;
-            //set animation into right facing view
-            setAnim_run();
-             if (anim_delay <= 0){
-                 dir = 0;
-                }
+             setFacingRight(true);
+             setAnimation(playerWalk);
          }
          /**set the stand still animation while stopping x axis movement*/
         if (Math.abs(speedX) < 0.3) {
-            setAnim_stand();
+            setAnimation(null);
         }
                 
         /** nullifies speed horizontally */
@@ -323,7 +256,7 @@ public class player extends Actor
         y += speedY;
         
         /**jump up key trigger*/
-        if (Greenfoot.isKeyDown("space") && canJump == true && anim_delay <= 0){
+        if (Greenfoot.isKeyDown("space") && canJump == true){
             /**speedY goes negative (up) and disable jump to prevent multi-jump*/
             speedY = -9;
             canJump = false;
@@ -348,7 +281,7 @@ public class player extends Actor
         }
         
         /** jumping speed, includes gravity*/
-        if (speedY < 5) {
+        if (speedY < 10) {
             speedY += 0.3;//gravity
         } 
         
@@ -374,7 +307,10 @@ public class player extends Actor
         
         
         /**send the info of player's current position to the world (get famous in a spot)*/
-        platformer.setPlayerCoords(getX(),getY());  
+        platformer.setPlayerCoords(getX(),getY()); 
+        
+        /**core of the movement function*/
+        setLocation((int)x,(int)y-(int)speedY); 
        
     }
     
@@ -400,7 +336,7 @@ public class player extends Actor
       
         /**when stomping into the black ground mask in a positive Y-offset diatance,
          * prevent going further downwards*/
-        if (platformer.isSolid(getX(), getY()+Y_offset)){  
+        while (platformer.isSolid(getX(), (int)y+Y_offset)){  
             /**y coorninate go upwards to prevent going downwards*/
             y -= 1; 
             if (speedY > 0){
