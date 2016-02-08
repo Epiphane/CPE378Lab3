@@ -337,7 +337,7 @@ public class PlatformWorld extends World
         startx = 40;
         starty = 150;
         addObject(new player(), startx, starty);
-        addObject(new exit_right(), 940, 460);
+        addObject(new exit_right(), 970, 480);
         addObject(new enemy(), 737, 170);
         addObject(new enemy(), 247, 300);
     }
