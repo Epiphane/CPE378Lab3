@@ -84,7 +84,6 @@ public class player extends AnimatedActor
     float end_frame = 0; //last image of the animation
     int anim_no = 0; //the number of each animations
     int dir = 0; //value for mirrored sprites (half of the total images)
-    int anim_delay = 0;
     int hurt_delay = 0;
     
     /**
@@ -122,7 +121,8 @@ public class player extends AnimatedActor
         
         /**move coding*/
         moveControl();
-       
+        
+        
         /**auto detect masks*/
         maskTouch();
         
@@ -156,9 +156,9 @@ public class player extends AnimatedActor
     private void moveControl(){
         /**left key trigger*/
         if(Greenfoot.isKeyDown("left")) {
-            if (speedX > -maxSpeed && anim_delay <= 0 && !Greenfoot.isKeyDown("down")){
+            setFacingRight(false);
+            if (speedX > -maxSpeed && !Greenfoot.isKeyDown("down")){
                 speedX -= 2;
-                setFacingRight(false);
                 
                 if (canJump)
                     setAnimation(player_walk);
@@ -166,9 +166,9 @@ public class player extends AnimatedActor
         }
         /**right key trigger*/
         else if(Greenfoot.isKeyDown("right")) {
-            if (speedX < maxSpeed && anim_delay <= 0 &&!Greenfoot.isKeyDown("down")){
+             setFacingRight(true);
+            if (speedX < maxSpeed && !Greenfoot.isKeyDown("down")){
                 speedX += 2;
-                setFacingRight(true);
                 
                 if (canJump)
                     setAnimation(player_walk);
@@ -196,7 +196,7 @@ public class player extends AnimatedActor
         }
         
         /**duck key trigger*/
-        if (Greenfoot.isKeyDown("down") && canJump == true && anim_delay <= 0){
+        if (Greenfoot.isKeyDown("down") && canJump == true){
             //setAnim_land();
             if (Greenfoot.isKeyDown("left")){dir = 12;} //face left
             if (Greenfoot.isKeyDown("right")){dir = 0;} //face right
@@ -408,7 +408,6 @@ public class player extends AnimatedActor
         if (Enemy != null  //The enemy needs to meet the player on contact.
         && Enemy.canHurtPlayer == true //The enemy is still alive, so can do the damage.
         && hurt_delay <= 0 //The delay of getting hurt should be over
-        && anim_delay <= 0 //The delay of hurt pose should be over
         && getY()+34 >= Enemy.getY()
         ){
             if (getX() < Enemy.getX()) {speedX = -5; dir = 0;}
@@ -418,7 +417,6 @@ public class player extends AnimatedActor
             //setAnim_hurt(); //set hurt pose
             HP--; //do damage to the player
             hurt_delay = 60; //reset hurt delay
-            anim_delay = 30; //freeze the hurt pose for a while
         }
     }
     
@@ -433,12 +431,11 @@ public class player extends AnimatedActor
      * Now hurt in any value.
      */
     public void damagePlayer(int dmg){
-        if (hurt_delay <= 0 && anim_delay <= 0){
+        if (hurt_delay <= 0){
             speedY = -5;
             //setAnim_hurt();
             HP -= dmg;
             hurt_delay = 60;
-            anim_delay = 30;
         }
     }
     
