@@ -353,15 +353,14 @@ public class PlatformWorld extends World
         bgmask = new GreenfootImage("BGtestmask3.gif");
         
         /**set player in a fixed spot*/
-        startx = 21;
-        starty = 218;
+        startx = 85;
+        starty = 500;
         addObject(new player(), startx, starty);
-        addObject(new enemy(), 316, 370);
-        addObject(new enemy(), 518, 370);
-        addObject(new enemy(), 459, 597);
-        addObject(new enemy("left"), 215, 98);
-        addObject(new enemy("left"), 516, 68);
-        addObject(new exit_right(), 606, 296);
+        addObject(new enemy(), 583, 442);
+        addObject(new enemy(), 121, 163);
+        addObject(new enemy(), 184, 339);
+        addObject(new enemy(), 541, 242);
+        addObject(new exit_right(), 970, 195);
     }
     
     /**

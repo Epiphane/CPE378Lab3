@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Feb 08 15:02:12 PST 2016
+#Mon Feb 08 15:17:49 PST 2016
 editor.fx.0.height=700
 target2.width=80
 target8.name=player
@@ -47,7 +47,7 @@ target5.name=player_death
 world.lastInstantiated=PlatformWorld
 mainWindow.width=1936
 readme.width=47
-class.enemy2.superclass=greenfoot.Actor
+class.enemy2.superclass=AnimatedActor
 target5.height=50
 target8.naviview.expanded=true
 dependency13.type=UsesDependency
@@ -147,22 +147,23 @@ simulation.speed=51
 target7.height=50
 dependency5.type=UsesDependency
 target8.type=ClassTarget
+class.enemy1.superclass=AnimatedActor
 dependency13.from=enemy2
-class.sss.superclass=greenfoot.Actor
 dependency9.type=UsesDependency
+class.sss.superclass=greenfoot.Actor
 target3.editor.height=786
-target7.naviview.expanded=true
 target6.width=110
+target7.naviview.expanded=true
 target7.width=80
 target6.editor.height=700
 dependency3.from=enemy
 target1.typeParameters=
 target3.width=80
 target4.width=90
-target8.typeParameters=
 class.player_death.image=player_explosion_c.gif
-dependency7.from=player_death
+target8.typeParameters=
 target1.editor.y=11
+dependency7.from=player_death
 target1.editor.x=123
 target5.width=100
 dependency4.to=enemy
