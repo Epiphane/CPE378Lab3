@@ -1,12 +1,7 @@
 import greenfoot.*; 
 
 import java.awt.Color;
-/**
- * player for my custom made platform game
- * 
- * @author softwhizjx
- * @version 1.0
- */
+
 public class player extends AnimatedActor
 {
     /**
@@ -214,8 +209,6 @@ public class player extends AnimatedActor
         /**auto detect masks*/
         maskTouch();
         
-        /**enable jumping attack, stomp on enemies to do damage*/
-        jumpAttack();
         
         /**disallow HP go over maxHP*/
         if (HP > maxHP){
@@ -323,7 +316,7 @@ public class player extends AnimatedActor
         }
         
         
-        /**send the info of player's current position to the world (get famous in a spot)*/
+        /**send the info of player's current position to the world*/
         platformer.setPlayerCoords(getX(),getY()); 
         
         /**core of the movement function*/
@@ -369,7 +362,6 @@ public class player extends AnimatedActor
          * 
          * Find the Y-offset value that fit's the player sprite's height the most!!
          * 
-         * Hope any readers can get this.
          */
         
         /**when head butted into the black ceiling in a negative Y-offset diatance,
@@ -483,24 +475,6 @@ public class player extends AnimatedActor
     }
     
     /**
-     * Jump attack to do the damage to enemy, like what Mario can do!
-     */
-    private void jumpAttack(){
-        /**set enemy variable everytime the player meets the enemy*/
-        enemy Enemy = (enemy) getOneIntersectingObject(enemy.class);
-        
-        //Conditions Requirements
-        if (Enemy != null  //The enemy needs to meet the player on contact.
-        && speedY > 0  //Player must be falling.
-        && getY()+34 < Enemy.getY() //Player must be above of the enemy.
-        && Enemy.canBeAttackedFromAbove == true //only bounce when it's alive
-        ){
-            speedY = -5; //Bounce off
-            Enemy.damage(1); //do damage
-        }
-    }
-   //in getY()+34, 34 is the difference between getY() of player and getY() of enemy on the same floor
-    /**
      * Get hurt.
      */
     private void getHurt(){
@@ -553,16 +527,10 @@ public class player extends AnimatedActor
         }
     }
     
-    /**
-     * This one is just mean...
-     */
     public void killPlayer(){
         HP = 0;
     }
-    
-    /**
-     * ...and a friendly one also.
-     */
+
     public void healPlayer(int heal){
         if (HP >= maxHP){
             HP = maxHP;
@@ -570,10 +538,7 @@ public class player extends AnimatedActor
         }
         HP += heal;
     }
-    
-    /**
-     * regrow
-     */
+
     public void regenPlayer(){
         if (HP >= maxHP){
             HP = maxHP;

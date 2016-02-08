@@ -13,8 +13,8 @@ import java.awt.Color;
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
-    static int sWidth = 1024;
-    static int sHeight = 600;
+    static int sWidth = 1280;
+    static int sHeight = 720;
     
     /** background and masking colors for each levels */
     static GreenfootImage background;
@@ -332,15 +332,10 @@ public class PlatformWorld extends World
         setBackground(background);
         /**also set mask*/
         bgmask = new GreenfootImage("BGtestmask2.gif");
-        
+       
         /**set player in a fixed spot*/
-<<<<<<< HEAD
         startx = 40;
         starty = 190;
-=======
-        startx = 200;
-        starty = 279;
->>>>>>> origin/master
         addObject(new player(), startx, starty);
         addObject(new exit_right(), 1190, 575);
         addObject(new enemy(), 737, 187);
