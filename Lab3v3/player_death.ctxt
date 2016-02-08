@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=player_death
+comment0.text=\r\n\ death\ animation\r\n\ can\ be\ more\ than\ 3\ main\ types\:\r\n\ 1)\ falling\ down\ the\ screen\r\n\ 2)\ lie\ down\ the\ platform\r\n\ 3)\ explode\ self\r\n\ etc...\r\n\ In\ this\ case,\ it's\ explosion.\ Cuz\ it's\ easy\ to\ make\ than\ anything\ else.\r\n\ \r\n\ @author\ softwhizjx\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=player_death()
+comment1.text=\r\n\ load\ images\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ set\ animation\ and\ disappear\r\n
+numComments=3

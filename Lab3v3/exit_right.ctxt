@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=exit_right
+comment0.text=\r\n\ Exit\ sign\ (this\ one\ is\ invisible\ in\ the\ game,\ check\ the\ code\ out\!)\r\n\ \r\n\ @author\ softwhizjx\r\n\ @version\ 1.0\r\n
+comment1.params=
+comment1.target=exit_right()
+comment1.text=\r\n\ set\ invisible\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ just\ wait\ for\ the\ player\ to\ come\ for\ exit\r\n
+comment3.params=
+comment3.target=void\ playerExit()
+comment3.text=\r\n\ get\ the\ player\r\n
+comment4.params=world
+comment4.target=void\ addedToWorld(greenfoot.World)
+numComments=5

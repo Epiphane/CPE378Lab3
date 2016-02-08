@@ -1,0 +1,6 @@
+black = solid
+red = instant deaths
+green = enemy patrol limitations
+yellow = hurts
+blue = up platform (can jump through)
+purple = bouncers
