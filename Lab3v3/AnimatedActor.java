@@ -33,8 +33,8 @@ public class AnimatedActor extends Actor
         
         public void load() {
             for (int i = 0; i < sequence.length; i ++) {
-                frames[i] = new GreenfootImage(name + "_" + sequence[i] + extension);
-                frames[sequence.length + i] = new GreenfootImage(name + "_" + sequence[i] + extension);
+                frames[i] = new GreenfootImage(name + "_" + (sequence[i] + 1) + extension);
+                frames[sequence.length + i] = new GreenfootImage(name + "_" + (sequence[i] + 1) + extension);
                 frames[sequence.length + i].mirrorHorizontally();
             }
         }
