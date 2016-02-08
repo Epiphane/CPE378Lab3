@@ -49,7 +49,7 @@ public class player extends AnimatedActor
      * [offset = distance how far from the very center of the image]
      */
     int X_offset = 10;
-    int Y_offset = 40;
+    int Y_offset = 32;
     
     /** screen length*/
     static float minX = 14;

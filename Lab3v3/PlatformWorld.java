@@ -335,7 +335,7 @@ public class PlatformWorld extends World
        
         /**set player in a fixed spot*/
         startx = 40;
-        starty = 190;
+        starty = 150;
         addObject(new player(), startx, starty);
         addObject(new exit_right(), 1190, 575);
         addObject(new enemy(), 737, 187);
