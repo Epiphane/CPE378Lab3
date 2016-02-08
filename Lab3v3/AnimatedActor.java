@@ -45,6 +45,20 @@ public class AnimatedActor extends Actor
         }
     }
     
+    public static class Transition extends Animation {
+        Animation next;
+        
+        Transition(Animation next, String name, int[] seq) {
+            this(next, name, seq, 0.2f);
+        }
+        
+        Transition(Animation next, String name, int[] seq, float speed) {
+            super(name, seq, speed);
+            
+            this.next = next;
+        }
+    }
+    
     /**
      * Animation sequences follow the form [frame1, frame2, frame3, ...]
      */
@@ -73,9 +87,23 @@ public class AnimatedActor extends Actor
     
     protected void setAnimation(Animation anim) {
         if (current_animation == anim) return;
+        if (anim instanceof Transition && ((Transition) anim).next == current_animation) return;
         
         current_animation = anim;
         current_frame = 0;
+    }
+    
+    protected static Transition generateTransition(Animation next, String name, int length, float speed) {
+        int[] seq = new int[length];
+        
+        for (int i = 0; i < length; i ++)
+            seq[i] = i;
+        
+        return new Transition(next, name, seq, speed);
+    }
+    
+    protected static Transition generateTransition(Animation next, String name, int length) {
+        return generateTransition(next, name, length, 0.2f);
     }
     
     /**
@@ -90,8 +118,14 @@ public class AnimatedActor extends Actor
         
         /**sprite frame loop*/
         current_frame += current_animation.speed;
-        if (current_frame >= current_animation.sequence.length){
-            current_frame -= current_animation.sequence.length;
+        if (current_frame >= current_animation.sequence.length) {
+            if (current_animation instanceof Transition) {
+                current_frame = 0;
+                current_animation = ((Transition) current_animation).next;
+            }
+            else {
+                current_frame -= current_animation.sequence.length;
+            }
         }
         
         /**set a new image*/

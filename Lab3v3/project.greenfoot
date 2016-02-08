@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Feb 08 13:24:21 PST 2016
+#Mon Feb 08 15:02:12 PST 2016
 editor.fx.0.height=700
 target2.width=80
 target8.name=player
@@ -148,21 +148,21 @@ target7.height=50
 dependency5.type=UsesDependency
 target8.type=ClassTarget
 dependency13.from=enemy2
-dependency9.type=UsesDependency
 class.sss.superclass=greenfoot.Actor
+dependency9.type=UsesDependency
 target3.editor.height=786
-target6.width=110
 target7.naviview.expanded=true
+target6.width=110
 target7.width=80
 target6.editor.height=700
 dependency3.from=enemy
 target1.typeParameters=
 target3.width=80
 target4.width=90
-class.player_death.image=player_explosion_c.gif
 target8.typeParameters=
-target1.editor.y=11
+class.player_death.image=player_explosion_c.gif
 dependency7.from=player_death
+target1.editor.y=11
 target1.editor.x=123
 target5.width=100
 dependency4.to=enemy

@@ -7,8 +7,8 @@ public class player extends AnimatedActor
     /**
      * Player's animation variables
      */
-    private Animation playerWalk = AnimatedActor.generateSequence("player_walk", 6);
-    private Animation playerIdle = new Animation("player_idle", new int[] {
+    private Animation player_walk_loop = AnimatedActor.generateSequence("player_walk", 6);
+    private Animation player_idle = new Animation("player_idle", new int[] {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         1, 1, 1, 1, 1, 1, 1, 1, 
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -20,6 +20,10 @@ public class player extends AnimatedActor
         6, 6, 6, 7, 8, 8, 8, 8, 
         8, 8, 8, 9, 10, 11, 12, 13
     }, 0.15f);
+    private Animation player_jump_loop = new Animation("player_jump", new int[] { 3 }, 1);
+    
+    private Transition player_walk = AnimatedActor.generateTransition(player_walk_loop, "player_walk_transition", 1);
+    private Transition player_jump = AnimatedActor.generateTransition(player_jump_loop, "player_jump", 3, 0.5f);
     
     /**
      * Player's Movements Variables
@@ -80,109 +84,21 @@ public class player extends AnimatedActor
     float end_frame = 0; //last image of the animation
     int anim_no = 0; //the number of each animations
     int dir = 0; //value for mirrored sprites (half of the total images)
-    int anim_delay = 0;
     int hurt_delay = 0;
     
     /**
      *initialize sprites
      */
     public player(){
-        playerWalk.load();
-        playerIdle.load();
+        player_walk.load();
+        player_walk_loop.load();
+        player_idle.load();
+        player_jump.load();
+        player_jump_loop.load();
         
-        setAnimation(playerIdle);
+        setAnimation(player_idle);
         
         return;
-    }
-    
-    /**
-     * Anim no.0 --Standing
-     */
-    private void setAnim_stand(){
-        if (anim_no == 0||canJump == false||anim_delay > 0){
-            return; //cancel if using is animation, or still in the air
-        }
-        anim_no = 0; //this is animation no.0
-        
-        anim_speed = 0.05f; //how fast the image change
-        current_frame = 1; //current image shot
-        start_frame = 1; //first image of the animation
-        end_frame = 6; //last image of the animation
-    }
-    
-    /**
-     * Anim no.1 --Running
-     */
-    private void setAnim_run(){
-        if (anim_no == 1||canJump == false||anim_delay > 0){
-            return; //cancel if using is animation, or still in the air, or animation delaying
-        }
-        anim_no = 1; //this is animation no.1
-        
-        anim_speed = 0.2f; //how fast the image change
-        current_frame = 1; //current image shot
-        start_frame = 1; //first image of the animation
-        end_frame = 6; //last image of the animation
-    }
-    
-    /**
-     * Anim no.2 --Jumping
-     */
-    private void setAnim_jump(){
-        if (anim_no == 2||anim_delay > 0){
-            return; //cancel if using is animation, or animation delaying
-        }
-        anim_no = 2; //this is animation no.2
-        
-        anim_speed = 1; //how fast the image change
-        current_frame = 8; //current image shot
-        start_frame = 8; //first image of the animation
-        end_frame = 8; //last image of the animation
-    }
-    
-    /**
-     * Anim no.3 --Falling
-     */
-    private void setAnim_fall(){
-        if (anim_no == 3||canJump == true||anim_delay > 0){
-            return; //cancel if using is animation,or in the land, or animation delaying
-        }
-        anim_no = 3; //this is animation no.3
-        
-        anim_speed = 0; //how fast the image change
-        current_frame = 10; //current image shot
-        start_frame = 10; //first image of the animation
-        end_frame = 10; //last image of the animation
-    }
-    
-    /**
-     * Anim no.4 --Landing
-     */
-    private void setAnim_land(){
-        if (anim_no == 4||canJump == false||anim_delay > 0){
-            return; //cancel if using is animation,or in the air, or animation delaying
-        }
-        anim_no = 4; //this is animation no.4
-        
-        anim_speed = 0; //how fast the image change
-        current_frame = 11; //current image shot
-        start_frame = 11; //first image of the animation
-        end_frame = 11; //last image of the animation
-    }
-    
-    /**
-     * Anim no.5 --Taking Damage
-     */
-    private void setAnim_hurt(){
-        if (anim_no == 5||anim_delay > 0){
-            return;
-        }
-        anim_no = 5; //this is animation no.5
-        
-        anim_speed = 0; //how fast the image change
-        current_frame = 9; //current image shot
-        start_frame = 9; //first image of the animation
-        end_frame = 9; //last image of the animation
     }
     
     /**
@@ -205,7 +121,8 @@ public class player extends AnimatedActor
         
         /**move coding*/
         moveControl();
-       
+        
+        
         /**auto detect masks*/
         maskTouch();
         
@@ -239,23 +156,27 @@ public class player extends AnimatedActor
     private void moveControl(){
         /**left key trigger*/
         if(Greenfoot.isKeyDown("left")) {
-            if (speedX > -maxSpeed && anim_delay <= 0 && !Greenfoot.isKeyDown("down")){
+            setFacingRight(false);
+            if (speedX > -maxSpeed && !Greenfoot.isKeyDown("down")){
                 speedX -= 2;
-                setFacingRight(false);
-                setAnimation(playerWalk);
+                
+                if (canJump)
+                    setAnimation(player_walk);
             }
         }
         /**right key trigger*/
         else if(Greenfoot.isKeyDown("right")) {
-            if (speedX < maxSpeed && anim_delay <= 0 &&!Greenfoot.isKeyDown("down")){
+             setFacingRight(true);
+            if (speedX < maxSpeed && !Greenfoot.isKeyDown("down")){
                 speedX += 2;
-                setFacingRight(true);
-                setAnimation(playerWalk);
+                
+                if (canJump)
+                    setAnimation(player_walk);
             }
         }
          /**set the stand still animation while stopping x axis movement*/
-        else {
-            setAnimation(playerIdle);
+        else if(speedY == 0) {
+            setAnimation(player_idle);
         }
                 
         /** nullifies speed horizontally */
@@ -271,12 +192,12 @@ public class player extends AnimatedActor
             speedY = -9;
             canJump = false;
             //set jumping animation
-            setAnim_jump();
+            setAnimation(player_jump);
         }
         
         /**duck key trigger*/
-        if (Greenfoot.isKeyDown("down") && canJump == true && anim_delay <= 0){
-            setAnim_land();
+        if (Greenfoot.isKeyDown("down") && canJump == true){
+            //setAnim_land();
             if (Greenfoot.isKeyDown("left")){dir = 12;} //face left
             if (Greenfoot.isKeyDown("right")){dir = 0;} //face right
         }
@@ -287,7 +208,7 @@ public class player extends AnimatedActor
              * but in this case, the animation will glitched if changed*/
             canJump = false;
             //set falling animation
-            setAnim_fall();
+            //setAnim_fall();
         }
         
         /** jumping speed, includes gravity*/
@@ -350,7 +271,7 @@ public class player extends AnimatedActor
             /**y coorninate go upwards to prevent going downwards*/
             y -= 1; 
             if (speedY > 0){
-               setAnim_land(); //this can have a sprite problem on slopes
+               //setAnim_land(); //this can have a sprite problem on slopes
             }
         } 
         
@@ -459,7 +380,7 @@ public class player extends AnimatedActor
             /**y coorninate go upwards to prevent going downwards*/
             y -= 1;
             if (speedY > 0){
-                 setAnim_land();
+                 //setAnim_land();
             }
         } 
         
@@ -469,7 +390,7 @@ public class player extends AnimatedActor
         if (platformer.isBounce(getX(), getY()+Y_offset)){  
             speedY = -12; //Bounce up high
             canJump = false;
-            setAnim_jump();
+            setAnimation(player_jump);
         } 
         
     }
@@ -487,17 +408,15 @@ public class player extends AnimatedActor
         if (Enemy != null  //The enemy needs to meet the player on contact.
         && Enemy.canHurtPlayer == true //The enemy is still alive, so can do the damage.
         && hurt_delay <= 0 //The delay of getting hurt should be over
-        && anim_delay <= 0 //The delay of hurt pose should be over
         && getY()+34 >= Enemy.getY()
         ){
             if (getX() < Enemy.getX()) {speedX = -5; dir = 0;}
             if (getX() > Enemy.getX()) {speedX = 5; dir = 12;}
             if (getX() == Enemy.getX()) {speedX = 0;} //bounce reactions from the enemy
             speedY = 0; //stop falling for a while
-            setAnim_hurt(); //set hurt pose
+            //setAnim_hurt(); //set hurt pose
             HP--; //do damage to the player
             hurt_delay = 60; //reset hurt delay
-            anim_delay = 30; //freeze the hurt pose for a while
         }
     }
     
@@ -505,25 +424,18 @@ public class player extends AnimatedActor
      * Get hurt, for this one, even the developer can hurt the player
      */
     public void hurtPlayer(){
-        if (hurt_delay <= 0 && anim_delay <= 0){
-            speedY = -5;
-            setAnim_hurt();
-            HP--;
-            hurt_delay = 60;
-            anim_delay = 30;
-        }
+        damagePlayer(1);
     }
     
     /**
      * Now hurt in any value.
      */
     public void damagePlayer(int dmg){
-        if (hurt_delay <= 0 && anim_delay <= 0){
+        if (hurt_delay <= 0){
             speedY = -5;
-            setAnim_hurt();
+            //setAnim_hurt();
             HP -= dmg;
             hurt_delay = 60;
-            anim_delay = 30;
         }
     }
     
