@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CutsceneWorld extends World
 {
+    public static final GreenfootSound backgroundMusic = new GreenfootSound("The Lake.wav");
 
     /**
      * Constructor for objects of class CutsceneWorld.
@@ -18,6 +19,14 @@ public class CutsceneWorld extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(PlatformWorld.sWidth, PlatformWorld.sHeight, 1); 
         prepare();
+    }
+    
+    public void stopped() {
+         backgroundMusic.pause();
+    }
+     
+    public void started() {
+        backgroundMusic.playLoop();
     }
 
     /**
@@ -42,5 +51,7 @@ public class CutsceneWorld extends World
         dialogmanager.nextWorld = new PlatformWorld();
         
         dialogmanager.start();
+        
+        backgroundMusic.playLoop();
     }
 }

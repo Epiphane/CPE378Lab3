@@ -16,8 +16,12 @@ public class DialogBox extends Actor
     
     public static final int PADDING = 20;
     
+    public static final GreenfootSound speech = new GreenfootSound("Player_talk.wav");
+    
     DialogBox() {
         letters = new Actor[0];
+        
+        speech.setVolume(70);
     }
     
     private boolean complete = false;
@@ -43,8 +47,10 @@ public class DialogBox extends Actor
     public void act() 
     {
         if (ndx < text.length() - 1) {
-            ndx += speed;
+            ndx ++;
             complete = false;
+            
+            speech.play();
             
             Letter newLetter = new Letter();
             newLetter.setImage(Text.instance().getChar(text.charAt((int) ndx)));

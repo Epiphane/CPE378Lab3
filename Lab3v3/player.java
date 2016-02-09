@@ -26,6 +26,11 @@ public class player extends AnimatedActor
     private Transition player_jump = AnimatedActor.generateTransition(player_jump_loop, "player_jump", 3, 0.5f);
     
     /**
+     * Player sounds
+     */
+    public static final GreenfootSound hurt = new GreenfootSound("Hurt.wav");
+    
+    /**
      * Player's Movements Variables
      */
     
@@ -416,6 +421,8 @@ public class player extends AnimatedActor
             //setAnim_hurt(); //set hurt pose
             HP--; //do damage to the player
             hurt_delay = 60; //reset hurt delay
+            
+            hurt.play();
         }
     }
     
