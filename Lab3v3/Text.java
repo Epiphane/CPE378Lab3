@@ -11,6 +11,8 @@ public class Text
     private GreenfootImage[] characters;
     
     private static final int EXCLAMATION = 26;
+    private static final int PERIOD = 27;
+    private static final int QUESTION = 28;
     public static final int LETTER_W = 53;
     public static final int LETTER_H = 53;
 
@@ -19,7 +21,7 @@ public class Text
      */
     public Text()
     {
-        characters = new GreenfootImage[27];
+        characters = new GreenfootImage[29];
         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
         
         for (int ch = 0; ch < 26; ch ++) {
@@ -28,6 +30,8 @@ public class Text
         
         // !
         characters[EXCLAMATION] = new GreenfootImage("font/exclamation_inv.png");
+        characters[PERIOD] = new GreenfootImage("font/period_inv.png");
+        characters[QUESTION] = new GreenfootImage("font/question_inv.png");
     }
     
     private static Text _instance = null;
@@ -47,6 +51,12 @@ public class Text
         }
         else if (character == '!') {
             return characters[EXCLAMATION];
+        }
+        else if (character == '.') {
+            return characters[PERIOD];
+        }
+        else if (character == '?') {
+            return characters[QUESTION];
         }
         else if (character == ' ') {
             return null;

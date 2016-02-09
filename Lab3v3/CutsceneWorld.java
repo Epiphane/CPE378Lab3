@@ -22,7 +22,7 @@ public class CutsceneWorld extends World
     }
     
     public void stopped() {
-         backgroundMusic.pause();
+         backgroundMusic.pause(); 
     }
      
     public void started() {
@@ -48,10 +48,34 @@ public class CutsceneWorld extends World
         
         dialogmanager.addLine("Hello there!");
         dialogmanager.addLine("My name is Wilbert!");
+        dialogmanager.addLine("Welcome to my home!");
+        dialogmanager.addLine("I have lots of friends");
+        dialogmanager.addLine("here but it gets a little");
+        dialogmanager.addLine("lonely sometimes.");
+        dialogmanager.addLine("Hey!");
+        dialogmanager.addLine("I have an idea!");
+        dialogmanager.addLine("Lets go on a trip!");
+        dialogmanager.addLine("See the rest of this");
+        dialogmanager.addLine("beautiful world!");
+        dialogmanager.addLine("Come on! Lets go!");
+        dialogmanager.addLine("...");
+        dialogmanager.addLine("what do you mean?");
+        dialogmanager.addLine("be careful?");
+        dialogmanager.addLine("...");
+        dialogmanager.addLine("Oh theres nothing");
+        dialogmanager.addLine("to worry about!");
+        dialogmanager.addLine("Everyone here is friendly!");
+        dialogmanager.addLine("Here goes!");
+        dialogmanager.addLine("");
+        dialogmanager.addLine("By the way...");
+        dialogmanager.addLine("Were in beta so some things");
+        dialogmanager.addLine("are a little...funky.");
+        dialogmanager.addLine("Alright come on now!");
         dialogmanager.nextWorld = new PlatformWorld();
         
         dialogmanager.start();
         
         backgroundMusic.playLoop();
+         backgroundMusic.pause(); 
     }
 }
