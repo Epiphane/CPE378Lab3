@@ -1,13 +1,7 @@
 #Greenfoot properties
-<<<<<<< HEAD
-#Mon Feb 08 18:34:51 PST 2016
-editor.fx.0.height=700
-target2.width=110
-=======
 #Mon Feb 08 18:23:40 PST 2016
 target2.width=110
 editor.fx.0.height=700
->>>>>>> Dialog v1
 target8.name=AnimatedActor
 target11.y=310
 target11.x=10
@@ -17,13 +11,8 @@ class.enemy.image=blob_a.gif
 dependency12.type=UsesDependency
 class.CutsceneWorld.superclass=greenfoot.World
 dependency22.type=UsesDependency
-<<<<<<< HEAD
 target1.type=ClassTarget
 target7.showInterface=false
-=======
-target7.showInterface=false
-target1.type=ClassTarget
->>>>>>> Dialog v1
 mainWindow.height=1092
 target2.editor.y=46
 class.PlatformWorld.superclass=greenfoot.World
@@ -32,13 +21,8 @@ target2.editor.x=104
 dependency9.to=PlatformWorld
 target1.height=50
 target13.name=enemy2
-<<<<<<< HEAD
 dependency16.type=UsesDependency
 target8.y=190
-=======
-target8.y=190
-dependency16.type=UsesDependency
->>>>>>> Dialog v1
 target8.x=10
 dependency21.to=DialogBox
 target2.editor.width=900
@@ -50,20 +34,12 @@ target6.x=10
 dependency19.to=Letter
 target1.showInterface=false
 target4.y=70
-<<<<<<< HEAD
-dependency10.from=PlatformWorld
-target4.x=70
-=======
 target4.x=70
 dependency10.from=PlatformWorld
->>>>>>> Dialog v1
 class.DialogueLetter.superclass=greenfoot.Actor
 dependency6.type=UsesDependency
 target9.type=ClassTarget
-<<<<<<< HEAD
-=======
 target4.showInterface=false
->>>>>>> Dialog v1
 dependency20.from=DialogBox
 target2.y=250
 target14.height=50
@@ -107,12 +83,8 @@ dependency22.to=DialogBox
 target10.name=DialogManager
 dependency13.type=UsesDependency
 target14.naviview.expanded=true
-<<<<<<< HEAD
 target15.typeParameters=
-=======
->>>>>>> Dialog v1
 target2.type=ClassTarget
-target15.typeParameters=
 target4.editor.y=20
 target14.name=enemy1
 dependency1.to=PlatformWorld
@@ -121,11 +93,8 @@ target4.editor.x=40
 dependency17.type=UsesDependency
 dependency3.type=UsesDependency
 target6.type=ClassTarget
-<<<<<<< HEAD
-=======
 target2.typeParameters=
 target2.height=50
->>>>>>> Dialog v1
 editor.swing.0.height=700
 class.CutscenePlayer.superclass=greenfoot.Actor
 dependency11.to=game_over
@@ -148,21 +117,12 @@ dependency1.from=player
 target5.editor.y=20
 target5.editor.x=40
 target15.type=ClassTarget
-<<<<<<< HEAD
 mainWindow.y=-8
 editor.swing.0.y=164
 target12.naviview.expanded=true
 mainWindow.x=-8
 editor.swing.0.x=2015
 target5.showInterface=false
-=======
-target12.naviview.expanded=true
-mainWindow.y=-8
-editor.swing.0.y=164
-target5.showInterface=false
-mainWindow.x=-8
-editor.swing.0.x=2015
->>>>>>> Dialog v1
 dependency19.from=DialogBox
 dependency16.to=CutscenePlayer
 class.player.image=player_idle_2.png
@@ -170,37 +130,19 @@ target8.showInterface=false
 dependency5.from=player
 target7.typeParameters=
 target2.name=CutscenePlayer
-<<<<<<< HEAD
-target16.y=10
-class.DialogBox.superclass=greenfoot.Actor
-target16.x=160
-=======
 target16.y=370
 class.DialogBox.superclass=greenfoot.Actor
 target16.x=190
->>>>>>> Dialog v1
 dependency9.from=exit_right
 readme.name=@README
 target14.width=80
 class.CutsceneWorld.image=cutscene_background.png
-<<<<<<< HEAD
-target13.typeParameters=
-target14.y=190
-target15.width=80
-target14.x=130
-editor.swing.0.width=1029
-target6.name=exit_right
-target6.naviview.expanded=true
-=======
 target14.y=190
 target13.typeParameters=
 target15.width=80
 target14.x=130
 editor.swing.0.width=1028
 target6.naviview.expanded=true
-target6.name=exit_right
-target9.height=50
->>>>>>> Dialog v1
 target6.editor.y=63
 target9.height=50
 target16.width=80
@@ -220,8 +162,8 @@ target10.y=430
 class.player_death.superclass=greenfoot.Actor
 target10.x=10
 dependency2.to=player
-target12.width=100
 target14.showInterface=false
+target12.width=100
 target11.name=DialogueLetter
 dependency14.type=UsesDependency
 target12.height=50
