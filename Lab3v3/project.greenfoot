@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Feb 08 15:17:49 PST 2016
+#Mon Feb 08 16:27:04 PST 2016
 editor.fx.0.height=700
 target2.width=80
 target8.name=player
@@ -34,6 +34,7 @@ target2.x=70
 target8.height=50
 dependency10.to=exit_right
 target3.naviview.expanded=true
+class.enemy1.image=warrior1R.png
 target1.editor.height=700
 dependency4.from=PlatformWorld
 dependency5.to=enemy

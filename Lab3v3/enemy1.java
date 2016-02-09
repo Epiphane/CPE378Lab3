@@ -33,8 +33,8 @@ public class enemy1 extends AnimatedActor
     float moveDelay = 0;
     
     /** offset of enemy's image*/
-    int X_offset = 22;
-    int Y_offset = 9;
+    int X_offset = 25;
+    int Y_offset = 40;
     
     /** screen length*/
     static float minX = 14;
@@ -93,18 +93,18 @@ public class enemy1 extends AnimatedActor
     private void setSprites(){
         if(frames[0] == null){ //put this on so we dont reload images every time we make an enemy
             /**load right facing frames*/
-            frames[0] = new GreenfootImage("blob_a.gif");
-            frames[1] = new GreenfootImage("blob_b.gif");
-            frames[2] = new GreenfootImage("blob_c.gif");
-            frames[3] = new GreenfootImage("blob_d.gif");
-            frames[4] = new GreenfootImage("blob_e.gif");
+            frames[0] = new GreenfootImage("warrior1R.png");
+            frames[1] = new GreenfootImage("warrior1R.png");
+            frames[2] = new GreenfootImage("warrior1R.png");
+            frames[3] = new GreenfootImage("warrior1R.png");
+            frames[4] = new GreenfootImage("warrior1R.png");
             
             /**load left facing frames*/
-            frames[0+5] = new GreenfootImage("blob_a_dir.gif");
-            frames[1+5] = new GreenfootImage("blob_b_dir.gif");
-            frames[2+5] = new GreenfootImage("blob_c_dir.gif");
-            frames[3+5] = new GreenfootImage("blob_d_dir.gif");
-            frames[4+5] = new GreenfootImage("blob_e_dir.gif");
+            frames[0+5] = new GreenfootImage("warrior1L.png");
+            frames[1+5] = new GreenfootImage("warrior1L.png");
+            frames[2+5] = new GreenfootImage("warrior1L.png");
+            frames[3+5] = new GreenfootImage("warrior1L.png");
+            frames[4+5] = new GreenfootImage("warrior1L.png");
         }
     }
     

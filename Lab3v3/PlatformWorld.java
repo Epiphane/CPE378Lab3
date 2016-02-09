@@ -274,7 +274,7 @@ public class PlatformWorld extends World
      */
     public void clearLevel(){
         this.removeObjects(this.getObjects(player.class));
-        this.removeObjects(this.getObjects(enemy.class));
+        this.removeObjects(this.getObjects(enemy1.class));
         this.removeObjects(this.getObjects(player_death.class));
         this.removeObjects(this.getObjects(game_over.class));
         this.removeObjects(this.getObjects(exit_right.class));
@@ -338,10 +338,10 @@ public class PlatformWorld extends World
         starty = 150;
         addObject(new player(), startx, starty);
         addObject(new exit_right(), 970, 480);
-        addObject(new enemy(), 737, 170);
-        addObject(new enemy(), 247, 300);
-        addObject(new enemy(), 730, 406);
-        addObject(new enemy(), 508, 521);
+        addObject(new enemy1(), 737, 140); //top
+        addObject(new enemy1(), 247, 270); //middle top
+        addObject(new enemy1(), 730, 395); //middle bot
+        addObject(new enemy1(), 508, 505); //bot
     }
     
     /**
@@ -358,10 +358,10 @@ public class PlatformWorld extends World
         startx = 85;
         starty = 500;
         addObject(new player(), startx, starty);
-        addObject(new enemy(), 583, 442);
-        addObject(new enemy(), 121, 163);
-        addObject(new enemy(), 184, 339);
-        addObject(new enemy(), 541, 242);
+        addObject(new enemy1(), 583, 442);
+        addObject(new enemy1(), 121, 163);
+        addObject(new enemy1(), 184, 339);
+        addObject(new enemy1(), 541, 242);
         addObject(new exit_right(), 970, 195);
     }
     
