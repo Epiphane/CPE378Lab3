@@ -300,9 +300,9 @@ public class PlatformWorld extends World
         clearLevel();
         currentLevel = x;
         switch(x) {
-            case 0: setLevel_title(); break;
-            case 1: setLevel_one(); break;
-            case 2: setLevel_two(); break;
+            case 0: setLevel_1(); break;
+            case 1: setLevel_2(); break;
+            case 2: setLevel_3(); break;
             case 3: setLevel_ending(); break;
         }
     }
@@ -326,12 +326,12 @@ public class PlatformWorld extends World
     /**
      * set the title level
      */
-    public void setLevel_title(){
-        /**basic, set background*/
-        background = new GreenfootImage("BGtest2.gif");
+    public void setLevel_1(){
+        /**set art*/
+        background = new GreenfootImage("Level1_art.gif");
         setBackground(background);
-        /**also set mask*/
-        bgmask = new GreenfootImage("BGtestmask2.gif");
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level1.gif");
        
         /**set player in a fixed spot*/
         startx = 40;
@@ -347,12 +347,12 @@ public class PlatformWorld extends World
     /**
      * set another level
      */
-    public void setLevel_one(){
-        /**basic, set background*/
-        background = new GreenfootImage("BGtest3.gif");
+    public void setLevel_2(){
+        /**set art*/
+        background = new GreenfootImage("Level2_art.gif");
         setBackground(background);
-        /**also set mask*/
-        bgmask = new GreenfootImage("BGtestmask3.gif");
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level2.gif");
         
         /**set player in a fixed spot*/
         startx = 85;
@@ -368,12 +368,12 @@ public class PlatformWorld extends World
     /**
      * set another level
      */
-    public void setLevel_two(){
-        /**basic, set background*/
-        background = new GreenfootImage("BGtest4.gif");
+    public void setLevel_3(){
+        /**set art*/
+        background = new GreenfootImage("Level3_art.gif");
         setBackground(background);
-        /**also set mask*/
-        bgmask = new GreenfootImage("BGtestmask4.gif");
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level3.gif");
         
         /**set player in a fixed spot*/
         startx = 34;
