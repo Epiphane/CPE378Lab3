@@ -14,7 +14,7 @@ public class CutsceneWorld extends World
      * 
      */
     public CutsceneWorld()
-    {      
+    {     
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(PlatformWorld.sWidth, PlatformWorld.sHeight, 1); 
         prepare();

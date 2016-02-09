@@ -1,44 +1,65 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class DialogueBox here.
+ * Write a description of class DialogBox here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DialogueBox extends Actor
+public class DialogBox extends Actor
 {
-    private float speed = 0.5f;
+    private float speed = 1;
     private float ndx = 0;
     private String text = "";
     
+    private Actor[] letters;
+    
     public static final int PADDING = 20;
     
+    DialogBox() {
+        letters = new Actor[0];
+    }
+    
+    private boolean complete = false;
+    public boolean isComplete() { return complete; }
+    
     public void say(String text) {
+        World world = getWorld();
+        for (int i = 0; i < letters.length; i ++) {
+            if (letters[i] != null) {
+                world.removeObject(letters[i]);
+            }
+        }
+        
         ndx = -1;
         this.text = text;
+        letters = new Actor[text.length()];
     }
     
     /**
-     * Act - do whatever the DialogueBox wants to do. This method is called whenever
+     * Act - do whatever the DialogBox wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
         if (ndx < text.length() - 1) {
             ndx += speed;
+            complete = false;
             
             Letter newLetter = new Letter();
             newLetter.setImage(Text.instance().getChar(text.charAt((int) ndx)));
             
-            int pos_x = (int) ndx;
-            int pos_y = 0;
+            int pos_x = ((int) ndx) % 14;
+            int pos_y = ((int) ndx) / 14;
             
             getWorld().addObject(newLetter, pos_x * Text.LETTER_W + getX() - getImage().getWidth() / 2 + PADDING + Text.LETTER_W / 2, 
                 pos_y * Text.LETTER_H + getY() - getImage().getHeight() / 2 + PADDING + Text.LETTER_H / 2);
+                
+            letters[(int) ndx] = newLetter;
         
             if (ndx >= text.length() - 1) {
                 setImage(new GreenfootImage("dialogue_complete.png"));
+                complete = true;
             }
         }
     }
