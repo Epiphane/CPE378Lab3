@@ -28,5 +28,12 @@ public class CutsceneWorld extends World
     {
         CutscenePlayer cutsceneplayer = new CutscenePlayer();
         addObject(cutsceneplayer,262,313);
+        DialogueBox dialoguebox = new DialogueBox();
+        addObject(dialoguebox,617,472);
+        cutsceneplayer.setLocation(124,479);
+        cutsceneplayer.setLocation(527,182);
+        dialoguebox.setLocation(540,421);
+        
+        dialoguebox.say("Hello there!");
     }
 }
