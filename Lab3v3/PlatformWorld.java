@@ -270,7 +270,6 @@ public class PlatformWorld extends World
     
     /**
      * clean up the levels
-     * ||||***Make sure don't forget this while creating new kind of object!!!***|||||
      */
     public void clearLevel(){
         this.removeObjects(this.getObjects(player.class));

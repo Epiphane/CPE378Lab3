@@ -34,7 +34,7 @@ public class enemy1 extends AnimatedActor
     
     /** offset of enemy's image*/
     int X_offset = 25;
-    int Y_offset = 40;
+    int Y_offset = 30;
     
     /** screen length*/
     static float minX = 14;
