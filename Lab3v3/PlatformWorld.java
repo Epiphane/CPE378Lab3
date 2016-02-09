@@ -13,8 +13,8 @@ import java.awt.Color;
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
-    static int sWidth = 1024;
-    static int sHeight = 600;
+    public static final int sWidth = 1024;
+    public static final int sHeight = 600;
     
     /** background and masking colors for each levels */
     static GreenfootImage background;

@@ -1,5 +1,9 @@
 #Greenfoot properties
+<<<<<<< HEAD
 #Mon Feb 08 16:44:33 PST 2016
+=======
+#Mon Feb 08 15:55:52 PST 2016
+>>>>>>> refs/remotes/origin/thomas
 editor.fx.0.height=700
 target2.width=80
 target8.name=enemy1
@@ -7,6 +11,11 @@ target5.naviview.expanded=true
 class.game_over.superclass=greenfoot.Actor
 class.enemy.image=blob_a.gif
 dependency12.type=UsesDependency
+<<<<<<< HEAD
+=======
+class.CutsceneWorld.superclass=greenfoot.World
+target1.type=ClassTarget
+>>>>>>> refs/remotes/origin/thomas
 target7.showInterface=false
 target1.type=ClassTarget
 mainWindow.height=1066
@@ -48,11 +57,16 @@ target3.editor.y=-8
 target3.editor.x=-8
 target4.typeParameters=
 target5.name=player_death
-world.lastInstantiated=PlatformWorld
+world.lastInstantiated=CutsceneWorld
 mainWindow.width=1936
 readme.width=47
+<<<<<<< HEAD
 class.enemy2.superclass=AnimatedActor
 target9.name=player
+=======
+class.enemy2.superclass=greenfoot.Actor
+class.CutscenePlayer.image=player_talk_open.png
+>>>>>>> refs/remotes/origin/thomas
 target5.height=50
 target8.naviview.expanded=true
 dependency13.type=UsesDependency
@@ -64,7 +78,13 @@ dependency3.type=UsesDependency
 target6.type=ClassTarget
 target2.height=50
 target2.typeParameters=
+<<<<<<< HEAD
 editor.swing.0.height=916
+=======
+target6.type=ClassTarget
+editor.swing.0.height=700
+class.CutscenePlayer.superclass=greenfoot.Actor
+>>>>>>> refs/remotes/origin/thomas
 dependency11.to=game_over
 target9.typeParameters=
 dependency11.from=PlatformWorld
