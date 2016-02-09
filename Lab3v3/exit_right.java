@@ -1,23 +1,16 @@
 import greenfoot.*; 
 
-/**
- * Exit sign (this one is invisible in the game, check the code out!)
- * 
- * @author softwhizjx
- * @version 1.0
- */
+
 public class exit_right extends Actor
 {
     /** main world's variable */
     private static PlatformWorld platformer;
     
-    /**
-     * set invisible
-     */
+    
     public exit_right(){
-        GreenfootImage clear = new GreenfootImage("right_exit.png");
+        GreenfootImage pic = new GreenfootImage("right_exit.png");
         //clear.clear();
-        setImage(clear);
+        setImage(pic);
     }
     
     /**
