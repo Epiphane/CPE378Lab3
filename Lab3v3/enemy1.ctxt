@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=enemy
+comment0.target=enemy1
 comment0.text=\r\n\ enemy\ object\ for\ my\ custom\ made\ platform\ game\r\n\ \r\n\ @author\ softwhizjx\r\n\ @version\ 1.0\r\n
 comment1.params=
-comment1.target=enemy()
+comment1.target=enemy1()
 comment1.text=\r\n\ initialize\ enemy\r\n
 comment10.params=
 comment10.target=void\ maskTouch()
@@ -11,7 +11,7 @@ comment11.params=dmg
 comment11.target=void\ damage(int)
 comment11.text=\r\n\ do\ damage\ to\ enemy,\ decrease\ health\r\n
 comment2.params=direction
-comment2.target=enemy(java.lang.String)
+comment2.target=enemy1(java.lang.String)
 comment2.text=\r\n\ initialize\ with\ direction\ string\r\n
 comment3.params=
 comment3.target=void\ setSprites()

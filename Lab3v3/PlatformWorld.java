@@ -270,11 +270,10 @@ public class PlatformWorld extends World
     
     /**
      * clean up the levels
-     * ||||***Make sure don't forget this while creating new kind of object!!!***|||||
      */
     public void clearLevel(){
         this.removeObjects(this.getObjects(player.class));
-        this.removeObjects(this.getObjects(enemy.class));
+        this.removeObjects(this.getObjects(enemy1.class));
         this.removeObjects(this.getObjects(player_death.class));
         this.removeObjects(this.getObjects(game_over.class));
         this.removeObjects(this.getObjects(exit_right.class));
@@ -300,9 +299,9 @@ public class PlatformWorld extends World
         clearLevel();
         currentLevel = x;
         switch(x) {
-            case 0: setLevel_title(); break;
-            case 1: setLevel_one(); break;
-            case 2: setLevel_two(); break;
+            case 0: setLevel_1(); break;
+            case 1: setLevel_2(); break;
+            case 2: setLevel_3(); break;
             case 3: setLevel_ending(); break;
         }
     }
@@ -326,53 +325,54 @@ public class PlatformWorld extends World
     /**
      * set the title level
      */
-    public void setLevel_title(){
-        /**basic, set background*/
-        background = new GreenfootImage("BGtest2.gif");
+    public void setLevel_1(){
+        /**set art*/
+        background = new GreenfootImage("Level1_art.gif");
         setBackground(background);
-        /**also set mask*/
-        bgmask = new GreenfootImage("BGtestmask2.gif");
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level1.gif");
        
         /**set player in a fixed spot*/
         startx = 40;
         starty = 150;
         addObject(new player(), startx, starty);
-        addObject(new exit_right(), 1190, 575);
-        addObject(new enemy(), 737, 187);
-        addObject(new enemy(), 247, 329);
+        addObject(new exit_right(), 970, 480);
+        addObject(new enemy1(), 737, 140); //top
+        addObject(new enemy1(), 247, 270); //middle top
+        addObject(new enemy1(), 730, 395); //middle bot
+        addObject(new enemy1(), 508, 505); //bot
     }
     
     /**
      * set another level
      */
-    public void setLevel_one(){
-        /**basic, set background*/
-        background = new GreenfootImage("BGtest3.gif");
+    public void setLevel_2(){
+        /**set art*/
+        background = new GreenfootImage("Level2_art.gif");
         setBackground(background);
-        /**also set mask*/
-        bgmask = new GreenfootImage("BGtestmask3.gif");
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level2.gif");
         
         /**set player in a fixed spot*/
-        startx = 21;
-        starty = 218;
+        startx = 85;
+        starty = 500;
         addObject(new player(), startx, starty);
-        addObject(new enemy(), 316, 370);
-        addObject(new enemy(), 518, 370);
-        addObject(new enemy(), 459, 597);
-        addObject(new enemy("left"), 215, 98);
-        addObject(new enemy("left"), 516, 68);
-        addObject(new exit_right(), 606, 296);
+        addObject(new enemy1(), 583, 442);
+        addObject(new enemy1(), 121, 163);
+        addObject(new enemy1(), 184, 339);
+        addObject(new enemy1(), 541, 242);
+        addObject(new exit_right(), 970, 195);
     }
     
     /**
      * set another level
      */
-    public void setLevel_two(){
-        /**basic, set background*/
-        background = new GreenfootImage("BGtest4.gif");
+    public void setLevel_3(){
+        /**set art*/
+        background = new GreenfootImage("Level3_art.gif");
         setBackground(background);
-        /**also set mask*/
-        bgmask = new GreenfootImage("BGtestmask4.gif");
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level3.gif");
         
         /**set player in a fixed spot*/
         startx = 34;
