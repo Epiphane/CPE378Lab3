@@ -28,12 +28,19 @@ public class CutsceneWorld extends World
     {
         CutscenePlayer cutsceneplayer = new CutscenePlayer();
         addObject(cutsceneplayer,262,313);
-        DialogueBox dialoguebox = new DialogueBox();
-        addObject(dialoguebox,617,472);
+        DialogBox dialogbox = new DialogBox();
+        addObject(dialogbox,617,472);
         cutsceneplayer.setLocation(124,479);
         cutsceneplayer.setLocation(527,182);
-        dialoguebox.setLocation(540,421);
+        dialogbox.setLocation(540,421);
+
+        DialogManager dialogmanager = new DialogManager(dialogbox);
+        addObject(dialogmanager,836,97);
         
-        dialoguebox.say("Hello there!");
+        dialogmanager.addLine("Hello there!");
+        dialogmanager.addLine("My name is Wilbert!");
+        dialogmanager.nextWorld = new PlatformWorld();
+        
+        dialogmanager.start();
     }
 }
