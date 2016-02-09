@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Mon Feb 08 13:24:21 PST 2016
+#Mon Feb 08 15:55:52 PST 2016
 editor.fx.0.height=700
 target2.width=80
 target8.name=player
@@ -7,6 +7,7 @@ target5.naviview.expanded=true
 class.game_over.superclass=greenfoot.Actor
 class.enemy.image=blob_a.gif
 dependency12.type=UsesDependency
+class.CutsceneWorld.superclass=greenfoot.World
 target1.type=ClassTarget
 target7.showInterface=false
 mainWindow.height=1066
@@ -44,10 +45,11 @@ target3.editor.y=-8
 target3.editor.x=-8
 target4.typeParameters=
 target5.name=player_death
-world.lastInstantiated=PlatformWorld
+world.lastInstantiated=CutsceneWorld
 mainWindow.width=1936
 readme.width=47
 class.enemy2.superclass=greenfoot.Actor
+class.CutscenePlayer.image=player_talk_open.png
 target5.height=50
 target8.naviview.expanded=true
 dependency13.type=UsesDependency
@@ -60,6 +62,7 @@ target2.height=50
 target2.typeParameters=
 target6.type=ClassTarget
 editor.swing.0.height=700
+class.CutscenePlayer.superclass=greenfoot.Actor
 dependency11.to=game_over
 dependency11.from=PlatformWorld
 class.player.superclass=AnimatedActor
