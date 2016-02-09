@@ -7,7 +7,7 @@ import java.awt.Color;
  * @author softwhizjx
  * @version 1.0
  */
-public class enemy extends Actor
+public class enemy extends AnimatedActor
 {
     /**
      * Enemy's Variables

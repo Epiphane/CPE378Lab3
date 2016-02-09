@@ -13,8 +13,8 @@ import java.awt.Color;
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
-    public static final int sWidth = 1024;
-    public static final int sHeight = 600;
+    static int sWidth = 1024;
+    static int sHeight = 600;
     
     /** background and masking colors for each levels */
     static GreenfootImage background;
@@ -57,7 +57,7 @@ public class PlatformWorld extends World
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
         /*||||***Make sure don't forget this while creating new kind of object!!!***|||||*/
-        setPaintOrder(game_over.class, player_death.class, player.class, enemy.class);
+        setPaintOrder(game_over.class, player_death.class, player.class, enemy1.class);
         
         /**Start the game*/
         restartGame();
@@ -337,7 +337,7 @@ public class PlatformWorld extends World
         starty = 150;
         addObject(new player(), startx, starty);
         addObject(new exit_right(), 970, 480);
-        addObject(new enemy1(), 737, 140); //top
+        addObject(new enemy(), 737, 140); //top
         addObject(new enemy1(), 247, 270); //middle top
         addObject(new enemy1(), 730, 395); //middle bot
         addObject(new enemy1(), 508, 505); //bot

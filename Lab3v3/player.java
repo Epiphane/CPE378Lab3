@@ -52,8 +52,8 @@ public class player extends AnimatedActor
      * (uses for prevent the player looks like passing the floor or wall while touching the mask)
      * [offset = distance how far from the very center of the image]
      */
-    int X_offset = 10;
-    int Y_offset = 32;
+    int X_offset = 20;
+    int Y_offset = 30;
     
     /** screen length*/
     static float minX = 14;
@@ -402,11 +402,10 @@ public class player extends AnimatedActor
         hurt_delay--;
         
         /**set enemy variable everytime the player meets the enemy*/
-        enemy Enemy = (enemy) getOneIntersectingObject(enemy.class);
+        AnimatedActor Enemy = (AnimatedActor) getOneIntersectingObject(AnimatedActor.class);
         
         //Conditions Requirements
         if (Enemy != null  //The enemy needs to meet the player on contact.
-        && Enemy.canHurtPlayer == true //The enemy is still alive, so can do the damage.
         && hurt_delay <= 0 //The delay of getting hurt should be over
         && getY()+34 >= Enemy.getY()
         ){
