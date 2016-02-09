@@ -1,12 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 import java.awt.Color;
-/**
- * enemy object for my custom made platform game
- * 
- * @author softwhizjx
- * @version 1.0
- */
+
 public class enemy2 extends AnimatedActor
 {
     /**

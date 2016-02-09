@@ -2,14 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 import java.awt.Color;
 
-/**
- * a platform game in my style
- * 
- * @author softwhizjx
- * @version 1.0
- * 
- * Thanks to the BioChicken Project for this to exist!!!
- */
+
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
@@ -391,7 +384,7 @@ public class PlatformWorld extends World
      */
     public void setLevel_ending(){
         /**basic, set background*/
-        background = new GreenfootImage("ending.gif");
+        background = new GreenfootImage("ending.png");
         setBackground(background);
         /**also set mask*/
         bgmask = new GreenfootImage("ending_mask.gif");

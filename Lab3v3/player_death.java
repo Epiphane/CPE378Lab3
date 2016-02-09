@@ -1,17 +1,5 @@
 import greenfoot.*; 
 
-/**
- * death animation
- * can be more than 3 main types:
- * 1) falling down the screen
- * 2) lie down the platform
- * 3) explode self
- * etc...
- * In this case, it's explosion. Cuz it's easy to make than anything else.
- * 
- * @author softwhizjx
- * @version 1.0
- */
 public class player_death extends Actor
 {
     /** main world's variable */
