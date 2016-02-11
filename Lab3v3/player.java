@@ -4,6 +4,9 @@ import java.awt.Color;
 
 public class player extends AnimatedActor
 {
+    /** Input */
+    public static final String JUMP_KEY = "z";
+    
     /**
      * Player's animation variables
      */
@@ -198,7 +201,7 @@ public class player extends AnimatedActor
         y += speedY;
         
         /**jump up key trigger*/
-        if (Greenfoot.isKeyDown("Z") && canJump == true){
+        if (Greenfoot.isKeyDown(JUMP_KEY) && canJump == true){
             /**speedY goes negative (up) and disable jump to prevent multi-jump*/
             speedY = -9;
             canJump = false;
@@ -270,7 +273,7 @@ public class player extends AnimatedActor
             /**nullifies falling speed, (landing) allow player to jump again*/
             canJump = true;
             
-            if (!Greenfoot.isKeyDown("space")){
+            if (!Greenfoot.isKeyDown(JUMP_KEY)){
                 
               speedY = 0;
            }

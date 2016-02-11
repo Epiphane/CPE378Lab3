@@ -75,6 +75,9 @@ public class CutsceneWorld extends World
             dialogmanager.addLine("well........");
             dialogmanager.addLine("I guess that means you win!");
         }
+        
+        dialogmanager.nextWorld = new PlatformWorld(Player, level);
+        dialogmanager.start();
     }
     
     private void setupDialog_0() {    
@@ -98,9 +101,6 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
-        dialogmanager.nextWorld = new PlatformWorld(Player, 0);
-        
-        dialogmanager.start();
         
         backgroundMusic.playLoop();
         backgroundMusic.pause(); 
@@ -127,10 +127,5 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
-        dialogmanager.nextWorld = new PlatformWorld(Player, 1);
-        
-        dialogmanager.start();
-        
-        backgroundMusic.playLoop();
     }
 }
