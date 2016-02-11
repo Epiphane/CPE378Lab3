@@ -34,18 +34,26 @@ public class PlatformWorld extends World
     static public int playerx, playery;
     
     /** player's remaining lifes*/
-    static public int life = 4;
     static public int loseLifeDelay = 0;
     boolean gameIsOver = false;
+    
+    player currentPlayer;
     
     /**
      * generates 
      */
     public PlatformWorld()
     {    
+        this(new player(), 0);
+    }
+    
+    public PlatformWorld(player Player, int level)
+    {
         /**initialize*/
         super(sWidth, sHeight, 1); 
         setMaskCodes(); 
+        
+        currentPlayer = Player;
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
@@ -53,7 +61,8 @@ public class PlatformWorld extends World
         setPaintOrder(game_over.class, player_death.class, player.class, enemy1.class);
         
         /**Start the game*/
-        restartGame();
+        currentLevel = level;
+        setLevel(currentLevel);
     }
         
     /**
@@ -65,40 +74,18 @@ public class PlatformWorld extends World
         manageLife();
     }
     
-    
-    /**
-     * show the remaining lifes of the player
-     */
-    public int getLife(){
-        return life;
-    }
-    
-    /**
-     * 1-UP
-     */
-    public void extraLife(){
-        life++;
-    }
-    
-    /**
-     * 1-DOWN
-     */
-    public void loseLife(){
-        life--;
-    }
-    
     /**
      * take care of life system, if life runs out, calls game over
      */
     public void manageLife(){
-        if (player.dead && life >= 0){
+        if (currentPlayer.dead && currentPlayer.lives >= 0){
             loseLifeDelay++;
             if (loseLifeDelay >= 50){
                 resetLevel();
                 loseLifeDelay = 0;
             }
         }
-        if (player.dead && life < 0 && !gameIsOver){
+        if (currentPlayer.dead && currentPlayer.lives < 0 && !gameIsOver){
             addObject(new game_over(), sWidth/2, sHeight/2);
             gameIsOver = true;
         }
@@ -273,18 +260,6 @@ public class PlatformWorld extends World
     }
     
     /**
-     * start or restart the game
-     */
-    public void restartGame(){
-        /** back to the start*/
-        currentLevel = 0;
-        life = 4;
-        gameIsOver = false;
-        loseLifeDelay = 0;
-        setLevel(currentLevel);
-    }
-    
-    /**
      * set one of the specific levels
      */
     public void setLevel(int x){
@@ -303,16 +278,15 @@ public class PlatformWorld extends World
      * go to next level
      */
     public void nextLevel(){
-        currentLevel++;
-        setLevel(currentLevel);
+        Greenfoot.setWorld(new CutsceneWorld(currentPlayer, currentLevel + 1)); 
     }
     
     /**
      * reset level
      */
     public void resetLevel(){
+        currentPlayer.reset(startx, starty);
         setLevel(currentLevel);
-        player.dead = false;
     }
     
     /**
@@ -328,7 +302,7 @@ public class PlatformWorld extends World
         /**set player in a fixed spot*/
         startx = 40;
         starty = 150;
-        addObject(new player(), startx, starty);
+        addObject(currentPlayer, startx, starty);
         addObject(new exit_right(), 970, 480);
         addObject(new enemy1(), 737, 140); //top
         addObject(new enemy1(), 247, 270); //middle top
@@ -349,7 +323,7 @@ public class PlatformWorld extends World
         /**set player in a fixed spot*/
         startx = 85;
         starty = 500;
-        addObject(new player(), startx, starty);
+        addObject(currentPlayer, startx, starty);
         addObject(new enemy1(), 583, 442);
         addObject(new enemy2(), 121, 163);
         addObject(new enemy2(), 184, 339);
@@ -370,7 +344,7 @@ public class PlatformWorld extends World
         /**set player in a fixed spot*/
         startx = 40;
         starty = 520;
-        addObject(new player(), startx, starty);
+        addObject(currentPlayer, startx, starty);
         addObject(new enemy1(), 882, 539); //bot right
         addObject(new enemy2(), 800, 399); //lower mid right
         addObject(new enemy1(), 231, 406); //lower mid left

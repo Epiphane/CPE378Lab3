@@ -12,13 +12,17 @@ public class DialogBox extends Actor
     private float ndx = 0;
     private String text = "";
     
+    public static final int LINE_WIDTH = 14;
+    
     private Actor[] letters;
+    private CutscenePlayer player;
     
     public static final int PADDING = 20;
     
     public static final GreenfootSound speech = new GreenfootSound("Player_talk.wav");
     
-    DialogBox() {
+    DialogBox(CutscenePlayer player) {
+        this.player = player;
         letters = new Actor[0];
         
         speech.setVolume(70);
@@ -36,6 +40,28 @@ public class DialogBox extends Actor
         }
         
         ndx = -1;
+        // Fix text so that it wraps nicely
+        int lastSpace = -1;
+        for (int i = 0; i < text.length(); i ++) {
+            if (text.charAt(i) == ' ') {
+                lastSpace = i % LINE_WIDTH;
+                
+                if (i % LINE_WIDTH == 0) {
+                    text = text.substring(0, i) + text.substring(i + 1);
+                }
+            }
+            if (i % LINE_WIDTH == 0 && lastSpace > 0) {
+                // Add spaces to text
+                String spaces = "";
+                for (int j = lastSpace; j % LINE_WIDTH != LINE_WIDTH - 1; j ++) {
+                    spaces += " ";
+                }
+                text = text.substring(0, lastSpace) + spaces + text.substring(lastSpace);
+                System.out.println("added " + spaces.length() + " spaces. lastSpace = " + lastSpace);
+                lastSpace = -1; 
+            }
+        }
+        
         this.text = text;
         letters = new Actor[text.length()];
     }
@@ -51,13 +77,15 @@ public class DialogBox extends Actor
             complete = false;
             
             if (Math.floor(ndx) != Math.floor(ndx - speed)) {
+                if (Math.floor(ndx) % 2 == 1 && ndx < 8)
+                    player.animate();
                 speech.play();
             
                 Letter newLetter = new Letter();
                 newLetter.setImage(Text.instance().getChar(text.charAt((int) ndx)));
                 
-                int pos_x = ((int) ndx) % 14;
-                int pos_y = ((int) ndx) / 14;
+                int pos_x = ((int) ndx) % LINE_WIDTH;
+                int pos_y = ((int) ndx) / LINE_WIDTH;
                 
                 getWorld().addObject(newLetter, pos_x * Text.LETTER_W + getX() - getImage().getWidth() / 2 + PADDING + Text.LETTER_W / 2, 
                     pos_y * Text.LETTER_H + getY() - getImage().getHeight() / 2 + PADDING + Text.LETTER_H / 2);

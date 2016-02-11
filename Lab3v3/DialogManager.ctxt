@@ -1,13 +1,15 @@
 #BlueJ class context
 comment0.target=DialogManager
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ DialogManager\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=box
-comment1.target=DialogManager(DialogBox)
+comment1.params=box\ player
+comment1.target=DialogManager(DialogBox,\ CutscenePlayer)
 comment2.params=line
 comment2.target=void\ addLine(java.lang.String)
-comment3.params=
-comment3.target=void\ start()
+comment3.params=line\ expr
+comment3.target=void\ addLine(java.lang.String,\ CutscenePlayer.Expression)
 comment4.params=
-comment4.target=void\ act()
-comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ DialogManager\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=5
+comment4.target=void\ start()
+comment5.params=
+comment5.target=void\ act()
+comment5.text=\r\n\ Act\ -\ do\ whatever\ the\ DialogManager\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=6

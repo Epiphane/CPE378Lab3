@@ -4,6 +4,9 @@ import java.awt.Color;
 
 public class player extends AnimatedActor
 {
+    /** Input */
+    public static final String JUMP_KEY = "z";
+    
     /**
      * Player's animation variables
      */
@@ -71,24 +74,18 @@ public class player extends AnimatedActor
      */
     
     /** check still alive or not */
-    static boolean dead = false;
+    public boolean dead = false;
     boolean fall = false;
     
     /** health value, if it's 0, die*/
     int HP = 3;
     int maxHP = 3;
+    int lives = 4;
     
     /**
      * Player's Sprites Variables
      */
   
-    
-    float current_frame = 0; //current image value (from the number of arrays "[i]")
-    float anim_speed = 0.1f; //how fast the image change
-    float start_frame = 0; //first image of the animation
-    float end_frame = 0; //last image of the animation
-    int anim_no = 0; //the number of each animations
-    int dir = 0; //value for mirrored sprites (half of the total images)
     int hurt_delay = 0;
     
     /**
@@ -104,6 +101,18 @@ public class player extends AnimatedActor
         setAnimation(player_idle);
         
         return;
+    }
+    
+    /**
+     * Reset the player back to full health
+     */
+    public void reset(int x, int y)
+    {
+        HP = maxHP;
+        this.x = x;
+        this.y = y;
+        fall = false;
+        dead = false;
     }
     
     /**
@@ -143,14 +152,14 @@ public class player extends AnimatedActor
         /**death case*/
         if (HP <= 0 && !fall){
             dead = true;
-            platformer.loseLife();
+            lives --;
             platformer.addObject(new player_death(), getX(), getY());
             platformer.removeObject(this);
         }
         /**disappear and die if fall of the screen*/
         if (HP <= 0 && fall){
             dead = true;
-            platformer.loseLife();
+            lives --;
             platformer.removeObject(this);
         }
     }    
@@ -192,7 +201,7 @@ public class player extends AnimatedActor
         y += speedY;
         
         /**jump up key trigger*/
-        if (Greenfoot.isKeyDown("space") && canJump == true){
+        if (Greenfoot.isKeyDown(JUMP_KEY) && canJump == true){
             /**speedY goes negative (up) and disable jump to prevent multi-jump*/
             speedY = -9;
             canJump = false;
@@ -203,8 +212,8 @@ public class player extends AnimatedActor
         /**duck key trigger*/
         if (Greenfoot.isKeyDown("down") && canJump == true){
             //setAnim_land();
-            if (Greenfoot.isKeyDown("left")){dir = 12;} //face left
-            if (Greenfoot.isKeyDown("right")){dir = 0;} //face right
+            if (Greenfoot.isKeyDown("left")){setFacingRight(false);} //face left
+            if (Greenfoot.isKeyDown("right")){setFacingRight(true);} //face right
         }
         
         /**set when falling, also disable jump in case of falling without jumping*/
@@ -264,7 +273,7 @@ public class player extends AnimatedActor
             /**nullifies falling speed, (landing) allow player to jump again*/
             canJump = true;
             
-            if (!Greenfoot.isKeyDown("space")){
+            if (!Greenfoot.isKeyDown(JUMP_KEY)){
                 
               speedY = 0;
            }
@@ -414,8 +423,8 @@ public class player extends AnimatedActor
         && hurt_delay <= 0 //The delay of getting hurt should be over
         && getY()+34 >= Enemy.getY()
         ){
-            if (getX() < Enemy.getX()) {speedX = -5; dir = 0;}
-            if (getX() > Enemy.getX()) {speedX = 5; dir = 12;}
+            if (getX() < Enemy.getX()) {speedX = -5; setFacingRight(true);}
+            if (getX() > Enemy.getX()) {speedX = 5; setFacingRight(false);}
             if (getX() == Enemy.getX()) {speedX = 0;} //bounce reactions from the enemy
             speedY = 0; //stop falling for a while
             //setAnim_hurt(); //set hurt pose
