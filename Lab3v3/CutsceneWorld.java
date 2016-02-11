@@ -59,18 +59,13 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("beautiful world!");
         dialogmanager.addLine("Come on! Lets go!");
         dialogmanager.addLine("...");
-        dialogmanager.addLine("what do you mean?");
-        dialogmanager.addLine("be careful?");
+        dialogmanager.addLine("what do you mean?", CutscenePlayer.Expression.Concerned);
+        dialogmanager.addLine("be careful?", CutscenePlayer.Expression.Concerned);
         dialogmanager.addLine("...");
         dialogmanager.addLine("Oh theres nothing");
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
-        dialogmanager.addLine("");
-        dialogmanager.addLine("By the way...");
-        dialogmanager.addLine("Were in beta so some things");
-        dialogmanager.addLine("are a little...funky.");
-        dialogmanager.addLine("Alright come on now!");
         dialogmanager.nextWorld = new PlatformWorld();
         
         dialogmanager.start();

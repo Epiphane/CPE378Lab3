@@ -13,6 +13,7 @@ public class DialogManager extends Actor
     private DialogBox dialogBox;
     private CutscenePlayer player;
     private ArrayList<String> lines;
+    private ArrayList<CutscenePlayer.Expression> expressions;
     
     public World nextWorld;
     
@@ -21,10 +22,16 @@ public class DialogManager extends Actor
         this.player = player;
         
         lines = new ArrayList<String>();
+        expressions = new ArrayList<CutscenePlayer.Expression>();
     }
     
     public void addLine(String line) {
+        addLine(line, CutscenePlayer.Expression.Happy);
+    }
+    
+    public void addLine(String line, CutscenePlayer.Expression expr) {
         lines.add(line);
+        expressions.add(expr);
     }
     
     public void start() {
@@ -38,12 +45,17 @@ public class DialogManager extends Actor
      */
     public void act() 
     {
+        if (Greenfoot.isKeyDown("x")) {
+            Greenfoot.setWorld(nextWorld);
+            return;
+        }
         if (Greenfoot.isKeyDown("z")) {
             if (dialogBox.isComplete()) {
                 if (ndx == lines.size()) {
                     Greenfoot.setWorld(nextWorld);
                 }
                 else {
+                    player.setExpression(expressions.get(ndx));
                     dialogBox.say(lines.get(ndx++));
                 }
             }

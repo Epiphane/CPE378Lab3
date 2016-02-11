@@ -192,7 +192,7 @@ public class player extends AnimatedActor
         y += speedY;
         
         /**jump up key trigger*/
-        if (Greenfoot.isKeyDown("space") && canJump == true){
+        if (Greenfoot.isKeyDown("Z") && canJump == true){
             /**speedY goes negative (up) and disable jump to prevent multi-jump*/
             speedY = -9;
             canJump = false;
