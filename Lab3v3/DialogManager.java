@@ -11,12 +11,14 @@ public class DialogManager extends Actor
 {
     private int ndx;
     private DialogBox dialogBox;
+    private CutscenePlayer player;
     private ArrayList<String> lines;
     
     public World nextWorld;
     
-    DialogManager(DialogBox box) {
+    DialogManager(DialogBox box, CutscenePlayer player) {
         this.dialogBox = box;
+        this.player = player;
         
         lines = new ArrayList<String>();
     }

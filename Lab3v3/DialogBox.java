@@ -13,12 +13,14 @@ public class DialogBox extends Actor
     private String text = "";
     
     private Actor[] letters;
+    private CutscenePlayer player;
     
     public static final int PADDING = 20;
     
     public static final GreenfootSound speech = new GreenfootSound("Player_talk.wav");
     
-    DialogBox() {
+    DialogBox(CutscenePlayer player) {
+        this.player = player;
         letters = new Actor[0];
         
         speech.setVolume(70);
@@ -51,6 +53,7 @@ public class DialogBox extends Actor
             complete = false;
             
             if (Math.floor(ndx) != Math.floor(ndx - speed)) {
+                player.animate();
                 speech.play();
             
                 Letter newLetter = new Letter();

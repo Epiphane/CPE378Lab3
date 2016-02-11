@@ -37,13 +37,13 @@ public class CutsceneWorld extends World
     {
         CutscenePlayer cutsceneplayer = new CutscenePlayer();
         addObject(cutsceneplayer,262,313);
-        DialogBox dialogbox = new DialogBox();
+        DialogBox dialogbox = new DialogBox(cutsceneplayer);
         addObject(dialogbox,617,472);
         cutsceneplayer.setLocation(124,479);
         cutsceneplayer.setLocation(527,182);
         dialogbox.setLocation(540,421);
 
-        DialogManager dialogmanager = new DialogManager(dialogbox);
+        DialogManager dialogmanager = new DialogManager(dialogbox, cutsceneplayer);
         addObject(dialogmanager,836,97);
         
         dialogmanager.addLine("Hello there!");
