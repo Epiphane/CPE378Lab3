@@ -200,6 +200,7 @@ public class player extends AnimatedActor
     public void setAngry(boolean angry) {
         if (fury == 0) angry = false;
         if (fury >= 6) angry = true;
+        angry = false; // Avoid fury mechanic completely
         
         this.angry = angry;
         

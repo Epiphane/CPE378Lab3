@@ -117,15 +117,14 @@ public class CutsceneWorld extends World
             dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
             dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
             dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
-            dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
+            //dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
+            //dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
             dialogmanager.addLine("you should have said so!");
             dialogmanager.addLine("itll be a breeze! Lets go!");
         }
-        else /* TODO MORE BRANCHES if (Player.numInjuries() < 3) */ {
-            dialogmanager.addLine("Wow that was cool!");
-            dialogmanager.addLine("Except for when I got hit");
-            dialogmanager.addLine("by that strange man...");
+        else if (Player.kills == 0) {
+            dialogmanager.addLine("Ow! Who was that strange man");
+            dialogmanager.addLine("Who attacked me?");
             dialogmanager.addLine("...");
             dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
             dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
@@ -133,9 +132,23 @@ public class CutsceneWorld extends World
             dialogmanager.addLine("But then it passed like that!");
             dialogmanager.addLine("Oh well. Lets keep going!");
         }
+        else {
+            dialogmanager.addLine("Woah! That was interesting");
+            dialogmanager.addLine("When I knocked out those");
+            dialogmanager.addLine("adventurers, I felt...");
+            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("Angry!", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("But it was... exciting too", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("I dont know what this is", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("This...feeling", CutscenePlayer.Expression.Concerned);
+        }
     }
     
     private void setupDialog_2() {
+        // Pacifist
+        if (Player.kills == 0) {
+        }
         if (Player.numInjuries() == 0 && Player.kills == 0) {
             dialogmanager.addLine("Wheeeeee!");
             dialogmanager.addLine("This world is so great!");
