@@ -6,7 +6,7 @@ import java.awt.Color;
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
-    static int sWidth = 1067;
+    static int sWidth = 1000;
     static int sHeight = 600;
     
     /** background and masking colors for each levels */
@@ -495,7 +495,7 @@ public class PlatformWorld extends World
     /**
      * set another level
      */
-    public void setLevel_8(){
+    public void setLevel_9(){
         
         /**set art*/
         background = new GreenfootImage("Level8_art.gif");
@@ -515,7 +515,7 @@ public class PlatformWorld extends World
          /**
      * set another level
      */
-    public void setLevel_9(){
+    public void setLevel_8(){
         
         /**set art*/
         background = new GreenfootImage("Level9_art.gif");

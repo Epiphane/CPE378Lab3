@@ -161,7 +161,7 @@ public class CutsceneWorld extends World
     private void setupDialog_field_2() {
         // Pacifist
         if (Player.kills == 0) {
-            if (Player.numInjuries() == 0) {
+            if (Player.numInjuries() <= 1) {
                 dialogmanager.addLine("Wheeeeee!");
                 dialogmanager.addLine("This world is so great!");
                 dialogmanager.addLine("All those nice");
@@ -187,7 +187,7 @@ public class CutsceneWorld extends World
     private void setupDialog_forest_1() {
         // Pacifist
         if (Player.kills == 0) {
-            if (Player.numInjuries() == 0) {
+            if (Player.numInjuries() <= 2) {
                 dialogmanager.addLine("What a beautiful forest!!");
                 dialogmanager.addLine("The trees are so lovely");
                 dialogmanager.addLine("And our friends are here too!");
