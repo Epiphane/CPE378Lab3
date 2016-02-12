@@ -290,7 +290,8 @@ public class PlatformWorld extends World
             case 1: setLevel_2(); break;
             case 2: setLevel_3(); break;
             case 3: setLevel_4(); break;
-            case 4: setLevel_ending(); break;
+            case 4: setLevel_5(); break;
+            case 5: setLevel_ending(); break;
         }
     }
     
@@ -396,11 +397,30 @@ public class PlatformWorld extends World
         addObject(new exit_right(), 926, 460);
     }
     
+    public void setLevel_5(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level5_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level5.gif");     
+        
+        /**set player in a fixed spot*/
+        startx = 56;
+        starty = 500;
+        addObject(currentPlayer, startx, starty);
+        addObject(new enemy2(), 164, 199); //left
+        addObject(new enemy2(), 543, 155); //mid
+        addObject(new exit_right(), 970, 485);
+    }
+    
     /**
      * ending
      */
     public void setLevel_ending(){
         /**basic, set background*/
+        removeObject(hearts);
+        removeObject(lives);
         background = new GreenfootImage("ending.png");
         setBackground(background);
         /**also set mask*/

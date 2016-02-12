@@ -1,8 +1,8 @@
 #Greenfoot properties
-#Thu Feb 11 22:26:10 PST 2016
+#Thu Feb 11 23:18:57 PST 2016
 target16.name=enemy2
-editor.swing.0.y=190
-editor.swing.0.x=2123
+editor.swing.0.y=210
+editor.swing.0.x=754
 target2.name=CutscenePlayer
 class.Text.superclass=
 target9.name=game_over
@@ -286,7 +286,7 @@ target6.editor.y=63
 mainWindow.height=977
 target9.naviview.expanded=true
 target6.editor.x=146
-editor.swing.0.width=1028
+editor.swing.0.width=1029
 target5.showInterface=false
 target14.showInterface=false
 target1.editor.width=900
