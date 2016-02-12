@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CutsceneWorld extends World
 {
-    public static final GreenfootSound backgroundMusic = new GreenfootSound("The Lake.wav");
-
     private DialogManager dialogmanager;
     private static player Player;
     
@@ -20,6 +18,7 @@ public class CutsceneWorld extends World
     public CutsceneWorld()
     {     
         this(new player(), 0);
+        prepare();
     }
     
     /**
@@ -38,11 +37,11 @@ public class CutsceneWorld extends World
     }
     
     public void stopped() {
-         backgroundMusic.pause(); 
+         MusicManager.pause();
     }
      
     public void started() {
-        backgroundMusic.playLoop();
+         MusicManager.play();
     }
 
     /**
@@ -64,18 +63,20 @@ public class CutsceneWorld extends World
     }
         
     private void setupDialog(int level) {
-        if (Player.firstInjury) {
+        if (Player.firstInjury && Player.numInjuries() > 0) {
             dialogmanager.addLine("Ow! Who was that strange man");
             dialogmanager.addLine("Who attacked me?");
             dialogmanager.addLine("...");
             dialogmanager.addLine("You dont think theyre all");
-            dialogmanager.addLine("like that, do you?");
+            dialogmanager.addLine("like that do you?");
         }
         
         if (level == 0)
             setupDialog_0();
         else if (level == 1)
             setupDialog_1();
+        else if (level == 2)
+            setupDialog_2();
         else {
             dialogmanager.addLine("Uh oh...");
             dialogmanager.addLine("Theres no dialog");
@@ -109,9 +110,6 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
-        
-        backgroundMusic.playLoop();
-        backgroundMusic.pause(); 
     }
     
     private void setupDialog_1() {
@@ -164,7 +162,18 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("Adventurers keep smiling");
                 dialogmanager.addLine("At us!");
             }
-            else if (Player.firstInjury) {
+            else if (Player.numInjuries() < 3) {
+                dialogmanager.addLine("Well..", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Its not quite as carefree", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("as I expected...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("But I am having a lot of fun");
+                dialogmanager.addLine("This world is so beautiful!");
+                dialogmanager.addLine("Whats not to love?", CutscenePlayer.Expression.Sad);
+            }
+            else {
+                dialogmanager.addLine("I dont get it...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("They all attack me!", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Whats happening!?!", CutscenePlayer.Expression.Sad);
             }
         }
     }

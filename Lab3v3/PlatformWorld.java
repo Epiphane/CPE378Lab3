@@ -79,11 +79,11 @@ public class PlatformWorld extends World
     }
     
     public void stopped() {
-         CutsceneWorld.backgroundMusic.pause(); 
+        MusicManager.pause(); 
     }
      
     public void started() {
-        CutsceneWorld.backgroundMusic.playLoop();
+        MusicManager.play();
     }
         
     /**

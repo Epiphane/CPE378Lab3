@@ -12,9 +12,10 @@ public class CutscenePlayer extends AnimatedActor
     private Animation player_concerned = AnimatedActor.generateSequence("player_talk_concerned", 2);
     private Animation player_angry = AnimatedActor.generateSequence("player_talk_angry", 2);
     private Animation player_irked = AnimatedActor.generateSequence("player_talk_irked", 2);
+    private Animation player_sad = AnimatedActor.generateSequence("player_talk_sad", 2);
     
     public enum Expression {
-        Happy, Concerned, Angry, Irked
+        Happy, Concerned, Angry, Irked, Sad
     };
     
     int baseX, baseY;
@@ -24,6 +25,7 @@ public class CutscenePlayer extends AnimatedActor
         player_angry.load();
         player_talk.load();
         player_concerned.load();
+        player_sad.load();
         player_irked.load();
         
         player_angry.speed = player_talk.speed = 1.0f;
@@ -60,6 +62,9 @@ public class CutscenePlayer extends AnimatedActor
         switch (expr) {
         case Happy:
             anim = player_talk;
+            break;
+        case Sad:
+            anim = player_sad;
             break;
         case Concerned:
             anim = player_concerned;
