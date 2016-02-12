@@ -80,7 +80,7 @@ public class player extends AnimatedActor
     /** health value, if it's 0, die*/
     int HP = 3;
     int maxHP = 3;
-    int lives = 4;
+    int lives = 5;
     int fury = 0;
     int kills = 0;
     
@@ -204,7 +204,7 @@ public class player extends AnimatedActor
         }
                 
         /** nullifies speed horizontally */
-        speedX *= 0.8;
+        speedX *= platformer.decel;
         
         /** speed changer*/
         x += speedX;
