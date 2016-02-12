@@ -472,7 +472,7 @@ public class PlatformWorld extends World
         starty = 500;
         addObject(currentPlayer, startx, starty);
         
-        // Cutscene-ness
+        // Cutscene-ness 
         DialogBox dialogbox = new DialogBox(null);
         addObject(dialogbox,540,150);
         

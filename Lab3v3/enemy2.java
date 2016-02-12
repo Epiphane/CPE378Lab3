@@ -15,11 +15,11 @@ public class enemy2 extends AnimatedActor
     float x, y;
     
     /** enemy's speed */
-    float speedX = 3;
+    float speedX = 2;
     float speedY = 0;
     
     /** enemy's acceleration (only in horizontal) */
-    float accelX = 1;
+    float accelX = 0.8f;
     
     /** enemy's max horizontal speed */
     float maxSpeedX = 3;
