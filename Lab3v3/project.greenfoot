@@ -1,44 +1,24 @@
 #Greenfoot properties
-<<<<<<< HEAD
-#Thu Feb 11 19:07:20 PST 2016
+#Thu Feb 11 21:13:59 PST 2016
 target16.name=DialogBox
-editor.swing.0.y=177
-editor.swing.0.x=618
+editor.swing.0.y=207
+editor.swing.0.x=2014
 target2.name=CutscenePlayer
 class.Text.superclass=
 target9.name=Letter
-=======
-#Thu Feb 11 19:19:22 PST 2016
-target16.name=enemy1
-editor.swing.0.y=96
-editor.swing.0.x=251
-target2.name=CutscenePlayer
-class.Text.superclass=
-target9.name=game_over
->>>>>>> origin/master
 class.PlatformWorld.superclass=greenfoot.World
 dependency11.type=UsesDependency
 class.DialogBox.image=dialogue.png
 dependency18.type=UsesDependency
 dependency15.from=PlatformWorld
-<<<<<<< HEAD
 dependency8.to=game_over
-=======
-dependency8.to=player
->>>>>>> origin/master
 target5.naviview.expanded=true
 target14.type=ClassTarget
 simulation.speed=51
 dependency25.type=UsesDependency
-<<<<<<< HEAD
 dependency22.from=DialogBox
 target15.width=80
 dependency29.from=Hearts
-=======
-dependency22.from=CutsceneWorld
-target15.width=80
-dependency29.from=TitleController
->>>>>>> origin/master
 target15.height=50
 target7.type=ClassTarget
 target15.typeParameters=
@@ -46,15 +26,10 @@ class.AnimatedActor.superclass=greenfoot.Actor
 target11.width=80
 dependency25.to=CutscenePlayer
 target1.typeParameters=
-<<<<<<< HEAD
-=======
-class.Title.image=cutscene_background.png
->>>>>>> origin/master
 dependency2.to=player
 target6.naviview.expanded=true
 target6.editor.width=1021
 dependency1.type=UsesDependency
-<<<<<<< HEAD
 target16.y=370
 target16.x=190
 class.CutsceneWorld.superclass=greenfoot.World
@@ -63,43 +38,20 @@ dependency5.from=exit_right
 target12.y=310
 target12.x=10
 target3.editor.y=-8
-=======
-target16.y=190
-target16.x=130
-class.CutsceneWorld.superclass=greenfoot.World
-dependency8.type=UsesDependency
-dependency5.from=player
-target12.y=310
-target12.x=130
-target3.editor.y=-8
-target18.width=80
->>>>>>> origin/master
 target3.editor.x=-8
 editor.fx.0.height=700
 project.charset=UTF-8
 target12.typeParameters=
-<<<<<<< HEAD
 dependency15.to=AnimatedActor
 target15.name=enemy1
 target5.height=50
 target1.name=PlatformWorld
 version=2.8.0
 target8.name=AnimatedActor
-=======
-dependency15.to=enemy2
-target15.name=enemy2
-target5.height=50
-target1.name=PlatformWorld
-version=2.8.0
-target11.naviview.expanded=true
-target8.name=exit_right
-class.Title.superclass=greenfoot.World
->>>>>>> origin/master
 class.enemy2.superclass=AnimatedActor
 dependency10.type=UsesDependency
 class.DialogManager.superclass=greenfoot.Actor
 dependency17.type=UsesDependency
-<<<<<<< HEAD
 dependency14.from=CutsceneWorld
 package.numTargets=17
 target13.type=ClassTarget
@@ -112,26 +64,10 @@ dependency9.to=player_death
 target6.type=ClassTarget
 target7.y=130
 target7.x=100
-=======
-dependency14.from=PlatformWorld
-package.numTargets=18
-target13.type=ClassTarget
-dependency24.type=UsesDependency
-dependency21.from=DialogBox
-class.enemy1.image=warrior1R.png
-dependency28.from=DialogManager
-target12.naviview.expanded=true
-dependency9.to=PlatformWorld
-target6.type=ClassTarget
-dependency30.to=TitleController
-target7.y=370
-target7.x=10
->>>>>>> origin/master
 target3.y=250
 target3.x=130
 target7.typeParameters=
 target8.height=50
-<<<<<<< HEAD
 dependency26.to=Hearts
 mainWindow.y=-8
 mainWindow.x=-8
@@ -147,71 +83,32 @@ target5.editor.x=40
 dependency20.to=DialogManager
 target5.editor.height=700
 target14.name=enemy2
-=======
-dependency26.to=CutsceneWorld
-mainWindow.y=23
-mainWindow.x=0
-target12.showInterface=false
-target3.showInterface=false
-target17.typeParameters=
-dependency3.to=PlatformWorld
-target1.width=110
-dependency7.type=UsesDependency
-dependency4.from=PlatformWorld
-target5.editor.y=20
-target5.editor.x=40
-dependency20.to=Letter
-target5.editor.height=700
-target14.name=player_death
->>>>>>> origin/master
 target9.height=50
 target2.naviview.expanded=true
 target11.showInterface=false
 target2.showInterface=false
-<<<<<<< HEAD
 target7.name=game_over
 dependency16.to=PlatformWorld
-=======
-target7.name=Text
-dependency16.to=CutscenePlayer
->>>>>>> origin/master
 target16.naviview.expanded=true
 target1.editor.y=11
 target1.editor.x=123
 class.game_over.superclass=greenfoot.Actor
-<<<<<<< HEAD
 dependency13.from=CutsceneWorld
 dependency16.type=UsesDependency
 target14.typeParameters=
 target8.width=110
-=======
-dependency13.from=enemy1
-dependency16.type=UsesDependency
-target14.typeParameters=
-target8.width=80
-class.TitleController.superclass=greenfoot.Actor
->>>>>>> origin/master
 target4.editor.height=700
 target12.type=ClassTarget
 target13.height=50
 dependency23.type=UsesDependency
-<<<<<<< HEAD
 dependency20.from=CutsceneWorld
 target4.width=80
 target9.showInterface=false
 dependency27.from=PlatformWorld
-=======
-dependency20.from=DialogBox
-target4.width=120
-target9.showInterface=false
-dependency27.from=CutsceneWorld
-target18.showInterface=false
->>>>>>> origin/master
 target10.showInterface=false
 target1.showInterface=false
 target5.type=ClassTarget
 class.player_death.image=player_explosion_c.gif
-<<<<<<< HEAD
 dependency10.to=PlatformWorld
 target17.naviview.expanded=true
 target2.height=50
@@ -222,24 +119,10 @@ target15.x=130
 target11.y=70
 target3.editor.height=786
 target11.x=70
-=======
-dependency10.to=exit_right
-target17.naviview.expanded=true
-dependency30.type=UsesDependency
-target2.height=50
-class.player_death.superclass=greenfoot.Actor
-target15.y=130
-class.Letter.superclass=greenfoot.Actor
-target15.x=200
-target11.y=370
-target3.editor.height=786
-target11.x=100
->>>>>>> origin/master
 readme.height=58
 target5.editor.width=900
 target8.showInterface=false
 target17.showInterface=false
-<<<<<<< HEAD
 dependency27.to=Lives
 dependency3.from=player
 target11.typeParameters=
@@ -255,72 +138,35 @@ target13.name=player_death
 dependency21.to=DialogBox
 target7.naviview.expanded=true
 target6.name=exit_right
-=======
-dependency27.to=player
-dependency3.from=enemy
-target11.typeParameters=
-dependency6.type=UsesDependency
-dependency4.to=enemy
-target9.typeParameters=
-target16.height=50
-class.DialogBox.superclass=greenfoot.Actor
-target7.width=80
-target2.editor.height=700
-target13.name=DialogueLetter
-dependency21.to=Text
-target7.naviview.expanded=true
-target6.name=enemy
->>>>>>> origin/master
 target16.showInterface=false
 class.game_over.image=game_over.png
 dependency15.type=UsesDependency
 dependency12.from=PlatformWorld
-<<<<<<< HEAD
 target14.width=80
 dependency17.to=Letter
 dependency19.from=CutsceneWorld
 target6.y=130
 target6.x=10
-=======
-target14.width=100
-dependency17.to=PlatformWorld
-target6.y=70
-dependency19.from=enemy2
-target6.x=70
->>>>>>> origin/master
 target10.width=110
 target2.y=250
 target11.type=ClassTarget
 target2.x=10
 dependency22.type=UsesDependency
-<<<<<<< HEAD
 class.Lives.superclass=greenfoot.Actor
 target17.height=50
 dependency29.type=UsesDependency
 dependency26.from=PlatformWorld
 target6.typeParameters=
-=======
-target18.type=ClassTarget
-target17.height=50
-target6.typeParameters=
-dependency29.type=UsesDependency
-dependency26.from=PlatformWorld
->>>>>>> origin/master
 target4.type=ClassTarget
 class.player.image=player_idle_2.png
 editor.fx.0.y=0
 editor.fx.0.x=0
-<<<<<<< HEAD
 dependency11.to=enemy1
-=======
-dependency11.to=game_over
->>>>>>> origin/master
 target6.height=50
 editor.fx.0.width=700
 dependency5.type=UsesDependency
 dependency2.from=PlatformWorld
 target17.width=80
-<<<<<<< HEAD
 dependency9.from=PlatformWorld
 target10.height=50
 dependency28.to=player
@@ -350,46 +196,12 @@ dependency25.from=DialogManager
 target10.y=310
 target3.type=ClassTarget
 target10.x=130
-=======
-dependency9.from=exit_right
-target10.height=50
-dependency28.to=CutscenePlayer
-target13.naviview.expanded=true
-target2.editor.width=900
-target3.typeParameters=
-target13.width=110
-dependency5.to=enemy
-target12.name=DialogManager
-class.DialogueBox.superclass=greenfoot.Actor
-target13.typeParameters=
-target5.name=Title
-dependency22.to=DialogBox
-dependency14.type=UsesDependency
-dependency11.from=PlatformWorld
-target14.naviview.expanded=true
-target18.y=10
-dependency18.from=PlatformWorld
-target18.x=160
-target14.y=70
-target14.x=160
-target10.type=ClassTarget
-dependency18.to=AnimatedActor
-dependency21.type=UsesDependency
-package.numDependencies=30
-target17.type=ClassTarget
-dependency28.type=UsesDependency
-dependency25.from=DialogBox
-target10.y=190
-target3.type=ClassTarget
-target10.x=10
->>>>>>> origin/master
 target3.naviview.expanded=true
 readme.name=@README
 target16.width=80
 target10.typeParameters=
 class.sss.superclass=greenfoot.Actor
 target8.typeParameters=
-<<<<<<< HEAD
 dependency12.to=enemy2
 target4.editor.width=900
 dependency4.type=UsesDependency
@@ -412,55 +224,19 @@ target3.height=50
 dependency6.to=PlatformWorld
 target4.name=Lives
 target1.y=10
-=======
-dependency12.to=player_death
-target4.editor.width=900
-dependency4.type=UsesDependency
-dependency1.from=player
-dependency8.from=exit_right
-target4.naviview.expanded=true
-target14.height=50
-target18.naviview.expanded=true
-target9.y=130
-target4.editor.y=20
-target9.x=100
-target4.editor.x=40
-dependency29.to=CutsceneWorld
-class.DialogueLetter.superclass=greenfoot.Actor
-class.exit_right.image=NPC_Dimensional_Mirror.png
-target11.name=Letter
-class.player.superclass=AnimatedActor
-target5.y=430
-target5.x=10
-target18.name=player
-target3.height=50
-dependency6.to=player_death
-target4.name=TitleController
-target1.y=10
-class.enemy.image=blob_a.gif
->>>>>>> origin/master
 target1.x=70
 class.CutscenePlayer.image=player_talk_1.png
 target5.typeParameters=
 dependency13.type=UsesDependency
-<<<<<<< HEAD
 dependency10.from=enemy1
 target7.showInterface=false
 target3.width=110
 dependency17.from=DialogBox
 dependency23.to=CutsceneWorld
-=======
-dependency10.from=PlatformWorld
-target7.showInterface=false
-target3.width=110
-dependency17.from=CutsceneWorld
-dependency23.to=DialogManager
->>>>>>> origin/master
 class.enemy1.superclass=AnimatedActor
 dependency20.type=UsesDependency
 target16.type=ClassTarget
 dependency27.type=UsesDependency
-<<<<<<< HEAD
 dependency24.from=CutsceneWorld
 target2.type=ClassTarget
 target9.type=ClassTarget
@@ -483,37 +259,12 @@ target6.width=80
 readme.width=47
 target6.editor.y=63
 mainWindow.height=1066
-=======
-dependency24.from=DialogManager
-target2.type=ClassTarget
-target9.type=ClassTarget
-target1.editor.height=700
-dependency19.to=PlatformWorld
-target4.height=50
-editor.swing.0.height=700
-target8.naviview.expanded=true
-target6.showInterface=false
-target15.showInterface=false
-readme.y=10
-readme.x=10
-target10.naviview.expanded=true
-target16.typeParameters=
-target2.typeParameters=
-dependency13.to=PlatformWorld
-dependency3.type=UsesDependency
-dependency7.from=player_death
-target6.width=80
-readme.width=47
-target6.editor.y=63
-mainWindow.height=773
->>>>>>> origin/master
 target9.naviview.expanded=true
 target6.editor.x=146
-editor.swing.0.width=1029
+editor.swing.0.width=1028
 target14.showInterface=false
 target5.showInterface=false
 target1.editor.width=900
-<<<<<<< HEAD
 target2.width=110
 class.CutsceneWorld.image=cutscene_background.png
 target10.name=DialogManager
@@ -530,31 +281,11 @@ dependency7.to=exit_right
 dependency12.type=UsesDependency
 dependency19.type=UsesDependency
 dependency16.from=enemy2
-=======
-target18.height=50
-target2.width=110
-class.CutsceneWorld.image=cutscene_background.png
-target10.name=AnimatedActor
-target17.y=370
-target17.x=190
-target17.name=DialogBox
-target3.name=CutsceneWorld
-target7.height=50
-target13.y=310
-target13.x=10
-target2.editor.y=46
-target2.editor.x=104
-dependency7.to=PlatformWorld
-dependency12.type=UsesDependency
-dependency19.type=UsesDependency
-dependency16.from=CutsceneWorld
->>>>>>> origin/master
 class.sss.image=playertest.png
 target13.showInterface=false
 target4.showInterface=false
 class.exit_right.superclass=greenfoot.Actor
 target15.type=ClassTarget
-<<<<<<< HEAD
 dependency23.from=PlatformWorld
 dependency26.type=UsesDependency
 target11.height=50
@@ -564,23 +295,10 @@ target9.width=80
 target8.type=ClassTarget
 target6.editor.height=700
 dependency1.to=PlatformWorld
-=======
-dependency23.from=CutsceneWorld
-dependency26.type=UsesDependency
-target11.height=50
-dependency24.to=DialogBox
-target1.type=ClassTarget
-target9.width=90
-target8.type=ClassTarget
-target6.editor.height=700
-dependency1.to=PlatformWorld
-dependency30.from=Title
->>>>>>> origin/master
 target5.width=80
 class.DialogueBox.image=dialogue.png
 target1.naviview.expanded=true
 target15.naviview.expanded=true
-<<<<<<< HEAD
 target8.y=190
 target8.x=10
 target3.editor.width=1296
@@ -596,23 +314,4 @@ dependency14.to=PlatformWorld
 target1.height=50
 class.CutscenePlayer.superclass=AnimatedActor
 mainWindow.width=1936
-=======
-target8.y=130
-target8.x=10
-class.enemy.superclass=AnimatedActor
-target3.editor.width=1296
-target12.width=110
-dependency2.type=UsesDependency
-target4.y=490
-target4.x=10
-dependency9.type=UsesDependency
-dependency6.from=player
-target12.height=50
-world.lastInstantiated=Title
-dependency14.to=enemy1
-target18.typeParameters=
-target1.height=50
-class.CutscenePlayer.superclass=AnimatedActor
-mainWindow.width=1280
->>>>>>> origin/master
 target4.typeParameters=
