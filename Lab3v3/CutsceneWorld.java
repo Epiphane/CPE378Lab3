@@ -229,22 +229,13 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("And then I can show them this awesome cave!");
             }
             else if (Player.numInjuries() < 9) {
-                dialogmanager.addLine("Ooh Im feeling a little sore", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("Why do you think theyre", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("attacking us?", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("I am having fun though.");
-                dialogmanager.addLine("I really...   ", CutscenePlayer.Expression.Sad, false);
-                dialogmanager.addLine("I really am.");
-                dialogmanager.addLine("Come on now!");
+                dialogmanager.addLine("");
             }
             else {
-                dialogmanager.addLine("This is a lot to handle...", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("I dont know what to do", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("Do we keep going?", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("Well I guess we dont really", CutscenePlayer.Expression.Concerned);
-                dialogmanager.addLine("Have a choice do we?", CutscenePlayer.Expression.Concerned);
-                dialogmanager.addLine("After all theyre just waiting", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("For us to come back...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Everything hurts...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("They keep hitting me", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("and hitting me...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I just want to go home.", CutscenePlayer.Expression.Concerned);
             }
         }
     }
