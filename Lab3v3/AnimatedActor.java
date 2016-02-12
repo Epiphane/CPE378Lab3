@@ -130,5 +130,6 @@ public class AnimatedActor extends Actor
         
         /**set a new image*/
         this.setImage(current_animation.getFrame((int)current_frame, isFacingRight));
+//        if (getWorld() != null) getWorld().removeObject(this);
     }
 }

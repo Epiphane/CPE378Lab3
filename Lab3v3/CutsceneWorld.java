@@ -20,7 +20,6 @@ public class CutsceneWorld extends World
     public CutsceneWorld()
     {     
         this(new player(), 0);
-        prepare();
     }
     
     /**
@@ -229,13 +228,23 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("And then I can show them this awesome cave!");
             }
             else if (Player.numInjuries() < 9) {
-                dialogmanager.addLine("");
+                dialogmanager.addLine("Wow this cave is actually       ", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("Kind of scary...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Oh well. Well be out of there soon!");
+                dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Come on! Chin up!");
+                dialogmanager.addLine("We gotta see what else this world has");
+                dialogmanager.addLine("in store for us!");
             }
             else {
                 dialogmanager.addLine("Everything hurts...", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("They keep hitting me", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("and hitting me...", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("I just want to go home.", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("No Im not having fun.", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Everybody keeps hurting me!", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Just...lets go.", CutscenePlayer.Expression.Sad);
             }
         }
     }

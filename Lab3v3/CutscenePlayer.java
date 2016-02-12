@@ -29,6 +29,8 @@ public class CutscenePlayer extends AnimatedActor
         player_irked.load();
         
         player_angry.speed = player_talk.speed = 1.0f;
+        player_concerned.speed = player_sad.speed = player_angry.speed;
+        player_irked.speed = player_sad.speed = player_concerned.speed;
         
         setAnimation(player_talk);
         setFacingRight(false); // awk

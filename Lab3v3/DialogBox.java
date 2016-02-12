@@ -25,7 +25,7 @@ public class DialogBox extends Actor
         this.player = player;
         letters = new Actor[0];
         
-        speech.setVolume(70);
+        speech.setVolume(90);
     }
     
     private boolean complete = false;
@@ -79,8 +79,9 @@ public class DialogBox extends Actor
             complete = false;
             
             if (Math.floor(ndx) != Math.floor(ndx - speed)) {
-                if (player != null &Math.floor(ndx) % 2 == 1 && ndx < 8)
+                if (player != null && Math.floor(ndx) % 2 == 1 && ndx < 8) {
                     player.animate();
+                }
                 speech.play();
             
                 Letter newLetter = new Letter();
