@@ -471,6 +471,19 @@ public class PlatformWorld extends World
         startx = 56;
         starty = 500;
         addObject(currentPlayer, startx, starty);
+        
+        // Cutscene-ness
+        DialogBox dialogbox = new DialogBox(null);
+        addObject(dialogbox,540,150);
+        
+        DialogManager dialogmanager = new DialogManager(dialogbox, null);
+        addObject(dialogmanager,836,97);
+        
+        dialogmanager.addLine("A dark cave awaits Wilbert.               ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Behind him are tribal echoes                ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("But the cave is silent.                        ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Wilbert is ready to keep going. ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.start();
  
         addObject(new exit_right(), 926, 462);
     }

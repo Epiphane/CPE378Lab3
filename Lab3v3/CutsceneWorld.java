@@ -73,8 +73,6 @@ public class CutsceneWorld extends World
             dialogmanager.addLine("like that do you?");
         }
         
-        if (level < 3) level = 3;
-        
         // Prepare next level
         dialogmanager.nextWorld = new PlatformWorld(Player, level);
         
@@ -84,8 +82,10 @@ public class CutsceneWorld extends World
             setupDialog_field_1();
         else if (level == 2)
             setupDialog_field_2();
-        else if (level == 4)
+        else if (level == 5)
             setupDialog_forest_1(); // Right after the first transition
+        else if (level == 8)
+            setupDialog_cave_1(); // Right after the second transition
         else {
             skip = dialogmanager.nextWorld;
             Greenfoot.setWorld(dialogmanager.nextWorld);
@@ -187,24 +187,64 @@ public class CutsceneWorld extends World
         // Pacifist
         if (Player.kills == 0) {
             if (Player.numInjuries() == 0) {
-                dialogmanager.addLine("Wheeeeee!");
-                dialogmanager.addLine("This world is so great!");
-                dialogmanager.addLine("All those nice");
-                dialogmanager.addLine("Adventurers keep smiling");
-                dialogmanager.addLine("At us!");
+                dialogmanager.addLine("What a beautiful forest!!");
+                dialogmanager.addLine("The trees are so lovely");
+                dialogmanager.addLine("And our friends are here too!");
+                dialogmanager.addLine("Gosh Im so glad theyre so friendly...");
             }
-            else if (Player.numInjuries() < 3) {
-                dialogmanager.addLine("Well..", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("Its not quite as carefree", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("as I expected...", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("But I am having a lot of fun");
-                dialogmanager.addLine("This world is so beautiful!");
-                dialogmanager.addLine("Whats not to love?", CutscenePlayer.Expression.Sad);
+            else if (Player.numInjuries() < 6) {
+                dialogmanager.addLine("Ooh Im feeling a little sore", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Why do you think theyre", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("attacking us?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I am having fun though.");
+                dialogmanager.addLine("I really...   ", CutscenePlayer.Expression.Sad, false);
+                dialogmanager.addLine("I really am.");
+                dialogmanager.addLine("Come on now!");
             }
             else {
-                dialogmanager.addLine("I dont get it...", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("They all attack me!", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("Whats happening!?!", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("This is a lot to handle...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I dont know what to do", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Do we keep going?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Well I guess we dont really", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Have a choice do we?", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("After all theyre just waiting", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("For us to come back...", CutscenePlayer.Expression.Sad);
+            }
+        }
+    }
+    
+    private void setupDialog_cave_1() {
+        // Pacifist
+        if (Player.kills == 0) {
+            if (Player.numInjuries() <= 2) {
+                dialogmanager.addLine("Oooooooh this cave is spooky");
+                dialogmanager.addLine("But like.");
+                dialogmanager.addLine("In a good way you know?");
+                dialogmanager.addLine("I cant wait to take my friends here!");
+                dialogmanager.addLine("....", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("No silly! Youre my friend too!");
+                dialogmanager.addLine("I just mean....");
+                dialogmanager.addLine("I wonder where my other friends are?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Oh well. Well see them around.");
+                dialogmanager.addLine("And then I can show them this awesome cave!");
+            }
+            else if (Player.numInjuries() < 9) {
+                dialogmanager.addLine("Ooh Im feeling a little sore", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Why do you think theyre", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("attacking us?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I am having fun though.");
+                dialogmanager.addLine("I really...   ", CutscenePlayer.Expression.Sad, false);
+                dialogmanager.addLine("I really am.");
+                dialogmanager.addLine("Come on now!");
+            }
+            else {
+                dialogmanager.addLine("This is a lot to handle...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I dont know what to do", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Do we keep going?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Well I guess we dont really", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Have a choice do we?", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("After all theyre just waiting", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("For us to come back...", CutscenePlayer.Expression.Sad);
             }
         }
     }
