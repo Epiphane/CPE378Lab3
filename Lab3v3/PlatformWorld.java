@@ -6,7 +6,7 @@ import java.awt.Color;
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
-    static int sWidth = 1000;
+    static int sWidth = 1067;
     static int sHeight = 600;
     
     /** background and masking colors for each levels */
