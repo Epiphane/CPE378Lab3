@@ -24,6 +24,9 @@ public class PlatformWorld extends World
     static Color upColor;
     static Color bounceColor;
     
+    /** player movement deceleration */
+    public double decel = 0.8;
+    
     /** level no. */
     static int currentLevel = 0;
     
@@ -36,6 +39,9 @@ public class PlatformWorld extends World
     /** player's remaining lifes*/
     static public int loseLifeDelay = 0;
     boolean gameIsOver = false;
+    
+    public Hearts hearts = new Hearts();
+    public Lives lives = new Lives();
     
     player currentPlayer;
     
@@ -54,11 +60,13 @@ public class PlatformWorld extends World
         setMaskCodes(); 
         
         currentPlayer = Player;
+        addObject(hearts, 50, 60); //health
+        addObject(lives, 40, 25); //lives
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
         /*||||***Make sure don't forget this while creating new kind of object!!!***|||||*/
-        setPaintOrder(game_over.class, player_death.class, player.class, enemy1.class);
+        setPaintOrder(game_over.class, player_death.class, player.class, enemy1.class, Hearts.class);
         
         /**Start the game*/
         currentLevel = level;
@@ -72,6 +80,9 @@ public class PlatformWorld extends World
     {
         /**player's life needs to be updated here*/
         manageLife();
+        hearts.adjustHearts(currentPlayer.HP);
+        lives.adjustLives(currentPlayer.lives);
+        
     }
     
     /**
@@ -293,12 +304,14 @@ public class PlatformWorld extends World
      * set the title level
      */
     public void setLevel_1(){
+        
         /**set art*/
         background = new GreenfootImage("Level1_art.gif");
         setBackground(background);
         /**set platforms*/
         bgmask = new GreenfootImage("Level1.gif");
-       
+        /**set sliding */
+        decel = 0.97;
         /**set player in a fixed spot*/
         startx = 40;
         starty = 150;
@@ -314,6 +327,7 @@ public class PlatformWorld extends World
      * set another level
      */
     public void setLevel_2(){
+        
         /**set art*/
         background = new GreenfootImage("Level2_art.gif");
         setBackground(background);
@@ -335,11 +349,12 @@ public class PlatformWorld extends World
      * set another level
      */
     public void setLevel_3(){
+        
         /**set art*/
         background = new GreenfootImage("Level3_art.gif");
         setBackground(background);
         /**set platforms*/
-        bgmask = new GreenfootImage("Level3.gif");
+        bgmask = new GreenfootImage("Level3.gif");     
         
         /**set player in a fixed spot*/
         startx = 40;
