@@ -106,6 +106,7 @@ public class player extends AnimatedActor
      * Player's Sprites Variables
      */
   
+    public int angry_delay = 0;
     int hurt_delay = 0;
     
     /**
@@ -167,24 +168,11 @@ public class player extends AnimatedActor
         maskTouch();
         
         // Become mad if ya want
-        if (zPress && !Greenfoot.isKeyDown(ANGRY_KEY)) {
-            angry = !angry;
-            
-            if (angry) {
-                if (current_animation == player_walk) current_animation = player_walk_angry_loop;
-                if (current_animation == player_walk_loop) current_animation = player_walk_angry_loop;
-                if (current_animation == player_jump) current_animation = player_jump_angry;
-                if (current_animation == player_jump_loop) current_animation = player_jump_angry_loop;
-                if (current_animation == player_idle) current_animation = player_idle_angry;
-            }
-            else {
-                if (current_animation == player_walk_angry_loop) current_animation = player_walk_loop;
-                if (current_animation == player_jump_angry) current_animation = player_jump;
-                if (current_animation == player_jump_angry_loop) current_animation = player_jump_loop;
-                if (current_animation == player_idle_angry) current_animation = player_idle;
-            }
+        if (zPress && !Greenfoot.isKeyDown(ANGRY_KEY) && angry_delay-- <= 0) {
+            setAngry(!angry);
         }
         zPress = Greenfoot.isKeyDown(ANGRY_KEY);
+
         
         /**disallow HP go over maxHP*/
         if (HP > maxHP){
@@ -209,8 +197,38 @@ public class player extends AnimatedActor
         }
     }    
     
+    public void setAngry(boolean angry) {
+        if (fury == 0) angry = false;
+        if (fury >= 6) angry = true;
+        
+        this.angry = angry;
+        
+        if (angry) {
+            if (current_animation == player_walk) current_animation = player_walk_angry_loop;
+            if (current_animation == player_walk_loop) current_animation = player_walk_angry_loop;
+            if (current_animation == player_jump) current_animation = player_jump_angry;
+            if (current_animation == player_jump_loop) current_animation = player_jump_angry_loop;
+            if (current_animation == player_idle) current_animation = player_idle_angry;
+        }
+        else {
+            if (current_animation == player_walk_angry_loop) current_animation = player_walk_loop;
+            if (current_animation == player_jump_angry) current_animation = player_jump;
+            if (current_animation == player_jump_angry_loop) current_animation = player_jump_loop;
+            if (current_animation == player_idle_angry) current_animation = player_idle;
+        }
+    }
+    
     public void getMad() {
-        fury ++;
+        setFury(fury + 1);
+    }
+    
+    public void setFury(int fury) {
+        this.fury = fury;
+        if (platformer != null) {
+            platformer.fury.set(fury);
+        }
+        
+        setAngry(this.angry);
     }
     
     /** 
@@ -476,6 +494,7 @@ public class player extends AnimatedActor
             if (angry) {
                 getWorld().removeObject(Enemy);
                 
+                kills ++;
                 getMad();
                 hurt.play();
             }
@@ -488,7 +507,7 @@ public class player extends AnimatedActor
                 HP--; //do damage to the player
                 speedY = -5;
                 y -= 4;
-                if (fury < 3) getMad();
+                if (fury < 2) getMad();
                 
                 hurt.play();
             }

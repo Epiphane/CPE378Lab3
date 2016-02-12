@@ -64,7 +64,7 @@ public class PlatformWorld extends World
         addObject(hearts, 50, 60); //health
         addObject(lives, 40, 25); //lives
         addObject(fury, 600, 40);
-        fury.setImage("fury_5.png");
+        fury.set(currentPlayer.fury);
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/

@@ -107,6 +107,8 @@ public class CutsceneWorld extends World
     }
     
     private void setupDialog_1() {
+        Player.fury = Math.max(1, Player.fury);
+        
         if (Player.numInjuries() == 0) {
             dialogmanager.addLine("Wow that was fun!");
             dialogmanager.addLine("Did you see all the");

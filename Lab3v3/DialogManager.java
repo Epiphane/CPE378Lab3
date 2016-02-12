@@ -52,12 +52,14 @@ public class DialogManager extends Actor
      * Act - do whatever the DialogManager wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
+    private boolean xPress = false;
     public void act() 
     {
-        if (Greenfoot.isKeyDown("x")) {
+        if (xPress && !Greenfoot.isKeyDown("x")) {
             Greenfoot.setWorld(nextWorld);
             return;
         }
+        xPress = Greenfoot.isKeyDown("x");
         if (dialogBox.isComplete() && (Greenfoot.isKeyDown("z") || !shouldPause)) {
             if (ndx == lines.size()) {
                 Greenfoot.setWorld(nextWorld);
