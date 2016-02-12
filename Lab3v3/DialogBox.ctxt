@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=DialogBox
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ DialogBox\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ DialogBox\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=player
 comment1.target=DialogBox(CutscenePlayer)
 comment2.params=
@@ -9,5 +9,5 @@ comment3.params=text
 comment3.target=void\ say(java.lang.String)
 comment4.params=
 comment4.target=void\ act()
-comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ DialogBox\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment4.text=\n\ Act\ -\ do\ whatever\ the\ DialogBox\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 numComments=5
