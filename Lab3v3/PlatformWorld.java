@@ -306,7 +306,8 @@ public class PlatformWorld extends World
      * go to next level
      */
     public void nextLevel(){
-        Greenfoot.setWorld(new CutsceneWorld(currentPlayer, currentLevel + 1)); 
+        CutsceneWorld cutscene = new CutsceneWorld(currentPlayer, currentLevel + 1);
+        Greenfoot.setWorld(cutscene.skip == null ? cutscene : cutscene.skip); 
     }
     
     /**
@@ -394,13 +395,26 @@ public class PlatformWorld extends World
         background = new GreenfootImage("Level4_art.gif");
         setBackground(background);
         /**set platforms*/
-        bgmask = new GreenfootImage("Level4.gif");     
+        bgmask = new GreenfootImage("Level4.gif");
         
         /**set player in a fixed spot*/
         startx = 56;
         starty = 500;
         addObject(currentPlayer, startx, starty);
- 
+        
+        // Cutscene-ness
+        DialogBox dialogbox = new DialogBox(null);
+        addObject(dialogbox,540,150);
+        
+        DialogManager dialogmanager = new DialogManager(dialogbox, null);
+        addObject(dialogmanager,836,97);
+        
+        dialogmanager.addLine("Beyond the fields                             ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("The forest sits                       ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("ominous sounds echo from within                      ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("But wilbert is not fazed. ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.start();
+        
         addObject(new exit_right(), 926, 460);
     }
     

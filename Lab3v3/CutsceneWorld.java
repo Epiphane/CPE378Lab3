@@ -11,6 +11,8 @@ public class CutsceneWorld extends World
     private DialogManager dialogmanager;
     private static player Player;
     
+    public World skip = null;
+    
     /**
      * Constructor for objects of class CutsceneWorld.
      * 
@@ -71,25 +73,28 @@ public class CutsceneWorld extends World
             dialogmanager.addLine("like that do you?");
         }
         
+        if (level < 3) level = 3;
+        
+        // Prepare next level
+        dialogmanager.nextWorld = new PlatformWorld(Player, level);
+        
         if (level == 0)
-            setupDialog_0();
+            setupDialog_intro();
         else if (level == 1)
-            setupDialog_1();
+            setupDialog_field_1();
         else if (level == 2)
-            setupDialog_2();
+            setupDialog_field_2();
+        else if (level == 4)
+            setupDialog_forest_1(); // Right after the first transition
         else {
-            dialogmanager.addLine("Uh oh...");
-            dialogmanager.addLine("Theres no dialog");
-            dialogmanager.addLine("for this level!");
-            dialogmanager.addLine("well........");
-            dialogmanager.addLine("I guess that means you win!");
+            skip = dialogmanager.nextWorld;
+            Greenfoot.setWorld(dialogmanager.nextWorld);
         }
         
-        dialogmanager.nextWorld = new PlatformWorld(Player, level);
         dialogmanager.start();
     }
     
-    private void setupDialog_0() {    
+    private void setupDialog_intro() {    
         dialogmanager.addLine("Hello there!");
         dialogmanager.addLine("My name is Wilbert!");
         dialogmanager.addLine("Welcome to my home!");
@@ -112,7 +117,7 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("Here goes!");
     }
     
-    private void setupDialog_1() {
+    private void setupDialog_field_1() {
         Player.fury = Math.max(1, Player.fury);
         
         // Pacifist
@@ -152,7 +157,33 @@ public class CutsceneWorld extends World
         }
     }
     
-    private void setupDialog_2() {
+    private void setupDialog_field_2() {
+        // Pacifist
+        if (Player.kills == 0) {
+            if (Player.numInjuries() == 0) {
+                dialogmanager.addLine("Wheeeeee!");
+                dialogmanager.addLine("This world is so great!");
+                dialogmanager.addLine("All those nice");
+                dialogmanager.addLine("Adventurers keep smiling");
+                dialogmanager.addLine("At us!");
+            }
+            else if (Player.numInjuries() < 3) {
+                dialogmanager.addLine("Well..", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Its not quite as carefree", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("as I expected...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("But I am having a lot of fun");
+                dialogmanager.addLine("This world is so beautiful!");
+                dialogmanager.addLine("Whats not to love?", CutscenePlayer.Expression.Sad);
+            }
+            else {
+                dialogmanager.addLine("I dont get it...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("They all attack me!", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Whats happening!?!", CutscenePlayer.Expression.Sad);
+            }
+        }
+    }
+    
+    private void setupDialog_forest_1() {
         // Pacifist
         if (Player.kills == 0) {
             if (Player.numInjuries() == 0) {

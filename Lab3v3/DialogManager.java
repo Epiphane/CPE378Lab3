@@ -16,8 +16,9 @@ public class DialogManager extends Actor
     private ArrayList<CutscenePlayer.Expression> expressions;
     private ArrayList<Boolean> pause;
     
-    private boolean shouldPause = true;;
+    private boolean shouldPause = true;
     
+    public boolean skip = false;
     public World nextWorld;
     
     DialogManager(DialogBox box, CutscenePlayer player) {
@@ -44,7 +45,11 @@ public class DialogManager extends Actor
     }
     
     public void start() {
+        if (lines.size() == 0) return;
+        
         ndx = 0;
+        if (player != null) player.setExpression(expressions.get(ndx));
+        shouldPause = pause.get(ndx);
         dialogBox.say(lines.get(ndx++));
     }
     
@@ -55,17 +60,17 @@ public class DialogManager extends Actor
     private boolean xPress = false;
     public void act() 
     {
-        if (xPress && !Greenfoot.isKeyDown("x")) {
+        if (nextWorld != null && (skip || (xPress && !Greenfoot.isKeyDown("x")))) {
             Greenfoot.setWorld(nextWorld);
             return;
         }
         xPress = Greenfoot.isKeyDown("x");
         if (dialogBox.isComplete() && (Greenfoot.isKeyDown("z") || !shouldPause)) {
-            if (ndx == lines.size()) {
+            if (ndx == lines.size() && nextWorld != null) {
                 Greenfoot.setWorld(nextWorld);
             }
-            else {
-                player.setExpression(expressions.get(ndx));
+            else if (ndx < lines.size()) {
+                if (player != null) player.setExpression(expressions.get(ndx));
                 shouldPause = pause.get(ndx);
                 dialogBox.say(lines.get(ndx++));
             }

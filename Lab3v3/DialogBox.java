@@ -42,9 +42,10 @@ public class DialogBox extends Actor
         ndx = -1;
         // Fix text so that it wraps nicely
         int lastSpace = -1;
-        for (int i = 0; i < text.length(); i ++) {
+        int originalLength = text.length();
+        for (int i = 0; i < text.length() && i < originalLength; i ++) {
             if (text.charAt(i) == ' ') {
-                lastSpace = i % LINE_WIDTH;
+                lastSpace = i;
                 
                 if (i % LINE_WIDTH == 0) {
                     text = text.substring(0, i) + text.substring(i + 1);
@@ -53,11 +54,13 @@ public class DialogBox extends Actor
             if (i % LINE_WIDTH == 0 && lastSpace > 0) {
                 // Add spaces to text
                 String spaces = "";
-                for (int j = lastSpace; j % LINE_WIDTH != LINE_WIDTH - 1; j ++) {
+                for (int j = lastSpace; j % LINE_WIDTH < LINE_WIDTH - 1; j ++) {
                     spaces += " ";
                 }
-                text = text.substring(0, lastSpace) + spaces + text.substring(lastSpace);
-                lastSpace = -1; 
+                if (spaces.length() != 13) {
+                    text = text.substring(0, lastSpace) + spaces + text.substring(lastSpace);
+                    lastSpace = -1; 
+                }
             }
         }
         
@@ -76,7 +79,7 @@ public class DialogBox extends Actor
             complete = false;
             
             if (Math.floor(ndx) != Math.floor(ndx - speed)) {
-                if (Math.floor(ndx) % 2 == 1 && ndx < 8)
+                if (player != null &Math.floor(ndx) % 2 == 1 && ndx < 8)
                     player.animate();
                 speech.play();
             
