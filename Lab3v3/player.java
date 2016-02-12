@@ -99,7 +99,7 @@ public class player extends AnimatedActor
     int kills = 0;
     
     public int numInjuries() {
-        return (maxHP - HP) + (4 - lives);
+        return (maxHP - HP) + (5 - lives);
     }
     
     /**

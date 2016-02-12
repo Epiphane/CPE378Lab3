@@ -42,6 +42,7 @@ public class PlatformWorld extends World
     
     public Hearts hearts = new Hearts();
     public Lives lives = new Lives();
+    public Fury fury = new Fury();
     
     player currentPlayer;
     
@@ -62,6 +63,8 @@ public class PlatformWorld extends World
         currentPlayer = Player;
         addObject(hearts, 50, 60); //health
         addObject(lives, 40, 25); //lives
+        addObject(fury, 600, 40);
+        fury.setImage("fury_5.png");
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
