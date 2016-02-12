@@ -85,6 +85,8 @@ public class CutsceneWorld extends World
             setupDialog_forest_1(); // Right after the first transition
         else if (level == 8)
             setupDialog_cave_1(); // Right after the second transition
+        else if (level == 12)
+            setupDialog_mountain_1(); // Right after the second transition
         else {
             skip = dialogmanager.nextWorld;
             Greenfoot.setWorld(dialogmanager.nextWorld);
@@ -191,7 +193,7 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("And our friends are here too!");
                 dialogmanager.addLine("Gosh Im so glad theyre so friendly...");
             }
-            else if (Player.numInjuries() < 6) {
+            else if (Player.numInjuries() < 8) {
                 dialogmanager.addLine("Ooh Im feeling a little sore", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Why do you think theyre", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("attacking us?", CutscenePlayer.Expression.Sad);
@@ -245,6 +247,51 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("No Im not having fun.", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Everybody keeps hurting me!", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Just...lets go.", CutscenePlayer.Expression.Sad);
+            }
+        }
+    }
+    
+    private void setupDialog_mountain_1() {
+        // Pacifist
+        if (Player.kills == 0) {
+            if (Player.numInjuries() <= 3) {
+                dialogmanager.addLine("It looks like we're almost done exploring!");
+                dialogmanager.addLine("I can see my house from here!");
+                dialogmanager.addLine("This was so great. Thank you!");
+                dialogmanager.addLine("You know...");
+                dialogmanager.addLine("I really like being your friend!");
+                dialogmanager.addLine("Will you be my friend forever?");
+                dialogmanager.addLine("We can go on trips all the time...");
+                dialogmanager.addLine("Have hot chocolate in winter...");
+                dialogmanager.addLine("Just stick around for a while, ok?", CutscenePlayer.Expression.Concerned);
+            }
+            else if (Player.numInjuries() < 10) {
+                dialogmanager.addLine("Whew!");
+                dialogmanager.addLine("Im tired!");
+                dialogmanager.addLine("Fortunately I can see home from here.");
+                dialogmanager.addLine("Just a little farther now!");
+                dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("you know...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("I kind of miss having people around", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("...im sorry for asking but...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("would you stick around a while?", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("actually.");
+                dialogmanager.addLine("I bet you have important things to do.");
+                dialogmanager.addLine("Dont worry about it!");
+                dialogmanager.addLine("Ill be okay");
+            }
+            else {
+                dialogmanager.addLine("I.....      ", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("I.....      ", CutscenePlayer.Expression.Sad, false);
+                dialogmanager.addLine("I dont know what id do without you", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("The people here are so terrible...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Please....", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("Please. when we get back", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("dont leave for a while ok?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I know you have to go...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("But I dont feel safe here.", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("just think about it. ok?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Thanks...im sorry...", CutscenePlayer.Expression.Concerned);
             }
         }
     }

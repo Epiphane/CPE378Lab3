@@ -484,6 +484,8 @@ public class PlatformWorld extends World
         dialogmanager.addLine("A dark cave awaits Wilbert.               ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.addLine("Behind him are tribal echoes                ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.addLine("But the cave is silent.                        ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("In front of the cave is a sign.                        ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("BEWARE OF SPIKES                        ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.addLine("Wilbert is ready to keep going. ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.start();
  

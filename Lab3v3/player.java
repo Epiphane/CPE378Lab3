@@ -100,7 +100,7 @@ public class player extends AnimatedActor
     public boolean firstInjury = true;
     
     public int numInjuries() {
-        return (maxHP - HP) + (5 - lives);
+        return (maxHP - HP) + maxHP * (5 - lives);
     }
     
     /**
