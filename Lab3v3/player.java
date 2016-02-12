@@ -5,7 +5,7 @@ import java.awt.Color;
 public class player extends AnimatedActor
 {
     /** Input */
-    public static final String JUMP_KEY = "z";
+    public static final String JUMP_KEY = "up";
     
     /**
      * Player's animation variables
@@ -81,6 +81,12 @@ public class player extends AnimatedActor
     int HP = 3;
     int maxHP = 3;
     int lives = 4;
+    int fury = 0;
+    int kills = 0;
+    
+    public int numInjuries() {
+        return (maxHP - HP) + (4 - lives);
+    }
     
     /**
      * Player's Sprites Variables
@@ -163,6 +169,10 @@ public class player extends AnimatedActor
             platformer.removeObject(this);
         }
     }    
+    
+    public void getMad() {
+        fury ++;
+    }
     
     /** 
      * Control to walk around the world.
@@ -423,13 +433,14 @@ public class player extends AnimatedActor
         && hurt_delay <= 0 //The delay of getting hurt should be over
         && getY()+34 >= Enemy.getY()
         ){
-            if (getX() < Enemy.getX()) {speedX = -5; setFacingRight(true);}
-            if (getX() > Enemy.getX()) {speedX = 5; setFacingRight(false);}
+            if (getX() < Enemy.getX()) {speedX = -20; setFacingRight(true);}
+            if (getX() > Enemy.getX()) {speedX = 20; setFacingRight(false);}
             if (getX() == Enemy.getX()) {speedX = 0;} //bounce reactions from the enemy
             speedY = 0; //stop falling for a while
             //setAnim_hurt(); //set hurt pose
             HP--; //do damage to the player
             hurt_delay = 60; //reset hurt delay
+            getMad();
             
             hurt.play();
         }
@@ -447,7 +458,7 @@ public class player extends AnimatedActor
      */
     public void damagePlayer(int dmg){
         if (hurt_delay <= 0){
-            speedY = -5;
+            speedY = -20;
             //setAnim_hurt();
             HP -= dmg;
             hurt_delay = 60;

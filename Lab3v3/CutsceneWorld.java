@@ -93,7 +93,7 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("See the rest of this");
         dialogmanager.addLine("beautiful world!");
         dialogmanager.addLine("Come on! Lets go!");
-        dialogmanager.addLine("...");
+        dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
         dialogmanager.addLine("what do you mean?", CutscenePlayer.Expression.Concerned);
         dialogmanager.addLine("be careful?", CutscenePlayer.Expression.Concerned);
         dialogmanager.addLine("...");
@@ -106,26 +106,37 @@ public class CutsceneWorld extends World
         backgroundMusic.pause(); 
     }
     
-    private void setupDialog_1() {    
-        dialogmanager.addLine("Hedfssdfllo there!");
-        dialogmanager.addLine("My name is Wilbert!");
-        dialogmanager.addLine("Welcome to my home!");
-        dialogmanager.addLine("I have lots of friends");
-        dialogmanager.addLine("here but it gets a little");
-        dialogmanager.addLine("lonely sometimes.");
-        dialogmanager.addLine("Hey!");
-        dialogmanager.addLine("I have an idea!");
-        dialogmanager.addLine("Lets go on a trip!");
-        dialogmanager.addLine("See the rest of this");
-        dialogmanager.addLine("beautiful world!");
-        dialogmanager.addLine("Come on! Lets go!");
-        dialogmanager.addLine("...");
-        dialogmanager.addLine("what do you mean?", CutscenePlayer.Expression.Concerned);
-        dialogmanager.addLine("be careful?", CutscenePlayer.Expression.Concerned);
-        dialogmanager.addLine("...");
-        dialogmanager.addLine("Oh theres nothing");
-        dialogmanager.addLine("to worry about!");
-        dialogmanager.addLine("Everyone here is friendly!");
-        dialogmanager.addLine("Here goes!");
+    private void setupDialog_1() {
+        if (Player.numInjuries() == 0) {
+            dialogmanager.addLine("Wow that was fun!");
+            dialogmanager.addLine("Did you see all the");
+            dialogmanager.addLine("friendly people waving at us?");
+            dialogmanager.addLine("Lets keep going!");
+            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
+            dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
+            dialogmanager.addLine("you should have said so!");
+            dialogmanager.addLine("itll be a breeze! Lets go!");
+        }
+        else /* TODO MORE BRANCHES if (Player.numInjuries() < 3) */ {
+            dialogmanager.addLine("Wow that was cool!");
+            dialogmanager.addLine("Except for when I got hit");
+            dialogmanager.addLine("by that strange man...");
+            dialogmanager.addLine("...");
+            dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("But then it passed like that!");
+            dialogmanager.addLine("Oh well. Lets keep going!");
+        }
+    }
+    
+    private void setupDialog_2() {
+        if (Player.numInjuries() == 0 && Player.kills == 0) {
+            dialogmanager.addLine("Wheeeeee!");
+            dialogmanager.addLine("This world is so great!");
+        }
     }
 }

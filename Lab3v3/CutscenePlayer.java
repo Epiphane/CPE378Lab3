@@ -11,15 +11,20 @@ public class CutscenePlayer extends AnimatedActor
     private Animation player_talk = AnimatedActor.generateSequence("player_talk", 2);
     private Animation player_concerned = AnimatedActor.generateSequence("player_talk_concerned", 2);
     private Animation player_angry = AnimatedActor.generateSequence("player_talk_angry", 2);
+    private Animation player_irked = AnimatedActor.generateSequence("player_talk_irked", 2);
     
     public enum Expression {
-        Happy, Concerned, Angry
+        Happy, Concerned, Angry, Irked
     };
+    
+    int baseX, baseY;
+    boolean shaking = false;
     
     public CutscenePlayer() {
         player_angry.load();
         player_talk.load();
         player_concerned.load();
+        player_irked.load();
         
         player_angry.speed = player_talk.speed = 1.0f;
         
@@ -33,7 +38,9 @@ public class CutscenePlayer extends AnimatedActor
      */
     public void act() 
     {
-        // Add your action code here.
+        if (shaking) {
+            setLocation(baseX + (int) (Math.random() * 4 - 2), baseY + (int) (Math.random() * 4 - 2));
+        }
     } 
     
     /**
@@ -49,7 +56,7 @@ public class CutscenePlayer extends AnimatedActor
      */
     public void setExpression(Expression expr) {
         Animation anim = player_talk;
-        System.out.println(expr);
+        shaking = false;
         switch (expr) {
         case Happy:
             anim = player_talk;
@@ -59,6 +66,17 @@ public class CutscenePlayer extends AnimatedActor
             break;
         case Angry:
             anim = player_angry;
+            
+            baseX = getX();
+            baseY = getY();
+            shaking = true;
+            break;
+        case Irked:
+            anim = player_irked;
+            
+            baseX = getX();
+            baseY = getY();
+            shaking = true;
             break;
         }
         

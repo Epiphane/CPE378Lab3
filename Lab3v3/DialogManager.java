@@ -14,6 +14,9 @@ public class DialogManager extends Actor
     private CutscenePlayer player;
     private ArrayList<String> lines;
     private ArrayList<CutscenePlayer.Expression> expressions;
+    private ArrayList<Boolean> pause;
+    
+    private boolean shouldPause = true;;
     
     public World nextWorld;
     
@@ -23,6 +26,7 @@ public class DialogManager extends Actor
         
         lines = new ArrayList<String>();
         expressions = new ArrayList<CutscenePlayer.Expression>();
+        pause = new ArrayList<Boolean>();
     }
     
     public void addLine(String line) {
@@ -30,8 +34,13 @@ public class DialogManager extends Actor
     }
     
     public void addLine(String line, CutscenePlayer.Expression expr) {
+        addLine(line, expr, true);
+    }
+    
+    public void addLine(String line, CutscenePlayer.Expression expr, boolean pauseAtEnd) {
         lines.add(line);
         expressions.add(expr);
+        pause.add(pauseAtEnd);
     }
     
     public void start() {
@@ -49,15 +58,14 @@ public class DialogManager extends Actor
             Greenfoot.setWorld(nextWorld);
             return;
         }
-        if (Greenfoot.isKeyDown("z")) {
-            if (dialogBox.isComplete()) {
-                if (ndx == lines.size()) {
-                    Greenfoot.setWorld(nextWorld);
-                }
-                else {
-                    player.setExpression(expressions.get(ndx));
-                    dialogBox.say(lines.get(ndx++));
-                }
+        if (dialogBox.isComplete() && (Greenfoot.isKeyDown("z") || !shouldPause)) {
+            if (ndx == lines.size()) {
+                Greenfoot.setWorld(nextWorld);
+            }
+            else {
+                player.setExpression(expressions.get(ndx));
+                shouldPause = pause.get(ndx);
+                dialogBox.say(lines.get(ndx++));
             }
         }
     }    
