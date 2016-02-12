@@ -57,7 +57,6 @@ public class DialogBox extends Actor
                     spaces += " ";
                 }
                 text = text.substring(0, lastSpace) + spaces + text.substring(lastSpace);
-                System.out.println("added " + spaces.length() + " spaces. lastSpace = " + lastSpace);
                 lastSpace = -1; 
             }
         }

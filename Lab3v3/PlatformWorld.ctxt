@@ -48,10 +48,15 @@ comment23.params=
 comment23.target=void\ setLevel_4()
 comment23.text=\r\n\ set\ another\ level\r\n
 comment24.params=
+<<<<<<< HEAD
 comment24.target=void\ setLevel_5()
 comment25.params=
 comment25.target=void\ setLevel_ending()
 comment25.text=\r\n\ ending\r\n
+=======
+comment24.target=void\ setLevel_ending()
+comment24.text=\r\n\ ending\r\n
+>>>>>>> origin/master
 comment3.params=
 comment3.target=void\ stopped()
 comment4.params=
@@ -71,4 +76,8 @@ comment8.text=\r\n\ detect\ the\ black\ solid\ mask\ color\ in\ the\ given\ (x,\
 comment9.params=x\ y
 comment9.target=boolean\ isDeath(int,\ int)
 comment9.text=\r\n\ detect\ the\ red\ instant\ death\ zone\ mask\ color\ in\ the\ given\ (x,\ y)\ spot\ in\ the\ world.\r\n
+<<<<<<< HEAD
 numComments=26
+=======
+numComments=25
+>>>>>>> origin/master
