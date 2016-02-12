@@ -8,8 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CutsceneWorld extends World
 {
-    public static final GreenfootSound backgroundMusic = new GreenfootSound("The Lake.wav");
-
     private DialogManager dialogmanager;
     private static player Player;
     
@@ -20,6 +18,7 @@ public class CutsceneWorld extends World
     public CutsceneWorld()
     {     
         this(new player(), 0);
+        prepare();
     }
     
     /**
@@ -38,11 +37,11 @@ public class CutsceneWorld extends World
     }
     
     public void stopped() {
-         backgroundMusic.pause(); 
+         MusicManager.pause();
     }
      
     public void started() {
-        backgroundMusic.playLoop();
+         MusicManager.play();
     }
 
     /**
@@ -64,10 +63,20 @@ public class CutsceneWorld extends World
     }
         
     private void setupDialog(int level) {
+        if (Player.firstInjury && Player.numInjuries() > 0) {
+            dialogmanager.addLine("Ow! Who was that strange man");
+            dialogmanager.addLine("Who attacked me?");
+            dialogmanager.addLine("...");
+            dialogmanager.addLine("You dont think theyre all");
+            dialogmanager.addLine("like that do you?");
+        }
+        
         if (level == 0)
             setupDialog_0();
         else if (level == 1)
             setupDialog_1();
+        else if (level == 2)
+            setupDialog_2();
         else {
             dialogmanager.addLine("Uh oh...");
             dialogmanager.addLine("Theres no dialog");
@@ -101,42 +110,71 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
-        
-        backgroundMusic.playLoop();
-        backgroundMusic.pause(); 
     }
     
     private void setupDialog_1() {
-        if (Player.numInjuries() == 0) {
-            dialogmanager.addLine("Wow that was fun!");
-            dialogmanager.addLine("Did you see all the");
-            dialogmanager.addLine("friendly people waving at us?");
-            dialogmanager.addLine("Lets keep going!");
-            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
-            dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
-            dialogmanager.addLine("you should have said so!");
-            dialogmanager.addLine("itll be a breeze! Lets go!");
+        Player.fury = Math.max(1, Player.fury);
+        
+        // Pacifist
+        if (Player.kills == 0) {
+            if (Player.numInjuries() == 0) {
+                dialogmanager.addLine("Wow that was fun!");
+                dialogmanager.addLine("Did you see all the");
+                dialogmanager.addLine("friendly people waving at us?");
+                dialogmanager.addLine("Lets keep going!");
+                dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
+                //dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
+                //dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("you should have said so!");
+                dialogmanager.addLine("itll be a breeze! Lets go!");
+            }
+            else {
+                // Stuff is already added if there's an injury
+                //dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
+                //dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
+                //dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
+                //dialogmanager.addLine("But then it passed like that!");
+                //dialogmanager.addLine("Oh well. Lets keep going!");
+            }
         }
-        else /* TODO MORE BRANCHES if (Player.numInjuries() < 3) */ {
-            dialogmanager.addLine("Wow that was cool!");
-            dialogmanager.addLine("Except for when I got hit");
-            dialogmanager.addLine("by that strange man...");
-            dialogmanager.addLine("...");
-            dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
-            dialogmanager.addLine("But then it passed like that!");
-            dialogmanager.addLine("Oh well. Lets keep going!");
+        else {
+            dialogmanager.addLine("Woah! That was interesting");
+            dialogmanager.addLine("When I knocked out those");
+            dialogmanager.addLine("adventurers, I felt...");
+            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("Angry!", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("But it was... exciting too", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("I dont know what this is", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("This...feeling", CutscenePlayer.Expression.Concerned);
         }
     }
     
     private void setupDialog_2() {
-        if (Player.numInjuries() == 0 && Player.kills == 0) {
-            dialogmanager.addLine("Wheeeeee!");
-            dialogmanager.addLine("This world is so great!");
+        // Pacifist
+        if (Player.kills == 0) {
+            if (Player.numInjuries() == 0) {
+                dialogmanager.addLine("Wheeeeee!");
+                dialogmanager.addLine("This world is so great!");
+                dialogmanager.addLine("All those nice");
+                dialogmanager.addLine("Adventurers keep smiling");
+                dialogmanager.addLine("At us!");
+            }
+            else if (Player.numInjuries() < 3) {
+                dialogmanager.addLine("Well..", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Its not quite as carefree", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("as I expected...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("But I am having a lot of fun");
+                dialogmanager.addLine("This world is so beautiful!");
+                dialogmanager.addLine("Whats not to love?", CutscenePlayer.Expression.Sad);
+            }
+            else {
+                dialogmanager.addLine("I dont get it...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("They all attack me!", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Whats happening!?!", CutscenePlayer.Expression.Sad);
+            }
         }
     }
 }

@@ -16,4 +16,9 @@ public class Fury extends Actor
     {
         // Add your action code here.
     }    
+    
+    public void set(int fury) {
+        fury = 0;
+        setImage("fury_" + fury + ".png");
+    }
 }

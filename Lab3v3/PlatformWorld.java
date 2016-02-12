@@ -64,7 +64,9 @@ public class PlatformWorld extends World
         addObject(hearts, 1015, 60); //health
         addObject(lives, 1030, 25); //lives
         addObject(fury, 600, 40);
-        fury.setImage("fury_5.png");
+        fury.set(currentPlayer.fury);
+        if (currentPlayer.numInjuries() > 0)
+            currentPlayer.firstInjury = false;
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
@@ -77,11 +79,11 @@ public class PlatformWorld extends World
     }
     
     public void stopped() {
-         CutsceneWorld.backgroundMusic.pause(); 
+        MusicManager.pause(); 
     }
      
     public void started() {
-        CutsceneWorld.backgroundMusic.playLoop();
+        MusicManager.play();
     }
         
     /**
