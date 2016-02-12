@@ -97,6 +97,7 @@ public class player extends AnimatedActor
     int fury = 0;
     boolean angry = false;
     int kills = 0;
+    public boolean firstInjury = true;
     
     public int numInjuries() {
         return (maxHP - HP) + (5 - lives);

@@ -64,6 +64,14 @@ public class CutsceneWorld extends World
     }
         
     private void setupDialog(int level) {
+        if (Player.firstInjury) {
+            dialogmanager.addLine("Ow! Who was that strange man");
+            dialogmanager.addLine("Who attacked me?");
+            dialogmanager.addLine("...");
+            dialogmanager.addLine("You dont think theyre all");
+            dialogmanager.addLine("like that, do you?");
+        }
+        
         if (level == 0)
             setupDialog_0();
         else if (level == 1)
@@ -109,28 +117,29 @@ public class CutsceneWorld extends World
     private void setupDialog_1() {
         Player.fury = Math.max(1, Player.fury);
         
-        if (Player.numInjuries() == 0) {
-            dialogmanager.addLine("Wow that was fun!");
-            dialogmanager.addLine("Did you see all the");
-            dialogmanager.addLine("friendly people waving at us?");
-            dialogmanager.addLine("Lets keep going!");
-            dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
-            //dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
-            //dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
-            dialogmanager.addLine("you should have said so!");
-            dialogmanager.addLine("itll be a breeze! Lets go!");
-        }
-        else if (Player.kills == 0) {
-            dialogmanager.addLine("Ow! Who was that strange man");
-            dialogmanager.addLine("Who attacked me?");
-            dialogmanager.addLine("...");
-            dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
-            dialogmanager.addLine("But then it passed like that!");
-            dialogmanager.addLine("Oh well. Lets keep going!");
+        // Pacifist
+        if (Player.kills == 0) {
+            if (Player.numInjuries() == 0) {
+                dialogmanager.addLine("Wow that was fun!");
+                dialogmanager.addLine("Did you see all the");
+                dialogmanager.addLine("friendly people waving at us?");
+                dialogmanager.addLine("Lets keep going!");
+                dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
+                //dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
+                //dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("you should have said so!");
+                dialogmanager.addLine("itll be a breeze! Lets go!");
+            }
+            else {
+                // Stuff is already added if there's an injury
+                //dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
+                //dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
+                //dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
+                //dialogmanager.addLine("But then it passed like that!");
+                //dialogmanager.addLine("Oh well. Lets keep going!");
+            }
         }
         else {
             dialogmanager.addLine("Woah! That was interesting");
@@ -148,10 +157,15 @@ public class CutsceneWorld extends World
     private void setupDialog_2() {
         // Pacifist
         if (Player.kills == 0) {
-        }
-        if (Player.numInjuries() == 0 && Player.kills == 0) {
-            dialogmanager.addLine("Wheeeeee!");
-            dialogmanager.addLine("This world is so great!");
+            if (Player.numInjuries() == 0) {
+                dialogmanager.addLine("Wheeeeee!");
+                dialogmanager.addLine("This world is so great!");
+                dialogmanager.addLine("All those nice");
+                dialogmanager.addLine("Adventurers keep smiling");
+                dialogmanager.addLine("At us!");
+            }
+            else if (Player.firstInjury) {
+            }
         }
     }
 }

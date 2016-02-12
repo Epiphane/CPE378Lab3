@@ -65,6 +65,8 @@ public class PlatformWorld extends World
         addObject(lives, 40, 25); //lives
         addObject(fury, 600, 40);
         fury.set(currentPlayer.fury);
+        if (currentPlayer.numInjuries() > 0)
+            currentPlayer.firstInjury = false;
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
