@@ -5,12 +5,14 @@ import java.awt.Color;
 public class player extends AnimatedActor
 {
     /** Input */
-    public static final String JUMP_KEY = "up";
+    public static final String JUMP_KEY = "z";
+    public static final String ANGRY_KEY = "x";
     
     /**
      * Player's animation variables
      */
     private Animation player_walk_loop = AnimatedActor.generateSequence("player_walk", 6);
+    private Animation player_walk_angry_loop = AnimatedActor.generateSequence("player_walk_angry", 6);
     private Animation player_idle = new Animation("player_idle", new int[] {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         1, 1, 1, 1, 1, 1, 1, 1, 
@@ -23,15 +25,26 @@ public class player extends AnimatedActor
         6, 6, 6, 7, 8, 8, 8, 8, 
         8, 8, 8, 9, 10, 11, 12, 13
     }, 0.15f);
+    private Animation player_idle_angry = new Animation("player_idle_angry", new int[] {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 
+    }, 0.15f);
     private Animation player_jump_loop = new Animation("player_jump", new int[] { 3 }, 1);
+    private Animation player_jump_angry_loop = new Animation("player_jump_angry", new int[] { 3 }, 1);
     
     private Transition player_walk = AnimatedActor.generateTransition(player_walk_loop, "player_walk_transition", 1);
     private Transition player_jump = AnimatedActor.generateTransition(player_jump_loop, "player_jump", 3, 0.5f);
+    private Transition player_jump_angry = AnimatedActor.generateTransition(player_jump_angry_loop, "player_jump_angry", 3, 0.5f);
     
     /**
      * Player sounds
      */
     public static final GreenfootSound hurt = new GreenfootSound("Hurt.wav");
+    public static final GreenfootSound scream = new GreenfootSound("scream.wav");
     
     /**
      * Player's Movements Variables
@@ -82,6 +95,7 @@ public class player extends AnimatedActor
     int maxHP = 3;
     int lives = 5;
     int fury = 0;
+    boolean angry = false;
     int kills = 0;
     
     public int numInjuries() {
@@ -104,7 +118,12 @@ public class player extends AnimatedActor
         player_jump.load();
         player_jump_loop.load();
         
-        setAnimation(player_idle);
+        player_walk_angry_loop.load();
+        player_idle_angry.load();
+        player_jump_angry.load();
+        player_jump_angry_loop.load();
+        
+        setAnimation(angry ? player_idle_angry : player_idle);
         
         return;
     }
@@ -134,6 +153,7 @@ public class player extends AnimatedActor
     /**
      * Gears up the player!
      */
+    private boolean zPress = false;
     public void act() 
     {
         // Run animations
@@ -146,6 +166,25 @@ public class player extends AnimatedActor
         /**auto detect masks*/
         maskTouch();
         
+        // Become mad if ya want
+        if (zPress && !Greenfoot.isKeyDown(ANGRY_KEY)) {
+            angry = !angry;
+            
+            if (angry) {
+                if (current_animation == player_walk) current_animation = player_walk_angry_loop;
+                if (current_animation == player_walk_loop) current_animation = player_walk_angry_loop;
+                if (current_animation == player_jump) current_animation = player_jump_angry;
+                if (current_animation == player_jump_loop) current_animation = player_jump_angry_loop;
+                if (current_animation == player_idle) current_animation = player_idle_angry;
+            }
+            else {
+                if (current_animation == player_walk_angry_loop) current_animation = player_walk_loop;
+                if (current_animation == player_jump_angry) current_animation = player_jump;
+                if (current_animation == player_jump_angry_loop) current_animation = player_jump_loop;
+                if (current_animation == player_idle_angry) current_animation = player_idle;
+            }
+        }
+        zPress = Greenfoot.isKeyDown(ANGRY_KEY);
         
         /**disallow HP go over maxHP*/
         if (HP > maxHP){
@@ -185,7 +224,7 @@ public class player extends AnimatedActor
                 speedX -= 2;
                 
                 if (canJump)
-                    setAnimation(player_walk);
+                    setAnimation(angry ? player_walk_angry_loop : player_walk);
             }
         }
         /**right key trigger*/
@@ -195,12 +234,12 @@ public class player extends AnimatedActor
                 speedX += 2;
                 
                 if (canJump)
-                    setAnimation(player_walk);
+                    setAnimation(angry ? player_walk_angry_loop : player_walk);
             }
         }
          /**set the stand still animation while stopping x axis movement*/
         else if(speedY == 0) {
-            setAnimation(player_idle);
+            setAnimation(angry ? player_idle_angry : player_idle);
         }
                 
         /** nullifies speed horizontally */
@@ -216,7 +255,7 @@ public class player extends AnimatedActor
             speedY = -9;
             canJump = false;
             //set jumping animation
-            setAnimation(player_jump);
+            setAnimation(angry ? player_jump_angry : player_jump);
         }
         
         /**duck key trigger*/
@@ -414,7 +453,7 @@ public class player extends AnimatedActor
         if (platformer.isBounce(getX(), getY()+Y_offset)){  
             speedY = -12; //Bounce up high
             canJump = false;
-            setAnimation(player_jump);
+            setAnimation(angry ? player_jump_angry : player_jump);
         } 
         
     }
@@ -433,16 +472,26 @@ public class player extends AnimatedActor
         && hurt_delay <= 0 //The delay of getting hurt should be over
         && getY()+34 >= Enemy.getY()
         ){
-            if (getX() < Enemy.getX()) {speedX = -20; setFacingRight(true);}
-            if (getX() > Enemy.getX()) {speedX = 20; setFacingRight(false);}
-            if (getX() == Enemy.getX()) {speedX = 0;} //bounce reactions from the enemy
-            speedY = 0; //stop falling for a while
-            //setAnim_hurt(); //set hurt pose
-            HP--; //do damage to the player
             hurt_delay = 60; //reset hurt delay
-            getMad();
-            
-            hurt.play();
+            if (angry) {
+                getWorld().removeObject(Enemy);
+                
+                getMad();
+                hurt.play();
+            }
+            else {
+                if (getX() < Enemy.getX()) {speedX = -20; setFacingRight(true);}
+                if (getX() > Enemy.getX()) {speedX = 20; setFacingRight(false);}
+                if (getX() == Enemy.getX()) {speedX = 0;} //bounce reactions from the enemy
+                speedY = 0; //stop falling for a while
+                //setAnim_hurt(); //set hurt pose
+                HP--; //do damage to the player
+                speedY = -5;
+                y -= 4;
+                if (fury < 3) getMad();
+                
+                hurt.play();
+            }
         }
     }
     

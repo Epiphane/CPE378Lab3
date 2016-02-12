@@ -25,7 +25,6 @@ comment4.target=void\ addedToWorld(greenfoot.World)
 comment4.text=\r\n\ set\ coordinate\ from\ the\ world\ (if\ not\ using\ this,\ the\ player\ disappear.)\r\n
 comment5.params=
 comment5.target=void\ act()
-comment5.text=\r\n\ Gears\ up\ the\ player\!\r\n
 comment6.params=
 comment6.target=void\ getMad()
 comment7.params=

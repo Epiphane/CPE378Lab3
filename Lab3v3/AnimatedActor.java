@@ -62,7 +62,7 @@ public class AnimatedActor extends Actor
     /**
      * Animation sequences follow the form [frame1, frame2, frame3, ...]
      */
-    private Animation current_animation = null;
+    protected Animation current_animation = null;
     private float current_frame = 0;
     private boolean isFacingRight = true;
     
