@@ -2,8 +2,8 @@
 comment0.target=player_death
 comment1.params=
 comment1.target=player_death()
-comment1.text=\n\ load\ images\n
+comment1.text=\r\n\ load\ images\r\n
 comment2.params=
 comment2.target=void\ act()
-comment2.text=\n\ set\ animation\ and\ disappear\n
+comment2.text=\r\n\ set\ animation\ and\ disappear\r\n
 numComments=3
