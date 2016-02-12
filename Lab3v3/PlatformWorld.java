@@ -6,7 +6,7 @@ import java.awt.Color;
 public class PlatformWorld extends World
 {
     /** width and height for all actors to use up (static)*/
-    static int sWidth = 1000;
+    static int sWidth = 1067;
     static int sHeight = 600;
     
     /** background and masking colors for each levels */
@@ -61,8 +61,8 @@ public class PlatformWorld extends World
         setMaskCodes(); 
         
         currentPlayer = Player;
-        addObject(hearts, 50, 60); //health
-        addObject(lives, 40, 25); //lives
+        addObject(hearts, 1015, 60); //health
+        addObject(lives, 1030, 25); //lives
         addObject(fury, 600, 40);
         fury.setImage("fury_5.png");
         
@@ -159,7 +159,7 @@ public class PlatformWorld extends World
            in the given (x, y) spot in the world*/
         Color maskGet = bgmask.getColorAt(x,y);
         if (deathColor.equals(maskGet)){
-            /**if "maskGet" dectects black color, then it's instant death zone*/
+            /**if "maskGet" detects red color, then it's instant death zone*/
             return true;
         }
         //it's not just falling is instant death!!
@@ -180,7 +180,7 @@ public class PlatformWorld extends World
            in the given (x, y) spot in the world*/
         Color maskGet = bgmask.getColorAt(x,y);
         if (aiColor.equals(maskGet)){
-            /**if "maskGet" dectects green color, then it's the patrol limit zone*/
+            /**if "maskGet" detects green color, then it's the patrol limit zone*/
             return true;
         }
         
@@ -201,7 +201,7 @@ public class PlatformWorld extends World
            in the given (x, y) spot in the world*/
         Color maskGet = bgmask.getColorAt(x,y);
         if (hurtColor.equals(maskGet)){
-            /**if "maskGet" dectects black color, then it's hurt zone*/
+            /**if "maskGet" detects yellow color, then it's hurt zone*/
             return true;
         }
         //useful for some spikes in the background.
@@ -222,7 +222,7 @@ public class PlatformWorld extends World
            in the given (x, y) spot in the world*/
         Color maskGet = bgmask.getColorAt(x,y);
         if (upColor.equals(maskGet)){
-            /**if "maskGet" dectects green color, then it's the up platform*/
+            /**if "maskGet" detects blue color, then it's the up platform*/
             return true;
         }
         
@@ -243,7 +243,7 @@ public class PlatformWorld extends World
            in the given (x, y) spot in the world*/
         Color maskGet = bgmask.getColorAt(x,y);
         if (bounceColor.equals(maskGet)){
-            /**if "maskGet" dectects green color, then it's the bounce platform*/
+            /**if "maskGet" detects purple color, then it's the bounce platform*/
             return true;
         }
         
@@ -296,7 +296,9 @@ public class PlatformWorld extends World
             case 4: setLevel_5(); break;
             case 5: setLevel_6(); break;
             case 6: setLevel_7(); break;
-            case 7: setLevel_ending(); break;
+            case 7: setLevel_8(); break;
+            case 8: setLevel_9(); break;
+            case 9: setLevel_ending(); break;
         }
     }
     
@@ -326,7 +328,7 @@ public class PlatformWorld extends World
         /**set platforms*/
         bgmask = new GreenfootImage("Level1.gif");
         /**set sliding */
-        decel = 0.95;
+        //decel = 0.95;
         /**set player in a fixed spot*/
         startx = 40;
         starty = 150;
@@ -457,6 +459,45 @@ public class PlatformWorld extends World
         addObject(currentPlayer, startx, starty);
  
         addObject(new exit_right(), 926, 462);
+    }
+    
+    /**
+     * set another level
+     */
+    public void setLevel_8(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level8_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level8.gif");     
+        
+        /**set player in a fixed spot*/
+        startx = 50;
+        starty = 50;
+        addObject(currentPlayer, startx, starty);
+        addObject(new enemy2(), 524, 210); //lefttop
+        addObject(new enemy2(), 522, 382); //mid
+        addObject(new exit_right(), 60, 487);
+    }
+    
+         /**
+     * set another level
+     */
+    public void setLevel_9(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level9_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level9.gif");     
+        
+        /**set player in a fixed spot*/
+        startx = 40;
+        starty = 40;
+        addObject(currentPlayer, startx, starty);
+ 
+        addObject(new exit_right(), 1000, 10);
     }
     
     /**
