@@ -291,7 +291,9 @@ public class PlatformWorld extends World
             case 2: setLevel_3(); break;
             case 3: setLevel_4(); break;
             case 4: setLevel_5(); break;
-            case 5: setLevel_ending(); break;
+            case 5: setLevel_6(); break;
+            case 6: setLevel_7(); break;
+            case 7: setLevel_ending(); break;
         }
     }
     
@@ -410,8 +412,48 @@ public class PlatformWorld extends World
         starty = 500;
         addObject(currentPlayer, startx, starty);
         addObject(new enemy2(), 164, 199); //left
-        addObject(new enemy2(), 543, 155); //mid
+        addObject(new enemy1(), 543, 155); //mid
         addObject(new exit_right(), 970, 485);
+    }
+    
+     /**
+     * set another level
+     */
+    public void setLevel_6(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level6_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level6.gif");     
+        
+        /**set player in a fixed spot*/
+        startx = 103;
+        starty = 520;
+        addObject(currentPlayer, startx, starty);
+        addObject(new enemy2(), 81, 425); //leftbot
+        addObject(new enemy2(), 99, 215); //lefttop
+        addObject(new enemy1(), 420, 504); //mid
+        addObject(new exit_right(), 950, 337);
+    }
+    
+     /**
+     * set another level
+     */
+    public void setLevel_7(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level7_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level7.gif");     
+        
+        /**set player in a fixed spot*/
+        startx = 56;
+        starty = 500;
+        addObject(currentPlayer, startx, starty);
+ 
+        addObject(new exit_right(), 926, 462);
     }
     
     /**
