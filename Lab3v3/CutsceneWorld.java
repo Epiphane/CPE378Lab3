@@ -430,7 +430,7 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("Will you be my friend forever?");
                 dialogmanager.addLine("We can go on trips all the time...");
                 dialogmanager.addLine("Have hot chocolate in winter...");
-                dialogmanager.addLine("Just stick around for a while, ok?");
+                dialogmanager.addLine("Just stick around for a while ok?");
             }
             else if (Player.numInjuries() < 12) {
                 dialogmanager.addLine("Whew!");
@@ -450,7 +450,7 @@ public class CutsceneWorld extends World
             else {
                 dialogmanager.addLine("I.....      ", CutscenePlayer.Expression.Concerned, false);
                 dialogmanager.addLine("I.....      ", CutscenePlayer.Expression.Sad, false);
-                dialogmanager.addLine("I dont know what id do without you", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("I dont know what Id do without you", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("This place is so terrible...", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Everything is awful", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Please....", CutscenePlayer.Expression.Concerned, false);

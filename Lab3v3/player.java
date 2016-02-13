@@ -470,7 +470,10 @@ public class player extends AnimatedActor
         if (platformer.isUpPlatform(getX(), getY()+(Y_offset+2)) && speedY > -1){
             /**nullifies falling speed, (landing) allow player to jump again*/
             canJump = true;
-            
+            if (!Greenfoot.isKeyDown("O")){
+                
+              speedY = 0;
+           }
         }
       
         if (platformer.isUpPlatform(getX(), getY()+Y_offset) && speedY > -1){  
