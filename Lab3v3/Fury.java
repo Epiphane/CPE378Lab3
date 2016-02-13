@@ -20,6 +20,7 @@ public class Fury extends Actor
     public void set(int fury) {
         if (!player.FURY_ENABLED)
             fury = 0;
+        fury = Math.min(6, fury);
         setImage("fury_" + fury + ".png");
     }
 }

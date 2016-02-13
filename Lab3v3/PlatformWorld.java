@@ -67,6 +67,7 @@ public class PlatformWorld extends World
         fury.set(currentPlayer.fury);
         if (currentPlayer.numInjuries() > 0)
             currentPlayer.firstInjury = false;
+        currentPlayer.newKills = 0;
         
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
@@ -494,8 +495,6 @@ public class PlatformWorld extends World
         dialogmanager.addLine("BEWARE OF SPIKES");
         dialogmanager.addLine("Wilbert is ready to keep going. ");
         dialogmanager.start();
-        
-        MusicManager.setMusic(MusicManager.caveTheme);
  
         addObject(new exit_right(), 926, 462);
     }
@@ -515,6 +514,8 @@ public class PlatformWorld extends World
         startx = 40;
         starty = 40;
         addObject(currentPlayer, startx, starty);
+        
+        MusicManager.setMusic(MusicManager.caveTheme);
  
         addObject(new exit_right(), 1000, 10);
     }

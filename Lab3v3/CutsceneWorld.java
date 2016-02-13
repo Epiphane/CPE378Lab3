@@ -75,6 +75,18 @@ public class CutsceneWorld extends World
         // Prepare next level
         dialogmanager.nextWorld = new PlatformWorld(Player, level);
         
+        // Genocide?
+        if (Player.kills > player.GENOCIDE_KILLS && Player.kills - Player.newKills <= player.GENOCIDE_KILLS) {
+            dialogmanager.addLine("What         ", CutscenePlayer.Expression.Concerned, false);
+            dialogmanager.addLine("Whats happening???         ", CutscenePlayer.Expression.Angry, false);
+            dialogmanager.addLine("I               ", CutscenePlayer.Expression.Concerned, false);
+            dialogmanager.addLine("I cant                 ", CutscenePlayer.Expression.Irked, false);
+            dialogmanager.addLine("Its consuming me!!          ", CutscenePlayer.Expression.Angry);
+            dialogmanager.addLine("But...... it                ", CutscenePlayer.Expression.Angry, false);
+            dialogmanager.addLine("But...... it feels                ", CutscenePlayer.Expression.Concerned, false);
+            dialogmanager.addLine("it feels GREAT", CutscenePlayer.Expression.Angry);
+        }
+        
         if (level == 0)
             setupDialog_intro();
         else if (level == 1)
@@ -151,16 +163,16 @@ public class CutsceneWorld extends World
                 }
             }
         }
-        else if (player.FURY_ENABLED) {
+        else {
             dialogmanager.addLine("Woah! That was interesting");
             dialogmanager.addLine("When I knocked out those");
-            dialogmanager.addLine("adventurers, I felt...");
+            dialogmanager.addLine("adventurers I felt...");
             dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
             dialogmanager.addLine("Angry!", CutscenePlayer.Expression.Irked);
             dialogmanager.addLine("But it was... exciting too", CutscenePlayer.Expression.Irked);
             dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
             dialogmanager.addLine("I dont know what this is", CutscenePlayer.Expression.Concerned);
-            dialogmanager.addLine("This...feeling", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("This...feeling...", CutscenePlayer.Expression.Concerned);
         }
     }
     
@@ -188,7 +200,26 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("Whats happening!?!", CutscenePlayer.Expression.Sad);
             }
         }
-        else if (player.FURY_ENABLED) {
+        else {
+            if (Player.kills > Player.newKills) {
+                dialogmanager.addLine("It happened again...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("The...feeling.", CutscenePlayer.Expression.Irked);
+                dialogmanager.addLine("When I looked at them", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("They seemed ...surprised.", CutscenePlayer.Expression.Sad);
+                
+                if (Player.numInjuries() > 0) {
+                    dialogmanager.addLine("But they hurt me too.", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("Still...", CutscenePlayer.Expression.Concerned);
+                }
+                
+                dialogmanager.addLine("This feeling...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("It tugs at me. ", CutscenePlayer.Expression.Irked);
+                dialogmanager.addLine("It tells me to keep going", CutscenePlayer.Expression.Irked);
+            }
+            else {
+                // Put in the initial thingy for killing
+                setupDialog_field_1();
+            }
         }
     }
     
@@ -198,7 +229,7 @@ public class CutsceneWorld extends World
             if (Player.numInjuries() <= 2) {
                 dialogmanager.addLine("What a beautiful forest!!");
                 dialogmanager.addLine("The trees are so lovely");
-                dialogmanager.addLine("And our friends are here too!");
+                dialogmanager.addLine("And these people are here too!");
                 dialogmanager.addLine("Gosh Im so glad theyre so friendly...");
             }
             else if (Player.numInjuries() < 8) {
@@ -218,6 +249,80 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("Have a choice do we?", CutscenePlayer.Expression.Concerned);
                 dialogmanager.addLine("After all theyre just waiting", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("For us to come back...", CutscenePlayer.Expression.Sad);
+            }
+        }
+        else {
+            if (Player.kills > Player.newKills) {
+                // There are 13 enemies in the field zone
+                // And 2 in the forest by this point
+                if (Player.kills >= player.GENOCIDE_KILLS) {
+                    dialogmanager.addLine("This is fun!!", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("All they do is run", CutscenePlayer.Expression.Angry);
+                    
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("As if they never hurt me before", CutscenePlayer.Expression.Irked);
+                        dialogmanager.addLine("Fair is fair right?", CutscenePlayer.Expression.Angry);
+                    }
+                    else {
+                        dialogmanager.addLine("In fact its a little exciting!", CutscenePlayer.Expression.Angry);
+                    }
+                    
+                    dialogmanager.addLine("We have to keep going", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("I know there are more of them.", CutscenePlayer.Expression.Angry);
+                    
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("They wont hurt me anymore", CutscenePlayer.Expression.Angry);
+                    }
+                }
+                else if (Player.kills >= 9) {
+                    dialogmanager.addLine("This is fun!!");
+                    dialogmanager.addLine("I mean. It still feels weird");
+                    dialogmanager.addLine("But Im not as fazed by it.");
+                    
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("Especially because they hurt me.", CutscenePlayer.Expression.Irked);
+                        dialogmanager.addLine("Fair is fair right?", CutscenePlayer.Expression.Irked);
+                    }
+                    else {
+                        dialogmanager.addLine("In fact its a little exciting!");
+                    }
+                    
+                    dialogmanager.addLine("We have to keep going", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("I know there are more of them.", CutscenePlayer.Expression.Irked);
+                    
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("They wont hurt me anymore", CutscenePlayer.Expression.Irked);
+                    }
+                }
+                else {
+                    dialogmanager.addLine("It keeps tugging at me.", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("I want to keep going.", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("It says they took my friends.", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("And I have to save them!");
+                    
+                    dialogmanager.addLine("Imagining them hurting my friends", CutscenePlayer.Expression.Sad);
+                    
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("like they hurt me...", CutscenePlayer.Expression.Sad);
+                    }
+                    
+                    dialogmanager.addLine("That cant happen.", CutscenePlayer.Expression.Irked);
+                }
+                
+                
+                dialogmanager.addLine("......", CutscenePlayer.Expression.Happy, false);
+                dialogmanager.addLine("......", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("......", CutscenePlayer.Expression.Irked, false);
+                dialogmanager.addLine("......", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("When I attacked one of them...", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("He didnt look angry.", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("He looked... scared", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("But then I got him anyway", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Lets go.");
+            }
+            else {
+                // Put in the initial thingy for killing
+                setupDialog_field_1();
             }
         }
     }
@@ -255,6 +360,92 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("No Im not having fun.", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Everybody keeps hurting me!", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Just...lets go.", CutscenePlayer.Expression.Sad);
+            }
+        }
+        else {
+            if (Player.kills > Player.newKills) {
+                // There are 13 enemies in the field zone
+                // And 5
+                if (Player.kills >= player.GENOCIDE_KILLS) {
+                    dialogmanager.addLine("I feel so powerful", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("its giving me everything", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("if we keep going", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("We can get them all!", CutscenePlayer.Expression.Angry);
+                    
+                    if (Player.newKills > 0) {
+                        dialogmanager.addLine("Seriously you should try it sometime.");
+                        dialogmanager.addLine("They look so scared.");
+                        dialogmanager.addLine("And then you just knock them out!");
+                    }
+                    else {
+                        dialogmanager.addLine("No!", CutscenePlayer.Expression.Concerned);
+                        dialogmanager.addLine("I           ", CutscenePlayer.Expression.Concerned, false);
+                        dialogmanager.addLine("I           ", CutscenePlayer.Expression.Angry, false);
+                        dialogmanager.addLine("I cant!!           ", CutscenePlayer.Expression.Concerned, false);
+                        dialogmanager.addLine("Yes I can!", CutscenePlayer.Expression.Angry);
+                    }
+                    
+                    dialogmanager.addLine("Besides...", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("Its us or them. right?", CutscenePlayer.Expression.Angry);
+                }
+                else if (Player.newKills > 0) {
+                    dialogmanager.addLine("I feel it", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("Anger...it gives me everything.", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("Every time I get one of them", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("Its not enough", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("I need more! ", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("more! ", CutscenePlayer.Expression.Angry);
+                    
+                    dialogmanager.addLine("No!", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("I           ", CutscenePlayer.Expression.Concerned, false);
+                    dialogmanager.addLine("I           ", CutscenePlayer.Expression.Angry, false);
+                    dialogmanager.addLine("I cant!!           ", CutscenePlayer.Expression.Concerned, false);
+                    
+                    dialogmanager.addLine("Besides...", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("Its us or them. right?", CutscenePlayer.Expression.Irked);
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("Theyll just hurt me again", CutscenePlayer.Expression.Irked);
+                    }
+                    else {
+                        dialogmanager.addLine("I cant get hurt", CutscenePlayer.Expression.Irked);
+                    }
+                }
+                else if (Player.kills > 3) {
+                    dialogmanager.addLine("I dont feel right", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("When I avoid them", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("im not satisfied", CutscenePlayer.Expression.Irked);
+                    
+                    if (Player.numInjuries() > 0) {
+                        dialogmanager.addLine("They hurt me.", CutscenePlayer.Expression.Irked);
+                    }
+                    
+                    dialogmanager.addLine("They might hurt my friends.", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("That cant happen                ", CutscenePlayer.Expression.Angry, false);
+                    dialogmanager.addLine("But                ", CutscenePlayer.Expression.Concerned, false);
+                    dialogmanager.addLine("No. They will hurt my friends", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("I need to get them all.", CutscenePlayer.Expression.Irked);
+                }
+                else {
+                    dialogmanager.addLine("I feel so guilty", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("They could have been friendly.", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("But ill never know now.", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("I dont want to hurt people.", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("But...this is forever now.", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("I cant take it back.", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine(".....", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine(".....", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("Why is this so hard???", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("They dont deserve this", CutscenePlayer.Expression.Sad);
+                    
+                    dialogmanager.addLine(".....maybe they do.", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("Yeah. Or i wouldnt have to hurt them", CutscenePlayer.Expression.Irked);
+                    
+                    dialogmanager.addLine("Lets get going", CutscenePlayer.Expression.Concerned);
+                }
+            }
+            else {
+                // Put in the initial thingy for killing
+                setupDialog_field_1();
             }
         }
     }
@@ -299,6 +490,35 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("dont leave for a while ok?", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("just think about it.", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Thanks...im sorry...", CutscenePlayer.Expression.Concerned);
+            }
+        }
+        else {
+            if (Player.kills > Player.newKills) {
+                if (Player.kills >= player.GENOCIDE_KILLS) {
+                    if (Player.newKills == 0) {
+                        dialogmanager.addLine("We cant stop now!", CutscenePlayer.Expression.Irked);
+                        dialogmanager.addLine("I need to get them all!", CutscenePlayer.Expression.Angry);
+                    }
+                    else {
+                        dialogmanager.addLine("Yes. This feels right.", CutscenePlayer.Expression.Angry);
+                        dialogmanager.addLine("Ill get them all!", CutscenePlayer.Expression.Angry);
+                    }
+                    
+                    dialogmanager.addLine("They dont deserve anything", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("They did so much", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("My friends....", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("Where are they???", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("I miss my friends", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("And its their fault!!", CutscenePlayer.Expression.Angry);
+                }
+                else if (Player.kills > 5) {
+                    dialogmanager.addLine("My anger is pulling at me", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("They dont deserve anything", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("I dont know where my friends are", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("I should have seen them by now", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("I miss my friends", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("And its their fault!!", CutscenePlayer.Expression.Angry);
+                }
             }
         }
     }

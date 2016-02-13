@@ -4,7 +4,8 @@ import java.awt.Color;
 
 public class player extends AnimatedActor
 {
-    public static final boolean FURY_ENABLED = false;
+    public static final boolean FURY_ENABLED = true;
+    public static final int GENOCIDE_KILLS = 12;
     
     /** Input */
     public static final String JUMP_KEY = "z";
@@ -100,6 +101,7 @@ public class player extends AnimatedActor
     int fury = 0;
     boolean angry = false;
     int kills = 0;
+    int newKills = 0;
     public boolean firstInjury = true;
     
     public int numInjuries() {
@@ -210,7 +212,7 @@ public class player extends AnimatedActor
     
     public void setAngry(boolean angry) {
         if (fury == 0) angry = false;
-        if (fury >= 6) angry = true;
+        if (fury > GENOCIDE_KILLS) angry = true;
         
         if (!FURY_ENABLED)
             angry = false; // Avoid fury mechanic completely
@@ -509,6 +511,7 @@ public class player extends AnimatedActor
                 getWorld().removeObject(Enemy);
                 
                 kills ++;
+                newKills ++;
                 getMad();
                 hurt.play();
             }
@@ -546,6 +549,8 @@ public class player extends AnimatedActor
             HP -= dmg;
             hurt_delay = 60;
             setAnimation(player_hurt);
+            
+            hurt.play();
         }
     }
     
