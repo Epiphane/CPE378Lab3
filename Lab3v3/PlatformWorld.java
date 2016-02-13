@@ -780,7 +780,7 @@ public class PlatformWorld extends World
         if (currentPlayer.kills > 5)
             background = new GreenfootImage("ending_killer.png");
         else 
-            background = new GreenfootImage("ending.gif");
+            background = new GreenfootImage("ending.png");
         setBackground(background);
         /**also set mask*/
         bgmask = new GreenfootImage("ending_mask.gif");
