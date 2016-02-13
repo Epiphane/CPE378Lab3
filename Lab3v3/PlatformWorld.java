@@ -310,11 +310,9 @@ public class PlatformWorld extends World
             case 11: setLevel_12(); break;
             case 12: setLevel_13(); break;
             case 13: setLevel_14(0); break;
-            case 14: setLevel_14(1); break;
-            case 15: setLevel_14(2); break;
-            case 16: setLevel_15(); break;
-            case 17: setLevel_16(); break;
-            case 18: setLevel_ending(); break;
+            case 14: setLevel_15(); break;
+            case 15: setLevel_16(); break;
+            case 16: setLevel_ending(); break;
         }
     }
     
@@ -681,20 +679,20 @@ public class PlatformWorld extends World
         addObject(dialogmanager,836,97);
         
         MusicManager.play();
-        if (dialogue == 0) {
+        //if (dialogue == 0) {
             dialogmanager.addLine("Its all over");
             dialogmanager.addLine("Wilbert heads home");
             dialogmanager.addLine("to complete his long journey.");
-        }
-        else if (dialogue == 1) {
+        //}
+        //else if (dialogue == 1) {
             if (currentPlayer.kills >= player.GENOCIDE_KILLS) {
-                MusicManager.pause();
+               // MusicManager.pause();
                 dialogmanager.addLine("The hills are silent.");
-                dialogmanager.addLine("Consumed by his anger Wilbert");
+                dialogmanager.addLine("Clouded by his anger Wilbert");
                 dialogmanager.addLine("Thinks on the adventurers he defeated");
             }
             else if (currentPlayer.kills > 0) {
-                MusicManager.pause();
+               // MusicManager.pause();
                 dialogmanager.addLine("The hills are silent.");
                 dialogmanager.addLine("Consumed by his guilt Wilbert");
                 dialogmanager.addLine("Thinks on his mistakes.");
@@ -707,8 +705,8 @@ public class PlatformWorld extends World
                 dialogmanager.addLine("Consumed by fear Wilbert");
                 dialogmanager.addLine("Thinks on the adventurers who attacked him.");
             }
-        }
-        else if (dialogue == 2) {
+        //}
+        //else if (dialogue == 2) {
             if (currentPlayer.kills >= player.GENOCIDE_KILLS) {
                 dialogmanager.addLine("He is a monster.");
             }
@@ -719,7 +717,7 @@ public class PlatformWorld extends World
             else if (currentPlayer.numInjuries() > 5) {
                 dialogmanager.addLine("It is over.");
             }
-        }
+        //}
         
         dialogmanager.start();
         
@@ -743,18 +741,6 @@ public class PlatformWorld extends World
         startx = 72;
         starty = 452;
         addObject(currentPlayer, startx, starty);
-        
-        // Cutscene-ness 
-        DialogBox dialogbox = new DialogBox(null);
-        addObject(dialogbox,540,150);
-        
-        DialogManager dialogmanager = new DialogManager(dialogbox, null);
-        addObject(dialogmanager,836,97);
-        
-        MusicManager.play();
-        
-        dialogmanager.addLine("Home at last.");
-        dialogmanager.start();
         
         addObject(new exit2(), 780, 412);
     }
@@ -786,6 +772,7 @@ public class PlatformWorld extends World
         /**basic, set background*/
         removeObject(hearts);
         removeObject(lives);
+        removeObject(fury);
         background = new GreenfootImage("ending.png");
         setBackground(background);
         /**also set mask*/
