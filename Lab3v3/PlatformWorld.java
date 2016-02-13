@@ -415,10 +415,10 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("Beyond the fields                             ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("The forest sits                       ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("ominous sounds echo from within                      ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("But wilbert is not fazed. ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Beyond the fields");
+        dialogmanager.addLine("The forest sits");
+        dialogmanager.addLine("ominous sounds echo from within");
+        dialogmanager.addLine("But wilbert is not fazed. ");
         dialogmanager.start();
         
         MusicManager.setMusic(MusicManager.forestTheme);
@@ -487,12 +487,12 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("A dark cave awaits Wilbert.               ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("Behind him are tribal echoes                ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("But the cave is silent.                        ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("In front of the cave is a sign.                        ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("BEWARE OF SPIKES                        ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("Wilbert is ready to keep going. ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("A dark cave awaits Wilbert");
+        dialogmanager.addLine("Behind him are tribal echoes");
+        dialogmanager.addLine("But the cave is silent.");
+        dialogmanager.addLine("In front of the cave is a sign. ");
+        dialogmanager.addLine("BEWARE OF SPIKES");
+        dialogmanager.addLine("Wilbert is ready to keep going. ");
         dialogmanager.start();
         
         MusicManager.setMusic(MusicManager.caveTheme);
@@ -555,6 +555,20 @@ public class PlatformWorld extends World
         startx = 141;
         starty = 459;
         addObject(currentPlayer, startx, starty);
+        
+        // Cutscene-ness 
+        DialogBox dialogbox = new DialogBox(null);
+        addObject(dialogbox,540,150);
+        
+        DialogManager dialogmanager = new DialogManager(dialogbox, null);
+        addObject(dialogmanager,836,97);
+        
+        dialogmanager.addLine("The frost mountain looms over you");
+        dialogmanager.addLine("Wilbert shivers a bit...");
+        dialogmanager.addLine("Youd better keep moving");
+        dialogmanager.start();
+        
+        MusicManager.setMusic(MusicManager.mountainTheme);
  
         addObject(new exit_right(), 914, 454);
     }
