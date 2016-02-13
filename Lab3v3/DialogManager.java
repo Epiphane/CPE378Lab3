@@ -51,6 +51,7 @@ public class DialogManager extends Actor
         if (player != null) player.setExpression(expressions.get(ndx));
         shouldPause = pause.get(ndx);
         dialogBox.say(lines.get(ndx++));
+        dialogBox.pausing = shouldPause;
     }
     
     /**
@@ -77,6 +78,7 @@ public class DialogManager extends Actor
                     if (player != null) player.setExpression(expressions.get(ndx));
                     shouldPause = pause.get(ndx);
                     dialogBox.say(lines.get(ndx++));
+                    dialogBox.pausing = shouldPause;
                 }
             }
             else if (shouldPause) {

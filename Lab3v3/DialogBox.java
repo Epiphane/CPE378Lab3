@@ -11,6 +11,7 @@ public class DialogBox extends Actor
     private float speed = 0.5f;
     private float ndx = 0;
     private String text = "";
+    public boolean pausing = true;
     
     public static final int LINE_WIDTH = 14;
     
@@ -91,7 +92,7 @@ public class DialogBox extends Actor
                 
             letters[(int) ndx] = newLetter;
         
-            if (ndx >= text.length() - 1) {
+            if (ndx >= text.length() - 1 && pausing) {
                 setImage(new GreenfootImage("dialogue_complete.png"));
                 complete = true;
             }

@@ -127,6 +127,10 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
+        dialogmanager.addLine("...");
+        dialogmanager.addLine("By the way");
+        dialogmanager.addLine("Use the arrows to move and use doors");
+        dialogmanager.addLine("And space to jump");
         
         MusicManager.setMusic(MusicManager.fieldTheme); 
     }
