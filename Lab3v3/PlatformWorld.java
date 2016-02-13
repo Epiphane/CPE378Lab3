@@ -305,8 +305,10 @@ public class PlatformWorld extends World
             case 10: setLevel_11(); break;
             case 11: setLevel_12(); break;
             case 12: setLevel_13(); break;
-            
-            case 13: setLevel_ending(); break;
+            case 13: setLevel_14(); break;
+            case 14: setLevel_15(); break;
+            case 15: setLevel_16(); break;
+            case 16: setLevel_ending(); break;
         }
     }
     
@@ -590,7 +592,7 @@ public class PlatformWorld extends World
         startx = 20;
         starty = 520;
         addObject(currentPlayer, startx, starty);
- 
+        
         addObject(new exit_right(), 45, 68);
     }
     
@@ -630,8 +632,66 @@ public class PlatformWorld extends World
         startx = 46;
         starty = 500;
         addObject(currentPlayer, startx, starty);
- 
+        addObject(new enemy2(), 100, 190); //lefttop
+        //addObject(new enemy1(), 522, 300); //mid
         addObject(new exit_right(), 1000, 485);
+    }
+    
+        /**
+     * set another level
+     */
+    public void setLevel_14(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level14_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level14.gif");     
+
+        /**set player in a fixed spot*/
+        startx = 80;
+        starty = 488;
+        addObject(currentPlayer, startx, starty);
+        
+        addObject(new exit_right(), 960, 475);
+    }
+    
+        /**
+     * set another level
+     */
+    public void setLevel_15(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level15v2_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level15v2.gif");     
+
+        /**set player in a fixed spot*/
+        startx = 72;
+        starty = 452;
+        addObject(currentPlayer, startx, starty);
+        
+        addObject(new exit2(), 780, 412);
+    }
+    
+        /**
+     * set another level
+     */
+    public void setLevel_16(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level16v2_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level16v2.gif");     
+
+        /**set player in a fixed spot*/
+        startx = 120;
+        starty = 495;
+        addObject(currentPlayer, startx, starty);
+        
+        addObject(new exit2(), 295, 165);
     }
     
     /**
