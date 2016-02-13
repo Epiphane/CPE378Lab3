@@ -633,7 +633,7 @@ public class PlatformWorld extends World
         starty = 500;
         addObject(currentPlayer, startx, starty);
  
-        addObject(new exit_right(), 1000, 55);
+        addObject(new exit_right(), 1000, 69);
     }
     
     /**
