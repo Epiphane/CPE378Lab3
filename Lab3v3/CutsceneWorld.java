@@ -66,7 +66,6 @@ public class CutsceneWorld extends World
     private void setupDialog(int level) {
         if (Player.firstInjury && Player.numInjuries() > 0) {
             dialogmanager.addLine("Ow! Someone attacked me!");
-            dialogmanager.addLine("Who attacked me?");
             dialogmanager.addLine("...");
             dialogmanager.addLine("You dont think theyre all");
             dialogmanager.addLine("like that do you?");

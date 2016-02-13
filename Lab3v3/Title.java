@@ -16,7 +16,7 @@ public class Title extends World
     public Title()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(PlatformWorld.sWidth, PlatformWorld.sHeight, 1); 
         
         addObject(new TitleController(), 0, 0);
     }

@@ -49,6 +49,7 @@ public class player extends AnimatedActor
      */
     public static final GreenfootSound hurt = new GreenfootSound("Hurt.wav");
     public static final GreenfootSound scream = new GreenfootSound("scream.wav");
+    public static final GreenfootSound jump = new GreenfootSound("Jump.wav");
     
     /**
      * Player's Movements Variables
@@ -132,6 +133,8 @@ public class player extends AnimatedActor
         player_jump_angry_loop.load();
         
         setAnimation(angry ? player_idle_angry : player_idle);
+        
+        jump.setVolume(78);
         
         return;
     }
@@ -288,6 +291,7 @@ public class player extends AnimatedActor
             /**speedY goes negative (up) and disable jump to prevent multi-jump*/
             speedY = -9;
             canJump = false;
+            jump.play();
             //set jumping animation
             setAnimation(angry ? player_jump_angry : player_jump);
         }
