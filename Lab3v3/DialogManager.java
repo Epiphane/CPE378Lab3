@@ -61,7 +61,7 @@ public class DialogManager extends Actor
     private boolean zPress = false;
     public void act() 
     {
-        if (xPress && !Greenfoot.isKeyDown("x")) {
+        if (xPress && !Greenfoot.isKeyDown("x") && nextWorld != null) {
             Greenfoot.setWorld(nextWorld);
             MusicManager.play(); // Just in case
             return;

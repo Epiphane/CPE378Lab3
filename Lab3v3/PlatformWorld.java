@@ -309,10 +309,12 @@ public class PlatformWorld extends World
             case 10: setLevel_11(); break;
             case 11: setLevel_12(); break;
             case 12: setLevel_13(); break;
-            case 13: setLevel_14(); break;
-            case 14: setLevel_15(); break;
-            case 15: setLevel_16(); break;
-            case 16: setLevel_ending(); break;
+            case 13: setLevel_14(0); break;
+            case 14: setLevel_14(1); break;
+            case 15: setLevel_14(2); break;
+            case 16: setLevel_15(); break;
+            case 17: setLevel_16(); break;
+            case 18: setLevel_ending(); break;
         }
     }
     
@@ -432,10 +434,10 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("Beyond the fields                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("The forest sits                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("ominous sounds echo from within                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("But wilbert is not fazed.                  ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Beyond the fields");
+        dialogmanager.addLine("The forest sits");
+        dialogmanager.addLine("ominous sounds echo from within");
+        dialogmanager.addLine("But wilbert is not fazed. ");
         dialogmanager.start();
         
         MusicManager.setMusic(MusicManager.forestTheme);
@@ -505,12 +507,12 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("A dark cave awaits Wilbert                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("Behind him are tribal echoes                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("But the cave is silent.                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("In front of the cave is a sign.                  ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("BEWARE OF SPIKES                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("Wilbert is ready to keep going.                  ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("A dark cave awaits Wilbert");
+        dialogmanager.addLine("Behind him are tribal echoes");
+        dialogmanager.addLine("But the cave is silent.");
+        dialogmanager.addLine("In front of the cave is a sign. ");
+        dialogmanager.addLine("BEWARE OF SPIKES");
+        dialogmanager.addLine("Wilbert is ready to keep going. ");
         dialogmanager.start();
         
         save();
@@ -583,9 +585,9 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("The frost mountain looms over you                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("Wilbert shivers a bit...                 ", CutscenePlayer.Expression.Happy, false);
-        dialogmanager.addLine("Youd better keep moving                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("The frost mountain looms over you");
+        dialogmanager.addLine("Wilbert shivers a bit...");
+        dialogmanager.addLine("Youd better keep moving");
         dialogmanager.start();
         
         MusicManager.setMusic(MusicManager.mountainTheme);
@@ -658,7 +660,7 @@ public class PlatformWorld extends World
         /**
      * set another level
      */
-    public void setLevel_14(){
+    public void setLevel_14(int dialogue){
         
         /**set art*/
         background = new GreenfootImage("Level14_art.gif");
@@ -670,6 +672,58 @@ public class PlatformWorld extends World
         startx = 80;
         starty = 488;
         addObject(currentPlayer, startx, starty);
+        
+        // Cutscene-ness 
+        DialogBox dialogbox = new DialogBox(null);
+        addObject(dialogbox,540,150);
+        
+        DialogManager dialogmanager = new DialogManager(dialogbox, null);
+        addObject(dialogmanager,836,97);
+        
+        MusicManager.play();
+        if (dialogue == 0) {
+            dialogmanager.addLine("Its all over");
+            dialogmanager.addLine("Wilbert heads home");
+            dialogmanager.addLine("to complete his long journey.");
+        }
+        else if (dialogue == 1) {
+            if (currentPlayer.kills >= player.GENOCIDE_KILLS) {
+                MusicManager.pause();
+                dialogmanager.addLine("The hills are silent.");
+                dialogmanager.addLine("Consumed by his anger Wilbert");
+                dialogmanager.addLine("Thinks on the adventurers he defeated");
+            }
+            else if (currentPlayer.kills > 0) {
+                MusicManager.pause();
+                dialogmanager.addLine("The hills are silent.");
+                dialogmanager.addLine("Consumed by his guilt Wilbert");
+                dialogmanager.addLine("Thinks on his mistakes.");
+                dialogmanager.addLine("He wishes he could take them all back");
+                dialogmanager.addLine("But that is never an option.");
+            }
+            else if (currentPlayer.numInjuries() > 5) {
+                dialogmanager.addLine("He is injured");
+                dialogmanager.addLine("But alive.");
+                dialogmanager.addLine("Consumed by fear Wilbert");
+                dialogmanager.addLine("Thinks on the adventurers who attacked him.");
+            }
+        }
+        else if (dialogue == 2) {
+            if (currentPlayer.kills >= player.GENOCIDE_KILLS) {
+                dialogmanager.addLine("He is a monster.");
+            }
+            else if (currentPlayer.kills > 0) {
+                MusicManager.pause();
+                dialogmanager.addLine("There is no repentance. It is over.");
+            }
+            else if (currentPlayer.numInjuries() > 5) {
+                dialogmanager.addLine("It is over.");
+            }
+        }
+        
+        dialogmanager.start();
+        
+        MusicManager.setMusic(MusicManager.theLake);
         
         addObject(new exit_right(), 960, 475);
     }
@@ -690,6 +744,18 @@ public class PlatformWorld extends World
         starty = 452;
         addObject(currentPlayer, startx, starty);
         
+        // Cutscene-ness 
+        DialogBox dialogbox = new DialogBox(null);
+        addObject(dialogbox,540,150);
+        
+        DialogManager dialogmanager = new DialogManager(dialogbox, null);
+        addObject(dialogmanager,836,97);
+        
+        MusicManager.play();
+        
+        dialogmanager.addLine("Home at last.");
+        dialogmanager.start();
+        
         addObject(new exit2(), 780, 412);
     }
     
@@ -697,6 +763,7 @@ public class PlatformWorld extends World
      * set another level
      */
     public void setLevel_16(){
+        MusicManager.play();
         
         /**set art*/
         background = new GreenfootImage("Level16v2_art.gif");

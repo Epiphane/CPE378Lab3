@@ -8,7 +8,7 @@ public class player extends AnimatedActor
     public static final int GENOCIDE_KILLS = 12;
     
     /** Input */
-    public static final String JUMP_KEY = "z";
+    public static final String JUMP_KEY = "space";
     public static final String ANGRY_KEY = "r";
     
     /**

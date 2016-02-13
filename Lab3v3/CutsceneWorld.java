@@ -179,7 +179,7 @@ public class CutsceneWorld extends World
     private void setupDialog_field_2() {
         // Pacifist
         if (Player.kills == 0) {
-            if (Player.numInjuries() <= 1) {
+            if (Player.numInjuries() <= 2) {
                 dialogmanager.addLine("Wheeeeee!");
                 dialogmanager.addLine("This world is so great!");
                 dialogmanager.addLine("All those nice");
@@ -226,7 +226,7 @@ public class CutsceneWorld extends World
     private void setupDialog_forest_1() {
         // Pacifist
         if (Player.kills == 0) {
-            if (Player.numInjuries() <= 2) {
+            if (Player.numInjuries() <= 4) {
                 dialogmanager.addLine("What a beautiful forest!!");
                 dialogmanager.addLine("The trees are so lovely");
                 dialogmanager.addLine("And these people are here too!");
@@ -330,7 +330,7 @@ public class CutsceneWorld extends World
     private void setupDialog_cave_1() {
         // Pacifist
         if (Player.kills == 0) {
-            if (Player.numInjuries() <= 2) {
+            if (Player.numInjuries() <= 6) {
                 dialogmanager.addLine("Oooooooh this cave is spooky");
                 dialogmanager.addLine("But like.");
                 dialogmanager.addLine("In a good way you know?");
@@ -422,7 +422,7 @@ public class CutsceneWorld extends World
     private void setupDialog_mountain_1() {
         // Pacifist
         if (Player.kills == 0) {
-            if (Player.numInjuries() <= 3) {
+            if (Player.numInjuries() <= 9) {
                 dialogmanager.addLine("It looks like we're almost done exploring!");
                 dialogmanager.addLine("I can see my house from here!");
                 dialogmanager.addLine("This was so great. Thank you!");
