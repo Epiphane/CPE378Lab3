@@ -92,8 +92,8 @@ public class DialogBox extends Actor
                 
             letters[(int) ndx] = newLetter;
         
-            if (ndx >= text.length() - 1 && pausing) {
-                setImage(new GreenfootImage("dialogue_complete.png"));
+            if (ndx >= text.length() - 1) {
+                if (pausing) setImage(new GreenfootImage("dialogue_complete.png"));
                 complete = true;
             }
             else {
