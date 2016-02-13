@@ -370,7 +370,10 @@ public class PlatformWorld extends World
     public void setLevel_2(){
         
         /**set art*/
-        background = new GreenfootImage("Level2_art.gif");
+        if (player.FURY_ENABLED)
+            background = new GreenfootImage("Level2_art_fury.gif");
+        else
+            background = new GreenfootImage("Level2_art.gif");
         setBackground(background);
         /**set platforms*/
         bgmask = new GreenfootImage("Level2.gif");

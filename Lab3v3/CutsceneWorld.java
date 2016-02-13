@@ -60,7 +60,7 @@ public class CutsceneWorld extends World
         dialogbox.setLocation(540,421);
 
         dialogmanager = new DialogManager(dialogbox, cutsceneplayer);
-        addObject(dialogmanager,836,97);
+        addObject(dialogmanager,0,0);
     }
         
     private void setupDialog(int level) {
@@ -422,7 +422,7 @@ public class CutsceneWorld extends World
         // Pacifist
         if (Player.kills == 0) {
             if (Player.numInjuries() <= 9) {
-                dialogmanager.addLine("It looks like were almost done exploring!");
+                dialogmanager.addLine("It looks like were almost done!");
                 dialogmanager.addLine("I can see my house from here!");
                 dialogmanager.addLine("This was so great. Thank you!");
                 dialogmanager.addLine("You know...");
