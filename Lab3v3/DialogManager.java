@@ -58,22 +58,31 @@ public class DialogManager extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private boolean xPress = false;
+    private boolean zPress = false;
     public void act() 
     {
-        if (nextWorld != null && (skip || (xPress && !Greenfoot.isKeyDown("x")))) {
-            dialogBox.complete();
+        if (xPress && !Greenfoot.isKeyDown("x")) {
+            Greenfoot.setWorld(nextWorld);
+            MusicManager.play(); // Just in case
+            return;
         }
         xPress = Greenfoot.isKeyDown("x");
-        if (dialogBox.isComplete() && (Greenfoot.isKeyDown("z") || !shouldPause)) {
-            if (ndx == lines.size() && nextWorld != null) {
-                Greenfoot.setWorld(nextWorld);
-                MusicManager.play(); // Just in case
+        if ((zPress && !Greenfoot.isKeyDown("z")) || (dialogBox.isComplete() && !shouldPause)) {
+            if (dialogBox.isComplete()) {
+                if (ndx == lines.size() && nextWorld != null) {
+                    Greenfoot.setWorld(nextWorld);
+                    MusicManager.play(); // Just in case
+                }
+                else if (ndx < lines.size()) {
+                    if (player != null) player.setExpression(expressions.get(ndx));
+                    shouldPause = pause.get(ndx);
+                    dialogBox.say(lines.get(ndx++));
+                }
             }
-            else if (ndx < lines.size()) {
-                if (player != null) player.setExpression(expressions.get(ndx));
-                shouldPause = pause.get(ndx);
-                dialogBox.say(lines.get(ndx++));
+            else if (shouldPause) {
+                dialogBox.complete();
             }
         }
+        zPress = Greenfoot.isKeyDown("z");
     }    
 }

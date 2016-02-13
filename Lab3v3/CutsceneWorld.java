@@ -133,7 +133,7 @@ public class CutsceneWorld extends World
     }
     
     private void setupDialog_field_1() {
-        Player.fury = Math.max(1, Player.fury);
+        if (Player.fury == 0) Player.getMad();
         
         // Pacifist
         if (Player.kills == 0) {
@@ -310,9 +310,9 @@ public class CutsceneWorld extends World
                 }
                 
                 
-                dialogmanager.addLine("......", CutscenePlayer.Expression.Happy, false);
-                dialogmanager.addLine("......", CutscenePlayer.Expression.Concerned, false);
-                dialogmanager.addLine("......", CutscenePlayer.Expression.Irked, false);
+                dialogmanager.addLine("         ", CutscenePlayer.Expression.Happy, false);
+                dialogmanager.addLine("         ", CutscenePlayer.Expression.Concerned, false);
+                dialogmanager.addLine("         ", CutscenePlayer.Expression.Irked, false);
                 dialogmanager.addLine("......", CutscenePlayer.Expression.Concerned, false);
                 dialogmanager.addLine("When I attacked one of them...", CutscenePlayer.Expression.Concerned);
                 dialogmanager.addLine("He didnt look angry.", CutscenePlayer.Expression.Concerned);
@@ -353,12 +353,10 @@ public class CutsceneWorld extends World
             }
             else {
                 dialogmanager.addLine("Everything hurts...", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("They keep hitting me", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("and hitting me...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Please......", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("I just want to go home.", CutscenePlayer.Expression.Concerned);
                 dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
                 dialogmanager.addLine("No Im not having fun.", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("Everybody keeps hurting me!", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Just...lets go.", CutscenePlayer.Expression.Sad);
             }
         }
@@ -368,51 +366,22 @@ public class CutsceneWorld extends World
                 // And 5
                 if (Player.kills >= player.GENOCIDE_KILLS) {
                     dialogmanager.addLine("I feel so powerful", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("its giving me everything", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("anger gives me everything", CutscenePlayer.Expression.Angry);
                     dialogmanager.addLine("if we keep going", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("We can get them all!", CutscenePlayer.Expression.Angry);
-                    
-                    if (Player.newKills > 0) {
-                        dialogmanager.addLine("Seriously you should try it sometime.");
-                        dialogmanager.addLine("They look so scared.");
-                        dialogmanager.addLine("And then you just knock them out!");
-                    }
-                    else {
-                        dialogmanager.addLine("No!", CutscenePlayer.Expression.Concerned);
-                        dialogmanager.addLine("I           ", CutscenePlayer.Expression.Concerned, false);
-                        dialogmanager.addLine("I           ", CutscenePlayer.Expression.Angry, false);
-                        dialogmanager.addLine("I cant!!           ", CutscenePlayer.Expression.Concerned, false);
-                        dialogmanager.addLine("Yes I can!", CutscenePlayer.Expression.Angry);
-                    }
-                    
-                    dialogmanager.addLine("Besides...", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("Its us or them. right?", CutscenePlayer.Expression.Angry);
-                }
-                else if (Player.newKills > 0) {
-                    dialogmanager.addLine("I feel it", CutscenePlayer.Expression.Irked);
-                    dialogmanager.addLine("Anger...it gives me everything.", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("Every time I get one of them", CutscenePlayer.Expression.Irked);
-                    dialogmanager.addLine("Its not enough", CutscenePlayer.Expression.Concerned);
-                    dialogmanager.addLine("I need more! ", CutscenePlayer.Expression.Irked);
-                    dialogmanager.addLine("more! ", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("We can be free!", CutscenePlayer.Expression.Angry);
                     
                     dialogmanager.addLine("No!", CutscenePlayer.Expression.Concerned);
                     dialogmanager.addLine("I           ", CutscenePlayer.Expression.Concerned, false);
                     dialogmanager.addLine("I           ", CutscenePlayer.Expression.Angry, false);
                     dialogmanager.addLine("I cant!!           ", CutscenePlayer.Expression.Concerned, false);
+                    dialogmanager.addLine("Yes I can!", CutscenePlayer.Expression.Angry);
                     
-                    dialogmanager.addLine("Besides...", CutscenePlayer.Expression.Concerned);
-                    dialogmanager.addLine("Its us or them. right?", CutscenePlayer.Expression.Irked);
-                    if (Player.numInjuries() > 0) {
-                        dialogmanager.addLine("Theyll just hurt me again", CutscenePlayer.Expression.Irked);
-                    }
-                    else {
-                        dialogmanager.addLine("I cant get hurt", CutscenePlayer.Expression.Irked);
-                    }
+                    dialogmanager.addLine("Besides...", CutscenePlayer.Expression.Angry);
+                    dialogmanager.addLine("Its us or them. right?", CutscenePlayer.Expression.Angry);
                 }
                 else if (Player.kills > 3) {
                     dialogmanager.addLine("I dont feel right", CutscenePlayer.Expression.Concerned);
-                    dialogmanager.addLine("When I avoid them", CutscenePlayer.Expression.Sad);
+                    dialogmanager.addLine("When I avoid enemies", CutscenePlayer.Expression.Sad);
                     dialogmanager.addLine("im not satisfied", CutscenePlayer.Expression.Irked);
                     
                     if (Player.numInjuries() > 0) {
@@ -493,33 +462,12 @@ public class CutsceneWorld extends World
             }
         }
         else {
-            if (Player.kills > Player.newKills) {
-                if (Player.kills >= player.GENOCIDE_KILLS) {
-                    if (Player.newKills == 0) {
-                        dialogmanager.addLine("We cant stop now!", CutscenePlayer.Expression.Irked);
-                        dialogmanager.addLine("I need to get them all!", CutscenePlayer.Expression.Angry);
-                    }
-                    else {
-                        dialogmanager.addLine("Yes. This feels right.", CutscenePlayer.Expression.Angry);
-                        dialogmanager.addLine("Ill get them all!", CutscenePlayer.Expression.Angry);
-                    }
-                    
-                    dialogmanager.addLine("They dont deserve anything", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("They did so much", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("My friends....", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("Where are they???", CutscenePlayer.Expression.Irked);
-                    dialogmanager.addLine("I miss my friends", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("And its their fault!!", CutscenePlayer.Expression.Angry);
-                }
-                else if (Player.kills > 5) {
-                    dialogmanager.addLine("My anger is pulling at me", CutscenePlayer.Expression.Concerned);
-                    dialogmanager.addLine("They dont deserve anything", CutscenePlayer.Expression.Irked);
-                    dialogmanager.addLine("I dont know where my friends are", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("I should have seen them by now", CutscenePlayer.Expression.Irked);
-                    dialogmanager.addLine("I miss my friends", CutscenePlayer.Expression.Angry);
-                    dialogmanager.addLine("And its their fault!!", CutscenePlayer.Expression.Angry);
-                }
-            }
+            dialogmanager.addLine("My anger is pulling at me", CutscenePlayer.Expression.Concerned);
+            dialogmanager.addLine("They dont deserve anything", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("I dont know where my friends are", CutscenePlayer.Expression.Angry);
+            dialogmanager.addLine("I should have seen them by now", CutscenePlayer.Expression.Irked);
+            dialogmanager.addLine("I miss my friends", CutscenePlayer.Expression.Angry);
+            dialogmanager.addLine("And its their fault!!", CutscenePlayer.Expression.Angry);
         }
     }
 }

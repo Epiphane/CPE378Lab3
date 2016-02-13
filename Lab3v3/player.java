@@ -4,12 +4,12 @@ import java.awt.Color;
 
 public class player extends AnimatedActor
 {
-    public static final boolean FURY_ENABLED = false;
+    public static final boolean FURY_ENABLED = true;
     public static final int GENOCIDE_KILLS = 12;
     
     /** Input */
     public static final String JUMP_KEY = "z";
-    public static final String ANGRY_KEY = "x";
+    public static final String ANGRY_KEY = "r";
     
     /**
      * Player's animation variables

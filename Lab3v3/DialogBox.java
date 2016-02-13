@@ -73,10 +73,12 @@ public class DialogBox extends Actor
         complete = false;
         
         if (Math.floor(ndx) != Math.floor(ndx - speed)) {
-            if (player != null && Math.floor(ndx) % 2 == 1 && ndx < 8) {
-                player.animate();
+            if (text.charAt((int) ndx) != ' ') {
+                speech.play();
+                if (player != null && Math.floor(ndx) % 2 == 1 && ndx < 8) {
+                    player.animate();
+                }
             }
-            if (text.charAt((int) ndx) != ' ') speech.play();
         
             Letter newLetter = new Letter();
             newLetter.setImage(Text.instance().getChar(text.charAt((int) ndx)));
