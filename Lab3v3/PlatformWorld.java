@@ -758,7 +758,7 @@ public class PlatformWorld extends World
         /**set platforms*/
         bgmask = new GreenfootImage("Level16v2.gif");     
 
-        /**set player in a fixed spot*/
+        /**set player in a fixed spot*/ 
         startx = 120;
         starty = 495;
         addObject(currentPlayer, startx, starty);
