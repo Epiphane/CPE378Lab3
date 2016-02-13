@@ -86,7 +86,7 @@ public class CutsceneWorld extends World
         else if (level == 8)
             setupDialog_cave_1(); // Right after the second transition
         else if (level == 12)
-            setupDialog_mountain_1(); // Right after the second transition
+            setupDialog_mountain_1(); // Right after the tird transition
         else {
             skip = dialogmanager.nextWorld;
             Greenfoot.setWorld(dialogmanager.nextWorld);
@@ -117,7 +117,7 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
         
-        MusicManager.setMusic(MusicManager.theLake); 
+        MusicManager.setMusic(MusicManager.fieldTheme); 
     }
     
     private void setupDialog_field_1() {

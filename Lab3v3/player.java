@@ -4,6 +4,8 @@ import java.awt.Color;
 
 public class player extends AnimatedActor
 {
+    public static final boolean FURY_ENABLED = false;
+    
     /** Input */
     public static final String JUMP_KEY = "z";
     public static final String ANGRY_KEY = "x";
@@ -209,7 +211,9 @@ public class player extends AnimatedActor
     public void setAngry(boolean angry) {
         if (fury == 0) angry = false;
         if (fury >= 6) angry = true;
-        angry = false; // Avoid fury mechanic completely
+        
+        if (!FURY_ENABLED)
+            angry = false; // Avoid fury mechanic completely
         
         this.angry = angry;
         
