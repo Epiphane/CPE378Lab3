@@ -71,7 +71,7 @@ public class PlatformWorld extends World
         /**Set order of appearance of actor classes.*/
         /**Set from front-most to back-most.*/
         /*||||***Make sure don't forget this while creating new kind of object!!!***|||||*/
-        setPaintOrder(game_over.class, player_death.class, player.class, enemy1.class, Hearts.class);
+        setPaintOrder(game_over.class, player_death.class, player.class, enemy1.class, Hearts.class, Lives.class);
         
         /**Start the game*/
         currentLevel = level;
@@ -300,7 +300,12 @@ public class PlatformWorld extends World
             case 6: setLevel_7(); break;
             case 7: setLevel_8(); break;
             case 8: setLevel_9(); break;
-            case 9: setLevel_ending(); break;
+            case 9: setLevel_10(); break;
+            case 10: setLevel_11(); break;
+            case 11: setLevel_12(); break;
+            case 12: setLevel_13(); break;
+            
+            case 13: setLevel_ending(); break;
         }
     }
     
@@ -330,8 +335,7 @@ public class PlatformWorld extends World
         setBackground(background);
         /**set platforms*/
         bgmask = new GreenfootImage("Level1.gif");
-        /**set sliding */
-        decel = 0.95;
+
         /**set player in a fixed spot*/
         startx = 40;
         starty = 150;
@@ -533,6 +537,86 @@ public class PlatformWorld extends World
         addObject(new enemy2(), 524, 210); //lefttop
         addObject(new enemy2(), 522, 382); //mid
         addObject(new exit_right(), 60, 487);
+    }
+    
+    /**
+     * set another level
+     */
+    public void setLevel_10(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level10_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level10.gif");     
+        /**set sliding */
+        decel = 0.95;
+        /**set player in a fixed spot*/
+        startx = 141;
+        starty = 459;
+        addObject(currentPlayer, startx, starty);
+ 
+        addObject(new exit_right(), 914, 454);
+    }
+    
+    /**
+     * set another level
+     */
+    public void setLevel_11(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level11_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level11.gif");     
+        /**set sliding */
+        decel = 0.95;
+        /**set player in a fixed spot*/
+        startx = 20;
+        starty = 520;
+        addObject(currentPlayer, startx, starty);
+ 
+        addObject(new exit_right(), 45, 68);
+    }
+    
+    /**
+     * set another level
+     */
+    public void setLevel_12(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level12_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level12.gif");     
+        /**set sliding */
+        decel = 0.95;
+        /**set player in a fixed spot*/
+        startx = 46;
+        starty = 500;
+        addObject(currentPlayer, startx, starty);
+ 
+        addObject(new exit_right(), 1000, 55);
+    }
+    
+    /**
+     * set another level
+     */
+    public void setLevel_13(){
+        
+        /**set art*/
+        background = new GreenfootImage("Level13_art.gif");
+        setBackground(background);
+        /**set platforms*/
+        bgmask = new GreenfootImage("Level13.gif");     
+        /**set sliding */
+        decel = 0.95;
+        /**set player in a fixed spot*/
+        startx = 46;
+        starty = 500;
+        addObject(currentPlayer, startx, starty);
+ 
+        addObject(new exit_right(), 1000, 485);
     }
     
     /**
