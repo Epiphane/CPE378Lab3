@@ -753,6 +753,7 @@ public class PlatformWorld extends World
         
         /**set art*/
         background = new GreenfootImage("Level16v2_art.gif");
+        
         setBackground(background);
         /**set platforms*/
         bgmask = new GreenfootImage("Level16v2.gif");     
@@ -773,7 +774,10 @@ public class PlatformWorld extends World
         removeObject(hearts);
         removeObject(lives);
         removeObject(fury);
-        background = new GreenfootImage("ending.png");
+        if (currentPlayer.kills > 5)
+            background = new GreenfootImage("ending_killer.png");
+        else 
+            background = new GreenfootImage("ending.gif");
         setBackground(background);
         /**also set mask*/
         bgmask = new GreenfootImage("ending_mask.gif");
