@@ -458,8 +458,8 @@ public class PlatformWorld extends World
         startx = 103;
         starty = 520;
         addObject(currentPlayer, startx, starty);
-        addObject(new enemy2(), 81, 425); //leftbot
-        addObject(new enemy2(), 99, 215); //lefttop
+        addObject(new enemy2(), 81, 325); //leftbot
+        addObject(new enemy2(), 99, 115); //lefttop
         addObject(new enemy1(), 420, 504); //mid
         addObject(new exit_right(), 950, 337);
     }

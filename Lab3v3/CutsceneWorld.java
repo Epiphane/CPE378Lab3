@@ -133,21 +133,25 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("...", CutscenePlayer.Expression.Concerned);
                 dialogmanager.addLine("Why are you so worried?", CutscenePlayer.Expression.Concerned);
                 dialogmanager.addLine("Have you been here before?", CutscenePlayer.Expression.Concerned);
-                //dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
-                //dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
+                if (player.FURY_ENABLED) {
+                    dialogmanager.addLine("why didnt you              ", CutscenePlayer.Expression.Irked, false);
+                    dialogmanager.addLine("oops             ", CutscenePlayer.Expression.Concerned, false);
+                }
                 dialogmanager.addLine("you should have said so!");
                 dialogmanager.addLine("itll be a breeze! Lets go!");
             }
             else {
                 // Stuff is already added if there's an injury
-                //dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
-                //dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
-                //dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
-                //dialogmanager.addLine("But then it passed like that!");
-                //dialogmanager.addLine("Oh well. Lets keep going!");
+                if (player.FURY_ENABLED) {
+                    dialogmanager.addLine("You know...", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("When I got hurt", CutscenePlayer.Expression.Concerned);
+                    dialogmanager.addLine("I felt really ....angry.", CutscenePlayer.Expression.Irked);
+                    dialogmanager.addLine("But then it passed like that!");
+                    dialogmanager.addLine("Oh well. Lets keep going!");
+                }
             }
         }
-        else {
+        else if (player.FURY_ENABLED) {
             dialogmanager.addLine("Woah! That was interesting");
             dialogmanager.addLine("When I knocked out those");
             dialogmanager.addLine("adventurers, I felt...");
@@ -183,6 +187,8 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("They all attack me!", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Whats happening!?!", CutscenePlayer.Expression.Sad);
             }
+        }
+        else if (player.FURY_ENABLED) {
         }
     }
     
@@ -265,9 +271,9 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("Will you be my friend forever?");
                 dialogmanager.addLine("We can go on trips all the time...");
                 dialogmanager.addLine("Have hot chocolate in winter...");
-                dialogmanager.addLine("Just stick around for a while, ok?", CutscenePlayer.Expression.Concerned);
+                dialogmanager.addLine("Just stick around for a while, ok?");
             }
-            else if (Player.numInjuries() < 10) {
+            else if (Player.numInjuries() < 12) {
                 dialogmanager.addLine("Whew!");
                 dialogmanager.addLine("Im tired!");
                 dialogmanager.addLine("Fortunately I can see home from here.");
@@ -286,13 +292,12 @@ public class CutsceneWorld extends World
                 dialogmanager.addLine("I.....      ", CutscenePlayer.Expression.Concerned, false);
                 dialogmanager.addLine("I.....      ", CutscenePlayer.Expression.Sad, false);
                 dialogmanager.addLine("I dont know what id do without you", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("The people here are so terrible...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("This place is so terrible...", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("Everything is awful", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Please....", CutscenePlayer.Expression.Concerned, false);
                 dialogmanager.addLine("Please. when we get back", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("dont leave for a while ok?", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("I know you have to go...", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("But I dont feel safe here.", CutscenePlayer.Expression.Sad);
-                dialogmanager.addLine("just think about it. ok?", CutscenePlayer.Expression.Sad);
+                dialogmanager.addLine("just think about it.", CutscenePlayer.Expression.Sad);
                 dialogmanager.addLine("Thanks...im sorry...", CutscenePlayer.Expression.Concerned);
             }
         }

@@ -12,7 +12,7 @@ public class MusicManager
     public static final GreenfootSound caveTheme = new GreenfootSound("Cave theme.mp3");
     public static final GreenfootSound fieldTheme = new GreenfootSound("Field theme.mp3");
     public static final GreenfootSound forestTheme = new GreenfootSound("Forest theme.mp3");
-    public static final GreenfootSound mountainTheme = new GreenfootSound("Field theme.mp3");
+    public static final GreenfootSound mountainTheme = new GreenfootSound("Mountain theme.mp3");
     
     private static GreenfootSound currentMusic = theLake;
     
