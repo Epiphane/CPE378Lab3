@@ -422,7 +422,7 @@ public class CutsceneWorld extends World
         // Pacifist
         if (Player.kills == 0) {
             if (Player.numInjuries() <= 9) {
-                dialogmanager.addLine("It looks like we're almost done exploring!");
+                dialogmanager.addLine("It looks like were almost done exploring!");
                 dialogmanager.addLine("I can see my house from here!");
                 dialogmanager.addLine("This was so great. Thank you!");
                 dialogmanager.addLine("You know...");
