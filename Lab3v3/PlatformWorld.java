@@ -703,7 +703,7 @@ public class PlatformWorld extends World
                 dialogmanager.addLine("He is injured");
                 dialogmanager.addLine("But alive.");
                 dialogmanager.addLine("Consumed by fear Wilbert");
-                dialogmanager.addLine("Thinks on the adventurers who attacked him.");
+                dialogmanager.addLine("Just wants to go home.");
             }
         //}
         //else if (dialogue == 2) {
