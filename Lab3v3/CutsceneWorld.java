@@ -116,6 +116,8 @@ public class CutsceneWorld extends World
         dialogmanager.addLine("to worry about!");
         dialogmanager.addLine("Everyone here is friendly!");
         dialogmanager.addLine("Here goes!");
+        
+        MusicManager.setMusic(MusicManager.theLake); 
     }
     
     private void setupDialog_field_1() {

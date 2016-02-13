@@ -417,6 +417,8 @@ public class PlatformWorld extends World
         dialogmanager.addLine("But wilbert is not fazed. ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.start();
         
+        MusicManager.setMusic(MusicManager.forestTheme);
+        
         addObject(new exit_right(), 926, 460);
     }
     
@@ -488,6 +490,8 @@ public class PlatformWorld extends World
         dialogmanager.addLine("BEWARE OF SPIKES                        ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.addLine("Wilbert is ready to keep going. ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.start();
+        
+        MusicManager.setMusic(MusicManager.caveTheme);
  
         addObject(new exit_right(), 926, 462);
     }

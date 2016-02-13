@@ -35,6 +35,7 @@ public class player extends AnimatedActor
     }, 0.15f);
     private Animation player_jump_loop = new Animation("player_jump", new int[] { 3 }, 1);
     private Animation player_jump_angry_loop = new Animation("player_jump_angry", new int[] { 3 }, 1);
+    private Animation player_hurt = AnimatedActor.generateSequence("player_hurt", 2);
     
     private Transition player_walk = AnimatedActor.generateTransition(player_walk_loop, "player_walk_transition", 1);
     private Transition player_jump = AnimatedActor.generateTransition(player_jump_loop, "player_jump", 3, 0.5f);
@@ -119,6 +120,7 @@ public class player extends AnimatedActor
         player_idle.load();
         player_jump.load();
         player_jump_loop.load();
+        player_hurt.load();
         
         player_walk_angry_loop.load();
         player_idle_angry.load();
@@ -197,6 +199,12 @@ public class player extends AnimatedActor
             platformer.removeObject(this);
         }
     }    
+    
+    public void setAnimation(Animation anim) {
+        if (hurt_delay > 0 && anim != player_hurt) return;
+        
+        super.setAnimation(anim);
+    }
     
     public void setAngry(boolean angry) {
         if (fury == 0) angry = false;
@@ -510,6 +518,7 @@ public class player extends AnimatedActor
                 speedY = -5;
                 y -= 4;
                 if (fury < 2) getMad();
+                setAnimation(player_hurt);
                 
                 hurt.play();
             }
@@ -532,6 +541,7 @@ public class player extends AnimatedActor
             //setAnim_hurt();
             HP -= dmg;
             hurt_delay = 60;
+            setAnimation(player_hurt);
         }
     }
     

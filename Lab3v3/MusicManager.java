@@ -23,7 +23,9 @@ public class MusicManager
     }
     
     public static void setMusic(GreenfootSound snd) {
+        if (currentMusic != null) currentMusic.pause();
         currentMusic = snd;
+        if (snd != null) snd.playLoop();
     }
     
     public static void play() {
