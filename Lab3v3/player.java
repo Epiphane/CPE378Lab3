@@ -4,7 +4,7 @@ import java.awt.Color;
 
 public class player extends AnimatedActor
 {
-    public static final boolean FURY_ENABLED = true;
+    public static final boolean FURY_ENABLED = false;
     public static final int GENOCIDE_KILLS = 12;
     
     /** Input */
