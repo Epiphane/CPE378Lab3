@@ -96,8 +96,7 @@ public class PlatformWorld extends World
         manageLife();
         hearts.adjustHearts(currentPlayer.HP);
         lives.adjustLives(currentPlayer.lives);
-        
-    }
+   }
     
     /**
      * take care of life system, if life runs out, calls game over
@@ -113,6 +112,8 @@ public class PlatformWorld extends World
         if (currentPlayer.dead && currentPlayer.lives < 0 && !gameIsOver){
             addObject(new game_over(), sWidth/2, sHeight/2);
             gameIsOver = true;
+            
+            Greenfoot.setWorld(new GameOver(currentPlayer));
         }
     }
     
@@ -282,6 +283,9 @@ public class PlatformWorld extends World
         this.removeObjects(this.getObjects(player_death.class));
         this.removeObjects(this.getObjects(game_over.class));
         this.removeObjects(this.getObjects(exit_right.class));
+        this.removeObjects(this.getObjects(Letter.class));
+        this.removeObjects(this.getObjects(DialogBox.class));
+        this.removeObjects(this.getObjects(DialogManager.class));
     }
     
     /**
@@ -312,6 +316,15 @@ public class PlatformWorld extends World
         }
     }
     
+    public void save() {
+        Checkpoint.HP = currentPlayer.HP;
+        Checkpoint.maxHP = currentPlayer.maxHP;
+        Checkpoint.fury = currentPlayer.fury;
+        Checkpoint.kills = currentPlayer.kills;
+        Checkpoint.level = currentLevel;
+        Checkpoint.angry = currentPlayer.angry;
+    }
+    
     /**
      * go to next level
      */
@@ -332,6 +345,7 @@ public class PlatformWorld extends World
      * set the title level
      */
     public void setLevel_1(){
+        save();
         
         /**set art*/
         background = new GreenfootImage("Level1_art.gif");
@@ -418,14 +432,15 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("Beyond the fields");
-        dialogmanager.addLine("The forest sits");
-        dialogmanager.addLine("ominous sounds echo from within");
-        dialogmanager.addLine("But wilbert is not fazed. ");
+        dialogmanager.addLine("Beyond the fields                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("The forest sits                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("ominous sounds echo from within                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("But wilbert is not fazed.                  ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.start();
         
         MusicManager.setMusic(MusicManager.forestTheme);
         
+        save();
         addObject(new exit_right(), 926, 460);
     }
     
@@ -490,13 +505,15 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("A dark cave awaits Wilbert");
-        dialogmanager.addLine("Behind him are tribal echoes");
-        dialogmanager.addLine("But the cave is silent.");
-        dialogmanager.addLine("In front of the cave is a sign. ");
-        dialogmanager.addLine("BEWARE OF SPIKES");
-        dialogmanager.addLine("Wilbert is ready to keep going. ");
+        dialogmanager.addLine("A dark cave awaits Wilbert                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Behind him are tribal echoes                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("But the cave is silent.                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("In front of the cave is a sign.                  ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("BEWARE OF SPIKES                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Wilbert is ready to keep going.                  ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.start();
+        
+        save();
  
         addObject(new exit_right(), 926, 462);
     }
@@ -566,13 +583,14 @@ public class PlatformWorld extends World
         DialogManager dialogmanager = new DialogManager(dialogbox, null);
         addObject(dialogmanager,836,97);
         
-        dialogmanager.addLine("The frost mountain looms over you");
-        dialogmanager.addLine("Wilbert shivers a bit...");
-        dialogmanager.addLine("Youd better keep moving");
+        dialogmanager.addLine("The frost mountain looms over you                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Wilbert shivers a bit...                 ", CutscenePlayer.Expression.Happy, false);
+        dialogmanager.addLine("Youd better keep moving                 ", CutscenePlayer.Expression.Happy, false);
         dialogmanager.start();
         
         MusicManager.setMusic(MusicManager.mountainTheme);
  
+        save();
         addObject(new exit_right(), 914, 454);
     }
     

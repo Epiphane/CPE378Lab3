@@ -61,13 +61,13 @@ public class DialogManager extends Actor
     public void act() 
     {
         if (nextWorld != null && (skip || (xPress && !Greenfoot.isKeyDown("x")))) {
-            Greenfoot.setWorld(nextWorld);
-            return;
+            dialogBox.complete();
         }
         xPress = Greenfoot.isKeyDown("x");
         if (dialogBox.isComplete() && (Greenfoot.isKeyDown("z") || !shouldPause)) {
             if (ndx == lines.size() && nextWorld != null) {
                 Greenfoot.setWorld(nextWorld);
+                MusicManager.play(); // Just in case
             }
             else if (ndx < lines.size()) {
                 if (player != null) player.setExpression(expressions.get(ndx));

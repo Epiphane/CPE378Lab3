@@ -68,6 +68,43 @@ public class DialogBox extends Actor
         letters = new Actor[text.length()];
     }
     
+    private void nextLetter() {
+        ndx += speed;
+        complete = false;
+        
+        if (Math.floor(ndx) != Math.floor(ndx - speed)) {
+            if (player != null && Math.floor(ndx) % 2 == 1 && ndx < 8) {
+                player.animate();
+            }
+            if (text.charAt((int) ndx) != ' ') speech.play();
+        
+            Letter newLetter = new Letter();
+            newLetter.setImage(Text.instance().getChar(text.charAt((int) ndx)));
+            
+            int pos_x = ((int) ndx) % LINE_WIDTH;
+            int pos_y = ((int) ndx) / LINE_WIDTH;
+            
+            getWorld().addObject(newLetter, pos_x * Text.LETTER_W + getX() - getImage().getWidth() / 2 + PADDING + Text.LETTER_W / 2, 
+                pos_y * Text.LETTER_H + getY() - getImage().getHeight() / 2 + PADDING + Text.LETTER_H / 2);
+                
+            letters[(int) ndx] = newLetter;
+        
+            if (ndx >= text.length() - 1) {
+                setImage(new GreenfootImage("dialogue_complete.png"));
+                complete = true;
+            }
+            else {
+                setImage(new GreenfootImage("dialogue.png"));
+            }
+        }
+    }
+    
+    public void complete() {
+        while (ndx < text.length() - 1) {
+            nextLetter();
+        }
+    }
+    
     /**
      * Act - do whatever the DialogBox wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -75,34 +112,7 @@ public class DialogBox extends Actor
     public void act() 
     {
         if (ndx < text.length() - 1) {
-            ndx += speed;
-            complete = false;
-            
-            if (Math.floor(ndx) != Math.floor(ndx - speed)) {
-                if (player != null && Math.floor(ndx) % 2 == 1 && ndx < 8) {
-                    player.animate();
-                }
-                speech.play();
-            
-                Letter newLetter = new Letter();
-                newLetter.setImage(Text.instance().getChar(text.charAt((int) ndx)));
-                
-                int pos_x = ((int) ndx) % LINE_WIDTH;
-                int pos_y = ((int) ndx) / LINE_WIDTH;
-                
-                getWorld().addObject(newLetter, pos_x * Text.LETTER_W + getX() - getImage().getWidth() / 2 + PADDING + Text.LETTER_W / 2, 
-                    pos_y * Text.LETTER_H + getY() - getImage().getHeight() / 2 + PADDING + Text.LETTER_H / 2);
-                    
-                letters[(int) ndx] = newLetter;
-            
-                if (ndx >= text.length() - 1) {
-                    setImage(new GreenfootImage("dialogue_complete.png"));
-                    complete = true;
-                }
-                else {
-                    setImage(new GreenfootImage("dialogue.png"));
-                }
-            }
+            nextLetter();
         }
     }
 }
